@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjeBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ayarlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cihaz">
+          <Key>
+            <PropertyRef Name="CihazID" />
+          </Key>
+          <Property Name="CihazID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CihazAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="FtpAdres" Type="text" />
+          <Property Name="FtpUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="FtpPas" Type="nvarchar" MaxLength="50" />
+          <Property Name="ftpPort" Type="int" />
+        </EntityType>
+        <EntityType Name="Ekipler">
+          <Key>
+            <PropertyRef Name="EkipID" />
+          </Key>
+          <Property Name="EkipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EkipAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="FtpServer">
+          <Key>
+            <PropertyRef Name="ServerID" />
+          </Key>
+          <Property Name="ServerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FtpPort" Type="int" />
+          <Property Name="FtpUser" Type="char" MaxLength="10" />
+          <Property Name="FtpPass" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Operasyon">
+          <Key>
+            <PropertyRef Name="OperasyonID" />
+          </Key>
+          <Property Name="OperasyonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Barkod" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonelID" Type="int" />
+          <Property Name="EkipID" Type="int" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zaman" Type="datetime" />
+          <Property Name="AnahtarKaybi" Type="bit" />
+          <Property Name="AracHasar" Type="bit" />
+          <Property Name="CamAcik" Type="bit" />
+          <Property Name="VitesKonum" Type="bit" />
+          <Property Name="ElfrenKonum" Type="bit" />
+          <Property Name="Diger" Type="bit" />
+          <Property Name="SorunYok" Type="bit" />
+          <Property Name="SorunDurum" Type="bit" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="KartID" Type="nvarchar" MaxLength="50" />
+          <Property Name="EkipID" Type="int" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="SifreGirisZamanaları">
+          <Key>
+            <PropertyRef Name="GirisID" />
+          </Key>
+          <Property Name="GirisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GirisZamani" Type="datetime" />
+          <Property Name="ErisilenSayfa" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Sorunlar">
+          <Key>
+            <PropertyRef Name="SorunID" />
+          </Key>
+          <Property Name="SorunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Barkod" Type="text" />
+          <Property Name="PersonelID" Type="int" />
+          <Property Name="Zaman" Type="datetime" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityContainer Name="ProjeBModelStoreContainer">
+          <EntitySet Name="Ayarlar" EntityType="Self.Ayarlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cihaz" EntityType="Self.Cihaz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ekipler" EntityType="Self.Ekipler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FtpServer" EntityType="Self.FtpServer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operasyon" EntityType="Self.Operasyon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SifreGirisZamanaları" EntityType="Self.SifreGirisZamanaları" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sorunlar" EntityType="Self.Sorunlar" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjeBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Ayarlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Cihaz">
+          <Key>
+            <PropertyRef Name="CihazID" />
+          </Key>
+          <Property Name="CihazID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CihazAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FtpAdres" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FtpUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FtpPas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ftpPort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Ekipler">
+          <Key>
+            <PropertyRef Name="EkipID" />
+          </Key>
+          <Property Name="EkipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EkipAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Durum" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="FtpServer">
+          <Key>
+            <PropertyRef Name="ServerID" />
+          </Key>
+          <Property Name="ServerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FtpPort" Type="Int32" />
+          <Property Name="FtpUser" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="FtpPass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Operasyon">
+          <Key>
+            <PropertyRef Name="OperasyonID" />
+          </Key>
+          <Property Name="OperasyonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Barkod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelID" Type="Int32" />
+          <Property Name="EkipID" Type="Int32" />
+          <Property Name="Tip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zaman" Type="DateTime" Precision="3" />
+          <Property Name="AnahtarKaybi" Type="Boolean" />
+          <Property Name="AracHasar" Type="Boolean" />
+          <Property Name="CamAcik" Type="Boolean" />
+          <Property Name="VitesKonum" Type="Boolean" />
+          <Property Name="ElfrenKonum" Type="Boolean" />
+          <Property Name="Diger" Type="Boolean" />
+          <Property Name="SorunYok" Type="Boolean" />
+          <Property Name="SorunDurum" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KartID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EkipID" Type="Int32" />
+          <Property Name="Durum" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SifreGirisZamanaları">
+          <Key>
+            <PropertyRef Name="GirisID" />
+          </Key>
+          <Property Name="GirisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GirisZamani" Type="DateTime" Precision="3" />
+          <Property Name="ErisilenSayfa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sorunlar">
+          <Key>
+            <PropertyRef Name="SorunID" />
+          </Key>
+          <Property Name="SorunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Barkod" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PersonelID" Type="Int32" />
+          <Property Name="Zaman" Type="DateTime" Precision="3" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="ProjeBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ayarlar" EntityType="Self.Ayarlar" />
+          <EntitySet Name="Cihaz" EntityType="Self.Cihaz" />
+          <EntitySet Name="Ekipler" EntityType="Self.Ekipler" />
+          <EntitySet Name="FtpServer" EntityType="Self.FtpServer" />
+          <EntitySet Name="Operasyon" EntityType="Self.Operasyon" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" />
+          <EntitySet Name="SifreGirisZamanaları" EntityType="Self.SifreGirisZamanaları" />
+          <EntitySet Name="Sorunlar" EntityType="Self.Sorunlar" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjeBModelStoreContainer" CdmEntityContainer="ProjeBEntities">
+          <EntitySetMapping Name="Ayarlar">
+            <EntityTypeMapping TypeName="ProjeBModel.Ayarlar">
+              <MappingFragment StoreEntitySet="Ayarlar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cihaz">
+            <EntityTypeMapping TypeName="ProjeBModel.Cihaz">
+              <MappingFragment StoreEntitySet="Cihaz">
+                <ScalarProperty Name="CihazID" ColumnName="CihazID" />
+                <ScalarProperty Name="CihazAdi" ColumnName="CihazAdi" />
+                <ScalarProperty Name="FtpAdres" ColumnName="FtpAdres" />
+                <ScalarProperty Name="FtpUser" ColumnName="FtpUser" />
+                <ScalarProperty Name="FtpPas" ColumnName="FtpPas" />
+                <ScalarProperty Name="ftpPort" ColumnName="ftpPort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ekipler">
+            <EntityTypeMapping TypeName="ProjeBModel.Ekipler">
+              <MappingFragment StoreEntitySet="Ekipler">
+                <ScalarProperty Name="EkipID" ColumnName="EkipID" />
+                <ScalarProperty Name="EkipAdi" ColumnName="EkipAdi" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FtpServer">
+            <EntityTypeMapping TypeName="ProjeBModel.FtpServer">
+              <MappingFragment StoreEntitySet="FtpServer">
+                <ScalarProperty Name="ServerID" ColumnName="ServerID" />
+                <ScalarProperty Name="FtpPort" ColumnName="FtpPort" />
+                <ScalarProperty Name="FtpUser" ColumnName="FtpUser" />
+                <ScalarProperty Name="FtpPass" ColumnName="FtpPass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operasyon">
+            <EntityTypeMapping TypeName="ProjeBModel.Operasyon">
+              <MappingFragment StoreEntitySet="Operasyon">
+                <ScalarProperty Name="OperasyonID" ColumnName="OperasyonID" />
+                <ScalarProperty Name="Barkod" ColumnName="Barkod" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="EkipID" ColumnName="EkipID" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="Zaman" ColumnName="Zaman" />
+                <ScalarProperty Name="AnahtarKaybi" ColumnName="AnahtarKaybi" />
+                <ScalarProperty Name="AracHasar" ColumnName="AracHasar" />
+                <ScalarProperty Name="CamAcik" ColumnName="CamAcik" />
+                <ScalarProperty Name="VitesKonum" ColumnName="VitesKonum" />
+                <ScalarProperty Name="ElfrenKonum" ColumnName="ElfrenKonum" />
+                <ScalarProperty Name="Diger" ColumnName="Diger" />
+                <ScalarProperty Name="SorunYok" ColumnName="SorunYok" />
+                <ScalarProperty Name="SorunDurum" ColumnName="SorunDurum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personel">
+            <EntityTypeMapping TypeName="ProjeBModel.Personel">
+              <MappingFragment StoreEntitySet="Personel">
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="KartID" ColumnName="KartID" />
+                <ScalarProperty Name="EkipID" ColumnName="EkipID" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SifreGirisZamanaları">
+            <EntityTypeMapping TypeName="ProjeBModel.SifreGirisZamanaları">
+              <MappingFragment StoreEntitySet="SifreGirisZamanaları">
+                <ScalarProperty Name="GirisID" ColumnName="GirisID" />
+                <ScalarProperty Name="GirisZamani" ColumnName="GirisZamani" />
+                <ScalarProperty Name="ErisilenSayfa" ColumnName="ErisilenSayfa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sorunlar">
+            <EntityTypeMapping TypeName="ProjeBModel.Sorunlar">
+              <MappingFragment StoreEntitySet="Sorunlar">
+                <ScalarProperty Name="SorunID" ColumnName="SorunID" />
+                <ScalarProperty Name="Barkod" ColumnName="Barkod" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="Zaman" ColumnName="Zaman" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

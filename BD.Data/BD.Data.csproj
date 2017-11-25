@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{48F9F9CF-4C4F-4688-B9DC-A96D54634566}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BD.Data</RootNamespace>
+    <AssemblyName>BD.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ayarlar.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BDDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Cihaz.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EkipIslemleri.cs" />
+    <Compile Include="Ekipler.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FtpServer.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Operasyon.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Personel.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelIslemleri.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SifreGirisZamanaları.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sorunlar.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BD.Common\BD.Common.csproj">
+      <Project>{7314400a-84a8-4371-a3f5-432a40d52226}</Project>
+      <Name>BD.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BD.DTO\BD.DTO.csproj">
+      <Project>{25bf67dd-63bf-47ae-ad10-c62e39c81b15}</Project>
+      <Name>BD.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="BDDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BDDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="BDDataModel.edmx.diagram">
+      <DependentUpon>BDDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BDDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BDDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>BDDataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="BDDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BDDataModel.edmx</DependentUpon>
+      <LastGenOutput>BDDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
