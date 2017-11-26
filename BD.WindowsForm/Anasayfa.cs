@@ -42,5 +42,11 @@ namespace BD.WindowsForm
             PersonelYonetimi personel = new PersonelYonetimi();
             yavruform(personel);
         }
+
+        private void operasyonTakipToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OperasyonTakip operasyon = new OperasyonTakip();
+            yavruform(operasyon);
+        }
     }
 }

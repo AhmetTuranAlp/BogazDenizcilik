@@ -141,5 +141,11 @@
   <ItemGroup>
     <None Include="Resources\ekipSil.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Operasyon Ara.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Yenile.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EkiplerDTO.cs" />
+    <Compile Include="OperasyonDTO.cs" />
+    <Compile Include="OperasyonModelViewDTO.cs" />
     <Compile Include="PersonelDTO.cs" />
     <Compile Include="PersonelEkipModelViewDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

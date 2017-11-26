@@ -73,6 +73,7 @@
             this.operasyonTakipToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.operasyonTakipToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
             this.operasyonTakipToolStripMenuItem.Text = "Operasyon Takip";
+            this.operasyonTakipToolStripMenuItem.Click += new System.EventHandler(this.operasyonTakipToolStripMenuItem_Click);
             // 
             // rapolarToolStripMenuItem
             // 

@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
@@ -81,6 +82,7 @@
     <Compile Include="Operasyon.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="OperasyonIslemleri.cs" />
     <Compile Include="Personel.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
