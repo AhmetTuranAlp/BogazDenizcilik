@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="PersonelIslemleri.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SifreDegistirme.cs" />
     <Compile Include="SifreGirisZamanaları.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>

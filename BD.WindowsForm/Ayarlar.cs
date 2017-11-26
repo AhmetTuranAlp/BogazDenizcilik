@@ -22,11 +22,19 @@ namespace BD.WindowsForm
 
         CihazIslemleri cihaz = new CihazIslemleri();
         Tools arac = new Tools();
+        SifreDegistirme sifre = new SifreDegistirme();
+
         public void CihazListeleme()
         {
             dataGridView1.DataSource = cihaz.Listeleme();
             arac.DatagridBoyutlandir(dataGridView1, 6);
 
+        }
+
+        public void SifreTabloListeleme()
+        {
+            dataGridView2.DataSource = sifre.Listeleme();
+            arac.DatagridBoyutlandir(dataGridView2, 3);
         }
 
         public void FtpTextClear()
@@ -41,6 +49,7 @@ namespace BD.WindowsForm
         private void Ayarlar_Load(object sender, EventArgs e)
         {
             CihazListeleme();
+            SifreTabloListeleme();
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
@@ -71,7 +80,7 @@ namespace BD.WindowsForm
             if (txtCihazAd.Tag != null)
             {
                 CihazDTO ch = new CihazDTO();
-                ch.CihazID= (int)txtCihazAd.Tag;
+                ch.CihazID = (int)txtCihazAd.Tag;
                 ch.CihazAdi = txtCihazAd.Text;
                 ch.FtpAdres = txtFtpAdres.Text;
                 ch.FtpUser = txtFtpUser.Text;
@@ -152,6 +161,51 @@ namespace BD.WindowsForm
         private void btnSil_MouseHover(object sender, EventArgs e)
         {
             toolTip1.SetToolTip(btnGuncelle, "Cihaz Sil");
+        }
+
+        private void btnTemizle_Click(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            textBox2.Clear();
+        }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            var alan1 = textBox1.Text;
+            var alan2 = textBox2.Text;
+            if (alan1 == "" && alan2 == "")
+            {
+                MessageBox.Show("Boş Değer Girilemez.");
+            }
+            else
+            {
+                if (alan1 == alan2)
+                {
+                    sifre.SifreGuncelle(alan1.ToString());
+                    MessageBox.Show("Şifre Değiştirildi.");
+                    SifreTabloListeleme();
+                    textBox1.Clear();
+                    textBox2.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Şifreler Aynı Degil!");
+                }
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                textBox1.UseSystemPasswordChar = false;
+                textBox2.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                textBox1.UseSystemPasswordChar = true;
+                textBox2.UseSystemPasswordChar = true;
+            }
         }
     }
 }

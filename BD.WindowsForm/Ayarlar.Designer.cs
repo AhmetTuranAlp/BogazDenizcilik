@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dtgSifreView = new System.Windows.Forms.DataGridView();
-            this.btnTemizle = new System.Windows.Forms.Button();
-            this.btnKaydet = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.VeritabaniYedek = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,6 +89,8 @@
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.btnEkle = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnTemizle = new System.Windows.Forms.Button();
+            this.btnKaydet = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel6.SuspendLayout();
@@ -135,28 +135,6 @@
             this.dtgSifreView.Name = "dtgSifreView";
             this.dtgSifreView.Size = new System.Drawing.Size(526, 455);
             this.dtgSifreView.TabIndex = 0;
-            // 
-            // btnTemizle
-            // 
-            this.btnTemizle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTemizle.Location = new System.Drawing.Point(105, 291);
-            this.btnTemizle.Name = "btnTemizle";
-            this.btnTemizle.Size = new System.Drawing.Size(83, 44);
-            this.btnTemizle.TabIndex = 41;
-            this.btnTemizle.UseVisualStyleBackColor = true;
-            // 
-            // btnKaydet
-            // 
-            this.btnKaydet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnKaydet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnKaydet.Location = new System.Drawing.Point(249, 291);
-            this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(83, 44);
-            this.btnKaydet.TabIndex = 40;
-            this.btnKaydet.UseVisualStyleBackColor = true;
             // 
             // panel7
             // 
@@ -430,6 +408,7 @@
             this.checkBox1.TabIndex = 37;
             this.checkBox1.Text = "...";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label1
             // 
@@ -504,14 +483,14 @@
             // bilgileriAktarToolStripMenuItem
             // 
             this.bilgileriAktarToolStripMenuItem.Name = "bilgileriAktarToolStripMenuItem";
-            this.bilgileriAktarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bilgileriAktarToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.bilgileriAktarToolStripMenuItem.Text = "Bilgileri Aktar";
             this.bilgileriAktarToolStripMenuItem.Click += new System.EventHandler(this.bilgileriAktarToolStripMenuItem_Click);
             // 
             // kayıtSilToolStripMenuItem
             // 
             this.kayıtSilToolStripMenuItem.Name = "kayıtSilToolStripMenuItem";
-            this.kayıtSilToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kayıtSilToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.kayıtSilToolStripMenuItem.Text = "Kayıt Sil";
             this.kayıtSilToolStripMenuItem.Click += new System.EventHandler(this.kayıtSilToolStripMenuItem_Click);
             // 
@@ -748,12 +727,39 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Image = global::BD.WindowsForm.Properties.Resources.logo;
             this.pictureBox1.Location = new System.Drawing.Point(125, 105);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(176, 92);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 42;
             this.pictureBox1.TabStop = false;
+            // 
+            // btnTemizle
+            // 
+            this.btnTemizle.BackgroundImage = global::BD.WindowsForm.Properties.Resources.Yenile;
+            this.btnTemizle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnTemizle.Location = new System.Drawing.Point(105, 291);
+            this.btnTemizle.Name = "btnTemizle";
+            this.btnTemizle.Size = new System.Drawing.Size(83, 44);
+            this.btnTemizle.TabIndex = 41;
+            this.btnTemizle.UseVisualStyleBackColor = true;
+            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
+            // 
+            // btnKaydet
+            // 
+            this.btnKaydet.BackgroundImage = global::BD.WindowsForm.Properties.Resources.SifreUpdate;
+            this.btnKaydet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnKaydet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKaydet.Location = new System.Drawing.Point(249, 291);
+            this.btnKaydet.Name = "btnKaydet";
+            this.btnKaydet.Size = new System.Drawing.Size(83, 44);
+            this.btnKaydet.TabIndex = 40;
+            this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
             // pictureBox2
             // 
