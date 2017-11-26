@@ -23,7 +23,6 @@ namespace BD.Common
             for (int i = 0; i < grid.Rows.Count; i++)
             {
                 Application.DoEvents();
-                // Math.DivRem(i, 2, out sayi);
                 DataGridViewCellStyle renk = new DataGridViewCellStyle();
                 if (grid.Rows[i].Cells["SorunYok"].Value.ToString() == "False")
                 {

@@ -50,6 +50,7 @@ namespace BD.WindowsForm
                     SifreGirisZamanalarıDTO sfr = new SifreGirisZamanalarıDTO();
                     sfr.ErisilenSayfa = "Sorunlar";
                     sfr.GirisZamani = DateTime.Now;
+                    sifre.Ekle(sfr);
                     SorunKontrol Sorunlar = new SorunKontrol();
                     this.Close();
                     Sorunlar.Show();

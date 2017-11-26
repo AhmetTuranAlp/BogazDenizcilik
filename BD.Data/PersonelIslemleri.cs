@@ -101,7 +101,7 @@ namespace BD.Data
                 {
                     return new List<DTO.PersonelEkipModelViewDTO>();
                 }
-            
+
             }
         }
 
@@ -133,7 +133,7 @@ namespace BD.Data
             }
         }
 
-        public List<DTO.PersonelEkipModelViewDTO> PersonelAramaListe(string arama)
+        public List<DTO.PersonelEkipModelViewDTO> PersonelEkipAramaListe(string arama)
         {
             using (var db = new ProjeBEntities())
             {
@@ -156,6 +156,30 @@ namespace BD.Data
                 catch (Exception)
                 {
                     return new List<DTO.PersonelEkipModelViewDTO>();
+                }
+
+            }
+        }
+
+        public List<DTO.PersonelDTO> PersonelListe()
+        {
+            using (var db = new ProjeBEntities())
+            {
+                try
+                {
+                    return db.Personel.Select(x => new DTO.PersonelDTO()
+                    {
+                      PersonelID=x.PersonelID,
+                      Adi=x.Adi,
+                      Soyad=x.Soyad,
+                      KartID=x.KartID,
+                      EkipID=x.EkipID,
+                      Durum=x.Durum
+                    }).Where(x => x.Durum == true).ToList();
+                }
+                catch (Exception)
+                {
+                    return new List<DTO.PersonelDTO>();
                 }
 
             }

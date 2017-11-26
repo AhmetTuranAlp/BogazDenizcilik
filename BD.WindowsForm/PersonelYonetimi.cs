@@ -162,7 +162,7 @@ namespace BD.WindowsForm
 
         private void txtAra_TextChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = per.PersonelAramaListe(txtAra.Text.ToString());
+            dataGridView1.DataSource = per.PersonelEkipAramaListe(txtAra.Text.ToString());
             dataGridView1.Columns["Durum"].Visible = false;
             arac.DatagridBoyutlandir(dataGridView1, 5);
         }

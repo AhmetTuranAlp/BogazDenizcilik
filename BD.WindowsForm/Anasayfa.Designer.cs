@@ -82,6 +82,7 @@
             this.rapolarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
             this.rapolarToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.rapolarToolStripMenuItem.Text = "Rapolar";
+            this.rapolarToolStripMenuItem.Click += new System.EventHandler(this.rapolarToolStripMenuItem_Click);
             // 
             // personelYönetimiToolStripMenuItem
             // 

@@ -71,5 +71,11 @@ namespace BD.WindowsForm
             Sifre sifre = new Sifre();
             yavruform(sifre);
         }
+
+        private void rapolarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Raporlar rapor = new Raporlar();
+            yavruform(rapor);
+        }
     }
 }
