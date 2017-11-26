@@ -72,6 +72,7 @@
     <Compile Include="Cihaz.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CihazIslemleri.cs" />
     <Compile Include="EkipIslemleri.cs" />
     <Compile Include="Ekipler.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>

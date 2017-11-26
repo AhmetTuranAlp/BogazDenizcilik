@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CihazDTO.cs" />
     <Compile Include="EkiplerDTO.cs" />
     <Compile Include="OperasyonDTO.cs" />
     <Compile Include="OperasyonModelViewDTO.cs" />

@@ -54,5 +54,11 @@ namespace BD.WindowsForm
             Yardim yardim = new Yardim();
             yavruform(yardim);
         }
+
+        private void ayarlarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ayarlar ayar = new Ayarlar();
+            yavruform(ayar);
+        }
     }
 }

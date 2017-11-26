@@ -105,7 +105,6 @@ namespace BD.WindowsForm
             if (sonuc == DialogResult.Yes)
             {
                 int perID = (int)dataGridView1.CurrentRow.Cells["PersonelID"].Value;
-                per.Sil(perID);
                 if (per.Sil(perID))
                     MessageBox.Show("Personel Silinmiştir.");
                 else

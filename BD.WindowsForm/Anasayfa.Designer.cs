@@ -106,6 +106,7 @@
             this.ayarlarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F6;
             this.ayarlarToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.ayarlarToolStripMenuItem.Text = "Ayarlar";
+            this.ayarlarToolStripMenuItem.Click += new System.EventHandler(this.ayarlarToolStripMenuItem_Click);
             // 
             // yardımToolStripMenuItem
             // 

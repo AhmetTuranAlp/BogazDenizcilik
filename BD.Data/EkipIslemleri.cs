@@ -49,7 +49,7 @@ namespace BD.Data
                 return false;
             }
         }
-
+            
         public bool Duzenle(DTO.EkiplerDTO ekipDTO)
         {
             try
@@ -110,6 +110,7 @@ namespace BD.Data
                 return false;
             }
         }
+
         public List<DTO.EkiplerDTO> EkipListeArama(string arama)
         {
             try
