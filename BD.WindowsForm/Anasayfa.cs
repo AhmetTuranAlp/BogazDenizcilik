@@ -37,10 +37,13 @@ namespace BD.WindowsForm
                 yavru.Show();
             }
         }
+
+        public static string Sayfa;
         private void personelYönetimiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PersonelYonetimi personel = new PersonelYonetimi();
-            yavruform(personel);
+            Anasayfa.Sayfa = "Personel";
+            Sifre sifre = new Sifre();
+            yavruform(sifre);
         }
 
         private void operasyonTakipToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,8 +60,9 @@ namespace BD.WindowsForm
 
         private void ayarlarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Ayarlar ayar = new Ayarlar();
-            yavruform(ayar);
+            Anasayfa.Sayfa = "Ayarlar";
+            Sifre sifre = new Sifre();
+            yavruform(sifre);
         }
     }
 }

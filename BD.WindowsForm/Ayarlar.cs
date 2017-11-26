@@ -22,7 +22,7 @@ namespace BD.WindowsForm
 
         CihazIslemleri cihaz = new CihazIslemleri();
         Tools arac = new Tools();
-        SifreDegistirme sifre = new SifreDegistirme();
+        SifreIslemleri sifre = new SifreIslemleri();
 
         public void CihazListeleme()
         {
@@ -33,8 +33,8 @@ namespace BD.WindowsForm
 
         public void SifreTabloListeleme()
         {
-            dataGridView2.DataSource = sifre.Listeleme();
-            arac.DatagridBoyutlandir(dataGridView2, 3);
+            dtgSifreView.DataSource = sifre.Listeleme();
+            arac.DatagridBoyutlandir(dtgSifreView, 3);
         }
 
         public void FtpTextClear()
