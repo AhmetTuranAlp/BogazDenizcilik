@@ -38,6 +38,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -58,6 +59,12 @@
     <Compile Include="Anasayfa.Designer.cs">
       <DependentUpon>Anasayfa.cs</DependentUpon>
     </Compile>
+    <Compile Include="OperasyonTakip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OperasyonTakip.Designer.cs">
+      <DependentUpon>OperasyonTakip.cs</DependentUpon>
+    </Compile>
     <Compile Include="PersonelYonetimi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +75,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Anasayfa.resx">
       <DependentUpon>Anasayfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OperasyonTakip.resx">
+      <DependentUpon>OperasyonTakip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PersonelYonetimi.resx">
       <DependentUpon>PersonelYonetimi.cs</DependentUpon>
@@ -121,6 +131,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ekipEklee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ekipDuzenle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ekipSil.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,7 @@
-﻿using BD.Data;
+﻿using BD.Common;
+using BD.Data;
 using BD.DTO;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,16 +22,30 @@ namespace BD.WindowsForm
         }
 
         PersonelIslemleri per = new PersonelIslemleri();
-        EkipIslemleri ekipDto = new EkipIslemleri();
-
+        EkipIslemleri ekip = new EkipIslemleri();
+        Tools arac = new Tools();
         public void PersonelListe()
         {
             dataGridView1.DataSource = per.PersonelEkipListe(true);
             dataGridView1.Columns["Durum"].Visible = false;
-            for (int i = 0; i < 5; i++)
+            arac.DatagridBoyutlandir(dataGridView1, 5);
+        }
+
+        public void EkipListe()
+        {
+            var liste = ekip.Listeleme();
+            List<DTO.EkiplerDTO> lst = new List<DTO.EkiplerDTO>();
+            lst.Add(liste.FirstOrDefault(x => x.EkipID == 16));
+            foreach (var item in liste)
             {
-                dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                if (item.EkipID != 16)
+                {
+                    lst.Add(item);
+                }
             }
+            dataGridView2.DataSource = lst;
+            dataGridView2.Columns["Durum"].Visible = false;
+            arac.DatagridBoyutlandir(dataGridView2, 3);
         }
 
         public void GridFont()
@@ -38,12 +54,15 @@ namespace BD.WindowsForm
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8F);
             dataGridViewCellStyle1.Font = new Font(dataGridViewCellStyle1.Font, dataGridViewCellStyle1.Font.Style ^ FontStyle.Bold);
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView2.DefaultCellStyle = dataGridViewCellStyle1;
         }
+
         private void PersonelYonetimi_Load(object sender, EventArgs e)
         {
+            EkipListe();
             PersonelListe();
             GridFont();
-            cmbEkip.DataSource = ekipDto.Listeleme();
+            cmbEkip.DataSource = ekip.Listeleme();
             cmbEkip.DisplayMember = "EkipAdi";
             cmbEkip.ValueMember = "EkipID";
             cmbEkip.Text = "";
@@ -80,7 +99,7 @@ namespace BD.WindowsForm
             PersonelListe();
         }
 
-        private void btnSil_Click(object sender, EventArgs e)
+        public void KayitSil()
         {
             DialogResult sonuc = MessageBox.Show("Secili Kayıt Silinsin mi?", "Kayıt Silme", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (sonuc == DialogResult.Yes)
@@ -95,19 +114,14 @@ namespace BD.WindowsForm
             }
         }
 
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            KayitSil();
+        }
+
         private void kayıtSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult sonuc = MessageBox.Show("Secili Kayıt Silinsin mi?", "Kayıt Silme", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (sonuc == DialogResult.Yes)
-            {
-                int perID = (int)dataGridView1.CurrentRow.Cells["PersonelID"].Value;
-                per.Sil(perID);
-                if (per.Sil(perID))
-                    MessageBox.Show("Personel Silinmiştir.");
-                else
-                    MessageBox.Show("Personel silme işleminde hata oluştu.");
-                PersonelListe();
-            }
+            KayitSil();
         }
 
         private void bilgileriAktarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -132,10 +146,7 @@ namespace BD.WindowsForm
         {
             dataGridView1.DataSource = per.PersonelEkipListe(false);
             dataGridView1.Columns["Durum"].Visible = false;
-            for (int i = 0; i < 5; i++)
-            {
-                dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            }
+            arac.DatagridBoyutlandir(dataGridView1, 5);
         }
 
         private void aktifPersonellerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -147,10 +158,108 @@ namespace BD.WindowsForm
         {
             dataGridView1.DataSource = per.EkipsizPersonelListesi();
             dataGridView1.Columns["Durum"].Visible = false;
-            for (int i = 0; i < 5; i++)
+            arac.DatagridBoyutlandir(dataGridView1, 5);
+        }
+
+        private void txtAra_TextChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = per.PersonelAramaListe(txtAra.Text.ToString());
+            dataGridView1.Columns["Durum"].Visible = false;
+            arac.DatagridBoyutlandir(dataGridView1, 5);
+        }
+
+        private void btnEkipEkle_Click(object sender, EventArgs e)
+        {
+            string ekipEkle = Interaction.InputBox("Ekip Adını Giriniz", "Ekip Ekle", "", 300, 100);
+            string ekipAd = ekipEkle;
+            if (ekipEkle != "")
             {
-                dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                DTO.EkiplerDTO ek = new DTO.EkiplerDTO();
+                ek.EkipAdi = ekipAd;
+                ek.Durum = true;
+                if (ekip.Ekle(ek))
+                    MessageBox.Show("Ekip ekleme işlemi başarılı");
+                else
+                    MessageBox.Show("Ekip ekleme işleminde hata oluştu.");
+                EkipListe();
             }
+            else
+            {
+                MessageBox.Show("Ekip Adı Giriniz.");
+            }
+        }
+
+        private void btnEkipDuzenle_Click(object sender, EventArgs e)
+        {
+            string ekipDuzenle = Interaction.InputBox("Yeni Ekip Adını Giriniz", "Ekip Güncelle", dataGridView2.CurrentRow.Cells["EkipAdi"].Value.ToString(), 300, 100);
+            string ekipAd = ekipDuzenle;
+            int ekipId = (int)dataGridView2.CurrentRow.Cells["EkipID"].Value;
+            if (ekipDuzenle != "")
+            {
+                DTO.EkiplerDTO ek = new DTO.EkiplerDTO();
+                ek.EkipID = ekipId;
+                ek.EkipAdi = ekipAd;
+                if (ekip.Duzenle(ek))
+                    MessageBox.Show("Ekip düzenleme işlemi başarılı");
+                else
+                    MessageBox.Show("Ekip düzenleme işleminde hata oluştu.");
+                EkipListe();
+            }
+            else
+            {
+                MessageBox.Show("Ekip Adı Giriniz.");
+            }
+        }
+
+        private void btnEkipSil_Click(object sender, EventArgs e)
+        {
+            DialogResult sonuc = MessageBox.Show("Secili Kayıt Silinsin mi?", "Kayıt Silme", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (sonuc == DialogResult.Yes)
+            {
+                int ekiID = (int)dataGridView2.CurrentRow.Cells["EkipID"].Value;
+                if (ekip.Sil(ekiID))
+                    MessageBox.Show("Ekip silme işlemi başarılı");
+                else
+                    MessageBox.Show("Ekip silme işleminde hata oluştu.");
+                EkipListe();
+                PersonelListe();
+            }
+        }
+
+        private void txtEkipAra_TextChanged(object sender, EventArgs e)
+        {
+            string ara = txtEkipAra.Text;
+            dataGridView2.DataSource = ekip.EkipListeArama(ara);
+        }
+
+        private void btnEkle_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(btnEkle, "Personel Ekle");
+        }
+
+        private void btnGuncelle_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(btnGuncelle, "Personel Düzenle");
+        }
+
+        private void btnSil_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(btnSil, "Personel Sil");
+        }
+
+        private void btnEkipEkle_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(btnEkipEkle, "Ekip Ekleme");
+        }
+
+        private void btnEkipDuzenle_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(btnEkipDuzenle, "Ekip Düzenleme");
+        }
+
+        private void btnEkipSil_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(btnEkipSil, "Ekip Sil");
         }
     }
 }

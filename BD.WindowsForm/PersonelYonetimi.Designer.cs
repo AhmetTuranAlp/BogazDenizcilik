@@ -32,6 +32,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSil = new System.Windows.Forms.Button();
+            this.btnGuncelle = new System.Windows.Forms.Button();
+            this.btnEkle = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.txtAra = new System.Windows.Forms.TextBox();
@@ -63,9 +66,6 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnSil = new System.Windows.Forms.Button();
-            this.btnGuncelle = new System.Windows.Forms.Button();
-            this.btnEkle = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -119,6 +119,51 @@
             this.panel3.Size = new System.Drawing.Size(303, 54);
             this.panel3.TabIndex = 19;
             // 
+            // btnSil
+            // 
+            this.btnSil.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSil.BackgroundImage = global::BD.WindowsForm.Properties.Resources.Delete;
+            this.btnSil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSil.Location = new System.Drawing.Point(201, 3);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(93, 45);
+            this.btnSil.TabIndex = 4;
+            this.btnSil.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSil.UseVisualStyleBackColor = false;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
+            this.btnSil.MouseHover += new System.EventHandler(this.btnSil_MouseHover);
+            // 
+            // btnGuncelle
+            // 
+            this.btnGuncelle.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGuncelle.BackgroundImage = global::BD.WindowsForm.Properties.Resources.Update;
+            this.btnGuncelle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGuncelle.Location = new System.Drawing.Point(102, 3);
+            this.btnGuncelle.Name = "btnGuncelle";
+            this.btnGuncelle.Size = new System.Drawing.Size(93, 45);
+            this.btnGuncelle.TabIndex = 3;
+            this.btnGuncelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGuncelle.UseVisualStyleBackColor = false;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
+            this.btnGuncelle.MouseHover += new System.EventHandler(this.btnGuncelle_MouseHover);
+            // 
+            // btnEkle
+            // 
+            this.btnEkle.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEkle.BackgroundImage = global::BD.WindowsForm.Properties.Resources.add;
+            this.btnEkle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEkle.Location = new System.Drawing.Point(3, 3);
+            this.btnEkle.Name = "btnEkle";
+            this.btnEkle.Size = new System.Drawing.Size(93, 45);
+            this.btnEkle.TabIndex = 2;
+            this.btnEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEkle.UseVisualStyleBackColor = false;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
+            this.btnEkle.MouseHover += new System.EventHandler(this.btnEkle_MouseHover);
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.Control;
@@ -148,6 +193,7 @@
             this.txtAra.Name = "txtAra";
             this.txtAra.Size = new System.Drawing.Size(234, 20);
             this.txtAra.TabIndex = 6;
+            this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
             // 
             // panel4
             // 
@@ -269,7 +315,7 @@
             this.aktifPersonellerToolStripMenuItem,
             this.ekipsizPersonellerToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(179, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(179, 114);
             // 
             // bilgileriAktarToolStripMenuItem
             // 
@@ -335,6 +381,7 @@
             // btnEkipSil
             // 
             this.btnEkipSil.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEkipSil.BackgroundImage = global::BD.WindowsForm.Properties.Resources.ekipSil;
             this.btnEkipSil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEkipSil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEkipSil.Location = new System.Drawing.Point(203, 3);
@@ -343,10 +390,13 @@
             this.btnEkipSil.TabIndex = 4;
             this.btnEkipSil.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEkipSil.UseVisualStyleBackColor = false;
+            this.btnEkipSil.Click += new System.EventHandler(this.btnEkipSil_Click);
+            this.btnEkipSil.MouseHover += new System.EventHandler(this.btnEkipSil_MouseHover);
             // 
             // btnEkipDuzenle
             // 
             this.btnEkipDuzenle.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEkipDuzenle.BackgroundImage = global::BD.WindowsForm.Properties.Resources.ekipDuzenle;
             this.btnEkipDuzenle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEkipDuzenle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEkipDuzenle.Location = new System.Drawing.Point(105, 3);
@@ -355,10 +405,13 @@
             this.btnEkipDuzenle.TabIndex = 3;
             this.btnEkipDuzenle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEkipDuzenle.UseVisualStyleBackColor = false;
+            this.btnEkipDuzenle.Click += new System.EventHandler(this.btnEkipDuzenle_Click);
+            this.btnEkipDuzenle.MouseHover += new System.EventHandler(this.btnEkipDuzenle_MouseHover);
             // 
             // btnEkipEkle
             // 
             this.btnEkipEkle.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEkipEkle.BackgroundImage = global::BD.WindowsForm.Properties.Resources.ekipEklee;
             this.btnEkipEkle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEkipEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEkipEkle.Location = new System.Drawing.Point(6, 3);
@@ -367,6 +420,8 @@
             this.btnEkipEkle.TabIndex = 2;
             this.btnEkipEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEkipEkle.UseVisualStyleBackColor = false;
+            this.btnEkipEkle.Click += new System.EventHandler(this.btnEkipEkle_Click);
+            this.btnEkipEkle.MouseHover += new System.EventHandler(this.btnEkipEkle_MouseHover);
             // 
             // panel6
             // 
@@ -387,6 +442,7 @@
             this.txtEkipAra.Name = "txtEkipAra";
             this.txtEkipAra.Size = new System.Drawing.Size(234, 20);
             this.txtEkipAra.TabIndex = 9;
+            this.txtEkipAra.TextChanged += new System.EventHandler(this.txtEkipAra_TextChanged);
             // 
             // label8
             // 
@@ -415,48 +471,6 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(927, 402);
             this.dataGridView2.TabIndex = 1;
-            // 
-            // btnSil
-            // 
-            this.btnSil.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSil.BackgroundImage = global::BD.WindowsForm.Properties.Resources.Delete;
-            this.btnSil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSil.Location = new System.Drawing.Point(201, 3);
-            this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(93, 45);
-            this.btnSil.TabIndex = 4;
-            this.btnSil.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSil.UseVisualStyleBackColor = false;
-            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
-            // 
-            // btnGuncelle
-            // 
-            this.btnGuncelle.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGuncelle.BackgroundImage = global::BD.WindowsForm.Properties.Resources.Update;
-            this.btnGuncelle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGuncelle.Location = new System.Drawing.Point(102, 3);
-            this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(93, 45);
-            this.btnGuncelle.TabIndex = 3;
-            this.btnGuncelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuncelle.UseVisualStyleBackColor = false;
-            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
-            // 
-            // btnEkle
-            // 
-            this.btnEkle.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEkle.BackgroundImage = global::BD.WindowsForm.Properties.Resources.add;
-            this.btnEkle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEkle.Location = new System.Drawing.Point(3, 3);
-            this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(93, 45);
-            this.btnEkle.TabIndex = 2;
-            this.btnEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEkle.UseVisualStyleBackColor = false;
-            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // PersonelYonetimi
             // 

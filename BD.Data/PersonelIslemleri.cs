@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BD.Data
 {
@@ -122,6 +123,34 @@ namespace BD.Data
                                      PersonelID = p.PersonelID,
                                      Soyad = p.Soyad
                                  }).Where(x => x.Durum == true && x.EkipAdi == "GENEL").OrderBy(x => x.EkipAdi).ToList();
+                    return liste;
+                }
+                catch (Exception)
+                {
+                    return new List<DTO.PersonelEkipModelViewDTO>();
+                }
+
+            }
+        }
+
+        public List<DTO.PersonelEkipModelViewDTO> PersonelAramaListe(string arama)
+        {
+            using (var db = new ProjeBEntities())
+            {
+                try
+                {
+                    var liste = (from p in db.Personel
+                                 from ek in db.Ekipler
+                                 where p.EkipID == ek.EkipID
+                                 select new DTO.PersonelEkipModelViewDTO
+                                 {
+                                     Adi = p.Adi,
+                                     Durum = p.Durum,
+                                     EkipAdi = ek.EkipAdi,
+                                     KartID = p.KartID,
+                                     PersonelID = p.PersonelID,
+                                     Soyad = p.Soyad
+                                 }).Where(x => x.Durum == true && x.Adi.Contains(arama) || x.Soyad.Contains(arama)).ToList();
                     return liste;
                 }
                 catch (Exception)
