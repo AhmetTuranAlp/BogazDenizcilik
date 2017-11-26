@@ -73,6 +73,26 @@ namespace BD.WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap alpemix {
+            get {
+                object obj = ResourceManager.GetObject("alpemix", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap anydesk {
+            get {
+                object obj = ResourceManager.GetObject("anydesk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap Arkaplan {
             get {
                 object obj = ResourceManager.GetObject("Arkaplan", resourceCulture);
@@ -126,6 +146,16 @@ namespace BD.WindowsForm.Properties {
         internal static System.Drawing.Bitmap Operasyon_Ara {
             get {
                 object obj = ResourceManager.GetObject("Operasyon Ara", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap teamviewer {
+            get {
+                object obj = ResourceManager.GetObject("teamviewer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

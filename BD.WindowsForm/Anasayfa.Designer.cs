@@ -114,6 +114,7 @@
             this.yardımToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F7;
             this.yardımToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.yardımToolStripMenuItem.Text = "Yardım";
+            this.yardımToolStripMenuItem.Click += new System.EventHandler(this.yardımToolStripMenuItem_Click);
             // 
             // çıkışToolStripMenuItem
             // 

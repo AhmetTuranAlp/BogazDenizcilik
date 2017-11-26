@@ -48,5 +48,11 @@ namespace BD.WindowsForm
             OperasyonTakip operasyon = new OperasyonTakip();
             yavruform(operasyon);
         }
+
+        private void yardımToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Yardim yardim = new Yardim();
+            yavruform(yardim);
+        }
     }
 }
