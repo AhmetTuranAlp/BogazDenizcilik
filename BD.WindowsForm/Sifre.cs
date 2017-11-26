@@ -45,8 +45,22 @@ namespace BD.WindowsForm
                     this.Close();
                     Personel.Show();
                 }
+                else if (Anasayfa.Sayfa.ToString() == "Sorunlar")
+                {
+                    SifreGirisZamanalarıDTO sfr = new SifreGirisZamanalarıDTO();
+                    sfr.ErisilenSayfa = "Sorunlar";
+                    sfr.GirisZamani = DateTime.Now;
+                    SorunKontrol Sorunlar = new SorunKontrol();
+                    this.Close();
+                    Sorunlar.Show();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Hatalı Şifre Girdiniz.");
             }
         }
+
         private void btnTamam_Click(object sender, EventArgs e)
         {
             SifreAl();

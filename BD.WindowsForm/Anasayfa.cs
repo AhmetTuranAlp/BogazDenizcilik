@@ -64,5 +64,12 @@ namespace BD.WindowsForm
             Sifre sifre = new Sifre();
             yavruform(sifre);
         }
+
+        private void sorunlarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Anasayfa.Sayfa = "Sorunlar";
+            Sifre sifre = new Sifre();
+            yavruform(sifre);
+        }
     }
 }

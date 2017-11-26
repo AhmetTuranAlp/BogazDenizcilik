@@ -85,6 +85,12 @@
     <Compile Include="Sifre.Designer.cs">
       <DependentUpon>Sifre.cs</DependentUpon>
     </Compile>
+    <Compile Include="SorunKontrol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SorunKontrol.Designer.cs">
+      <DependentUpon>SorunKontrol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Yardim.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     </Compile>
     <EmbeddedResource Include="Sifre.resx">
       <DependentUpon>Sifre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SorunKontrol.resx">
+      <DependentUpon>SorunKontrol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Yardim.resx">
       <DependentUpon>Yardim.cs</DependentUpon>
@@ -197,6 +206,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SifreUpdate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SorunAdd.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

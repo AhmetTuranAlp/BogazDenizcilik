@@ -203,6 +203,16 @@ namespace BD.WindowsForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap SorunAdd {
+            get {
+                object obj = ResourceManager.GetObject("SorunAdd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap teamviewer {
             get {
                 object obj = ResourceManager.GetObject("teamviewer", resourceCulture);

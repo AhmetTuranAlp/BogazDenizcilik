@@ -98,6 +98,7 @@
             this.sorunlarToolStripMenuItem.Name = "sorunlarToolStripMenuItem";
             this.sorunlarToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.sorunlarToolStripMenuItem.Text = "Sorunlar";
+            this.sorunlarToolStripMenuItem.Click += new System.EventHandler(this.sorunlarToolStripMenuItem_Click);
             // 
             // ayarlarToolStripMenuItem
             // 

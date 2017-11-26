@@ -93,6 +93,7 @@
     <Compile Include="SifreGirisZamanaları.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SorunKontrolIslemleri.cs" />
     <Compile Include="Sorunlar.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
