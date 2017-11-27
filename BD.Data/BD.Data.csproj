@@ -77,6 +77,7 @@
     <Compile Include="Ekipler.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FTPIslemleri.cs" />
     <Compile Include="FtpServer.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>

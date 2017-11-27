@@ -127,5 +127,28 @@ namespace BD.Data
                 return new List<DTO.CihazDTO>();
             }
         }
+
+        public DTO.CihazDTO CihazId(int id)
+        {
+            using (var db = new ProjeBEntities())
+            {
+                try
+                {
+                    return db.Cihaz.Select(x => new DTO.CihazDTO()
+                    {
+                        CihazID = x.CihazID,
+                        CihazAdi = x.CihazAdi,
+                        FtpAdres = x.FtpAdres,
+                        ftpPort = x.ftpPort,
+                        FtpUser = x.FtpUser,
+                        FtpPas = x.FtpPas
+                    }).FirstOrDefault(x => x.CihazID == id);
+                }
+                catch (Exception)
+                {
+                    return new DTO.CihazDTO();
+                }
+            }
+        }
     }
 }

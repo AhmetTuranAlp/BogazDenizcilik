@@ -185,23 +185,46 @@ namespace BD.Data
             }
         }
 
-        public int PersonelId(string isim)
+        public int PersonelId(string perIsim)
         {
             using (var db = new ProjeBEntities())
             {
-                Personel personel = db.Personel.FirstOrDefault(x => x.Adi + " " + x.Soyad == isim);
+                Personel personel = db.Personel.FirstOrDefault(x => x.Adi + " " + x.Soyad == perIsim);
 
                 return personel.PersonelID;
             }
         }
 
-        public string PersonelEkipAdi(string isim)
+        public string PersonelEkipAdi(string perIsim)
         {
             using (var db = new ProjeBEntities())
             {
-                Personel personel = db.Personel.FirstOrDefault(x => x.Adi + " " + x.Soyad == isim);
+                Personel personel = db.Personel.FirstOrDefault(x => x.Adi + " " + x.Soyad == perIsim);
                 Ekipler ekip = db.Ekipler.FirstOrDefault(x => x.EkipID == personel.EkipID);
                 return ekip.EkipAdi;
+            }
+        }
+
+        public DTO.PersonelDTO TekPersonel(string kartId)
+        {
+            using (var db = new ProjeBEntities())
+            {
+                try
+                {
+                    return db.Personel.Select(x => new DTO.PersonelDTO()
+                    {
+                        PersonelID = x.PersonelID,
+                        Adi = x.Adi,
+                        Soyad = x.Soyad,
+                        KartID = x.KartID,
+                        EkipID = x.EkipID,
+                        Durum = x.Durum
+                    }).FirstOrDefault(x => x.KartID == kartId);
+                }
+                catch (Exception)
+                {
+                    return new DTO.PersonelDTO();
+                }
             }
         }
     }

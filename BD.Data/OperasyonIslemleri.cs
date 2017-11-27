@@ -10,6 +10,38 @@ namespace BD.Data
 {
     public class OperasyonIslemleri
     {
+        public bool Ekle(DTO.OperasyonDTO dosya)
+        {
+            try
+            {
+                using (var db = new ProjeBEntities())
+                {
+                    db.Operasyon.Add(new Operasyon()
+                    {
+                       PersonelID =dosya.PersonelID,
+                       EkipID=dosya.EkipID,
+                       Barkod = dosya.Barkod,
+                       Tip = dosya.Tip,
+                       Zaman=dosya.Zaman,
+                       AnahtarKaybi=dosya.AnahtarKaybi,
+                       AracHasar=dosya.AracHasar,
+                       CamAcik=dosya.CamAcik,
+                       VitesKonum=dosya.VitesKonum,
+                       ElfrenKonum=dosya.ElfrenKonum,
+                       Diger=dosya.Diger,
+                       SorunYok=dosya.SorunYok,
+                       SorunDurum=dosya.SorunDurum
+                    });
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public List<DTO.OperasyonModelViewDTO> Listeleme()
         {
             using (var db = new ProjeBEntities())

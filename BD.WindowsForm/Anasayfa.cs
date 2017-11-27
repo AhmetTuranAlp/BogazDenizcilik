@@ -18,23 +18,30 @@ namespace BD.WindowsForm
         }
         public void yavruform(Form yavru)
         {
-            bool durum = false;
-            foreach (Form eleman in this.MdiChildren)
+            try
             {
-                if (eleman.Text == yavru.Text)
+                bool durum = false;
+                foreach (Form eleman in this.MdiChildren)
                 {
-                    durum = true;
-                    eleman.Activate();
+                    if (eleman.Text == yavru.Text)
+                    {
+                        durum = true;
+                        eleman.Activate();
+                    }
+                    else
+                    {
+                        eleman.Close();
+                    }
                 }
-                else
+                if (durum == false)
                 {
-                    eleman.Close();
+                    yavru.MdiParent = this;
+                    yavru.Show();
                 }
             }
-            if (durum == false)
+            catch (Exception ex)
             {
-                yavru.MdiParent = this;
-                yavru.Show();
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -76,6 +83,21 @@ namespace BD.WindowsForm
         {
             Raporlar rapor = new Raporlar();
             yavruform(rapor);
+        }
+
+        private void çıkışToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult sonuc = MessageBox.Show("Programdan Çıkış Yapmak İstiyor musunuz?", "Programdan Çıkış", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (sonuc == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void elTerminaldenAktarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FtpDosyaAktarimi ftp = new FtpDosyaAktarimi();
+            yavruform(ftp);
         }
     }
 }

@@ -65,6 +65,7 @@
             this.elTerminaldenAktarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.elTerminaldenAktarToolStripMenuItem.Size = new System.Drawing.Size(133, 20);
             this.elTerminaldenAktarToolStripMenuItem.Text = "El Terminalden Aktar";
+            this.elTerminaldenAktarToolStripMenuItem.Click += new System.EventHandler(this.elTerminaldenAktarToolStripMenuItem_Click);
             // 
             // operasyonTakipToolStripMenuItem
             // 
@@ -126,6 +127,7 @@
             this.çıkışToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F8;
             this.çıkışToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.çıkışToolStripMenuItem.Text = "Çıkış";
+            this.çıkışToolStripMenuItem.Click += new System.EventHandler(this.çıkışToolStripMenuItem_Click);
             // 
             // Anasayfa
             // 
