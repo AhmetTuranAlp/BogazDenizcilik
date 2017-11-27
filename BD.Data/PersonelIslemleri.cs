@@ -169,12 +169,12 @@ namespace BD.Data
                 {
                     return db.Personel.Select(x => new DTO.PersonelDTO()
                     {
-                      PersonelID=x.PersonelID,
-                      Adi=x.Adi,
-                      Soyad=x.Soyad,
-                      KartID=x.KartID,
-                      EkipID=x.EkipID,
-                      Durum=x.Durum
+                        PersonelID = x.PersonelID,
+                        Adi = x.Adi,
+                        Soyad = x.Soyad,
+                        KartID = x.KartID,
+                        EkipID = x.EkipID,
+                        Durum = x.Durum
                     }).Where(x => x.Durum == true).ToList();
                 }
                 catch (Exception)
@@ -182,6 +182,26 @@ namespace BD.Data
                     return new List<DTO.PersonelDTO>();
                 }
 
+            }
+        }
+
+        public int PersonelId(string isim)
+        {
+            using (var db = new ProjeBEntities())
+            {
+                Personel personel = db.Personel.FirstOrDefault(x => x.Adi + " " + x.Soyad == isim);
+
+                return personel.PersonelID;
+            }
+        }
+
+        public string PersonelEkipAdi(string isim)
+        {
+            using (var db = new ProjeBEntities())
+            {
+                Personel personel = db.Personel.FirstOrDefault(x => x.Adi + " " + x.Soyad == isim);
+                Ekipler ekip = db.Ekipler.FirstOrDefault(x => x.EkipID == personel.EkipID);
+                return ekip.EkipAdi;
             }
         }
     }

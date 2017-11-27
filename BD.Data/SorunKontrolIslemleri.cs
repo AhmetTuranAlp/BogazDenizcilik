@@ -8,7 +8,7 @@ namespace BD.Data
 {
     public class SorunKontrolIslemleri
     {
-        public List<DTO.OperasyonModelViewDTO> Listeleme()
+        public List<DTO.OperasyonModelViewDTO> OperasyonListeleme()
         {
             using (var db = new ProjeBEntities())
             {
@@ -106,7 +106,7 @@ namespace BD.Data
                         Barkod = sorun.Barkod,
                         PersonelID = sorun.PersonelID,
                         Aciklama = sorun.Aciklama,
-                        Zaman=sorun.Zaman
+                        Zaman = sorun.Zaman
 
                     });
                     db.SaveChanges();
@@ -119,22 +119,32 @@ namespace BD.Data
             }
         }
 
-        public int PersonelId(string isim)
+        public List<DTO.SorunlarPersonelModelViewDTO> SorunluKayitlarListeleme()
         {
             using (var db = new ProjeBEntities())
             {
-                Personel personel = db.Personel.FirstOrDefault(x => x.Adi + " " + x.Soyad == isim);
-                
-                return personel.PersonelID;
-            }
-        }
+                try
+                {
+                    var liste = (from s in db.Sorunlar
+                                 from p in db.Personel
+                                 where s.PersonelID == p.PersonelID
+                                 select new DTO.SorunlarPersonelModelViewDTO
+                                 {
+                                     SorunID = s.SorunID,
+                                     Barkod = s.Barkod,
+                                     Adi = p.Adi,
+                                     Soyad = p.Soyad,
+                                     Aciklama = s.Aciklama,
+                                     Zaman = s.Zaman,
 
-        public DateTime Zaman(string barkod)
-        {
-            using (var db = new ProjeBEntities())
-            {
-                Operasyon operasyon = db.Operasyon.FirstOrDefault(x => x.Barkod == barkod);
-                return Convert.ToDateTime(operasyon.Zaman);
+                                 }).ToList();
+                    return liste;
+                }
+                catch (Exception)
+                {
+                    return new List<DTO.SorunlarPersonelModelViewDTO>();
+                }
+
             }
         }
     }

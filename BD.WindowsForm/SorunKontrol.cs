@@ -26,7 +26,7 @@ namespace BD.WindowsForm
 
         public void OperasyonListeleme()
         {
-            dataGridView1.DataSource = sorunIslem.Listeleme();
+            dataGridView1.DataSource = sorunIslem.OperasyonListeleme();
             dataGridView1.Columns["SorunDurum"].Visible = false;
             arac.DatagridBoyutlandir(dataGridView1, 15);
             lblToplamKayit.Text = "Toplam Kayıt: " + dataGridView1.RowCount;
@@ -72,9 +72,9 @@ namespace BD.WindowsForm
             {
                 SorunlarDTO sorun = new SorunlarDTO();
                 sorun.Barkod = txtBarkod.Text;
-                sorun.PersonelID = sorunIslem.PersonelId(cmbPersonel.Text.ToString());
+                sorun.PersonelID = personel.PersonelId(cmbPersonel.Text.ToString());
                 sorun.Aciklama = txtAciklama.Text;
-                sorun.Zaman = sorunIslem.Zaman(txtBarkod.Text.ToString());
+                sorun.Zaman = operasyon.Zaman(txtBarkod.Text.ToString());
                 if (sorunIslem.Ekle(sorun))
                     MessageBox.Show("Kayıt Eklendi.");
                 else

@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnTarihAra = new System.Windows.Forms.Button();
             this.mtbBitis = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dtpTarih = new System.Windows.Forms.DateTimePicker();
@@ -52,6 +53,7 @@
             this.lblPersonelCalisma = new System.Windows.Forms.Label();
             this.lblBitis = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnGetir = new System.Windows.Forms.Button();
             this.cmbTur = new System.Windows.Forms.ComboBox();
             this.cmbSecimIcerik = new System.Windows.Forms.ComboBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -71,8 +73,6 @@
             this.SorunluKayitlariListeleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblToplamKayit = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnTarihAra = new System.Windows.Forms.Button();
-            this.btnGetir = new System.Windows.Forms.Button();
             this.btnYazdır = new System.Windows.Forms.Button();
             this.btnPDF = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -93,8 +93,10 @@
             this.btnYenile.Location = new System.Drawing.Point(904, 2);
             this.btnYenile.Name = "btnYenile";
             this.btnYenile.Size = new System.Drawing.Size(61, 41);
-            this.btnYenile.TabIndex = 17;
+            this.btnYenile.TabIndex = 13;
             this.btnYenile.UseVisualStyleBackColor = true;
+            this.btnYenile.Click += new System.EventHandler(this.btnYenile_Click);
+            this.btnYenile.MouseHover += new System.EventHandler(this.btnYenile_MouseHover);
             // 
             // label3
             // 
@@ -133,13 +135,26 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Saat Bazlı Rapor";
             // 
+            // btnTarihAra
+            // 
+            this.btnTarihAra.BackgroundImage = global::BD.WindowsForm.Properties.Resources.saarArama;
+            this.btnTarihAra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnTarihAra.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTarihAra.Location = new System.Drawing.Point(177, 76);
+            this.btnTarihAra.Name = "btnTarihAra";
+            this.btnTarihAra.Size = new System.Drawing.Size(48, 46);
+            this.btnTarihAra.TabIndex = 9;
+            this.btnTarihAra.UseVisualStyleBackColor = true;
+            this.btnTarihAra.Click += new System.EventHandler(this.btnTarihAra_Click);
+            this.btnTarihAra.MouseHover += new System.EventHandler(this.btnTarihAra_MouseHover);
+            // 
             // mtbBitis
             // 
             this.mtbBitis.Location = new System.Drawing.Point(117, 102);
             this.mtbBitis.Mask = "00:00";
             this.mtbBitis.Name = "mtbBitis";
             this.mtbBitis.Size = new System.Drawing.Size(47, 20);
-            this.mtbBitis.TabIndex = 19;
+            this.mtbBitis.TabIndex = 8;
             this.mtbBitis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mtbBitis.ValidatingType = typeof(System.DateTime);
             // 
@@ -158,7 +173,7 @@
             this.dtpTarih.Location = new System.Drawing.Point(19, 42);
             this.dtpTarih.Name = "dtpTarih";
             this.dtpTarih.Size = new System.Drawing.Size(206, 20);
-            this.dtpTarih.TabIndex = 17;
+            this.dtpTarih.TabIndex = 6;
             this.dtpTarih.Value = new System.DateTime(2017, 10, 19, 11, 8, 23, 0);
             // 
             // label7
@@ -185,7 +200,7 @@
             this.mtbBaslangic.Mask = "00:00";
             this.mtbBaslangic.Name = "mtbBaslangic";
             this.mtbBaslangic.Size = new System.Drawing.Size(47, 20);
-            this.mtbBaslangic.TabIndex = 3;
+            this.mtbBaslangic.TabIndex = 7;
             this.mtbBaslangic.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mtbBaslangic.ValidatingType = typeof(System.DateTime);
             // 
@@ -215,7 +230,8 @@
             this.txtBarkod.Location = new System.Drawing.Point(19, 42);
             this.txtBarkod.Name = "txtBarkod";
             this.txtBarkod.Size = new System.Drawing.Size(206, 20);
-            this.txtBarkod.TabIndex = 13;
+            this.txtBarkod.TabIndex = 10;
+            this.txtBarkod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBarkod_KeyPress);
             // 
             // groupBox1
             // 
@@ -244,7 +260,7 @@
             this.dtpBitis.Location = new System.Drawing.Point(20, 194);
             this.dtpBitis.Name = "dtpBitis";
             this.dtpBitis.Size = new System.Drawing.Size(206, 20);
-            this.dtpBitis.TabIndex = 2;
+            this.dtpBitis.TabIndex = 4;
             // 
             // dtpCalismaTarih
             // 
@@ -252,7 +268,7 @@
             this.dtpCalismaTarih.Location = new System.Drawing.Point(20, 140);
             this.dtpCalismaTarih.Name = "dtpCalismaTarih";
             this.dtpCalismaTarih.Size = new System.Drawing.Size(206, 20);
-            this.dtpCalismaTarih.TabIndex = 11;
+            this.dtpCalismaTarih.TabIndex = 3;
             this.dtpCalismaTarih.Value = new System.DateTime(2017, 10, 19, 11, 8, 23, 0);
             this.dtpCalismaTarih.Visible = false;
             // 
@@ -302,6 +318,19 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Alt Tür:";
             // 
+            // btnGetir
+            // 
+            this.btnGetir.BackgroundImage = global::BD.WindowsForm.Properties.Resources.search;
+            this.btnGetir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGetir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGetir.Location = new System.Drawing.Point(91, 248);
+            this.btnGetir.Name = "btnGetir";
+            this.btnGetir.Size = new System.Drawing.Size(48, 49);
+            this.btnGetir.TabIndex = 5;
+            this.btnGetir.UseVisualStyleBackColor = true;
+            this.btnGetir.Click += new System.EventHandler(this.btnGetir_Click);
+            this.btnGetir.MouseHover += new System.EventHandler(this.btnGetir_MouseHover);
+            // 
             // cmbTur
             // 
             this.cmbTur.FormattingEnabled = true;
@@ -326,13 +355,18 @@
             this.cmbSecimIcerik.Location = new System.Drawing.Point(20, 89);
             this.cmbSecimIcerik.Name = "cmbSecimIcerik";
             this.cmbSecimIcerik.Size = new System.Drawing.Size(206, 22);
-            this.cmbSecimIcerik.TabIndex = 7;
+            this.cmbSecimIcerik.TabIndex = 2;
             this.cmbSecimIcerik.SelectedIndexChanged += new System.EventHandler(this.cmbSecimIcerik_SelectedIndexChanged);
             // 
             // printDialog1
             // 
             this.printDialog1.Document = this.printDocument1;
             this.printDialog1.UseEXDialog = true;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_BeginPrint);
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // panel2
             // 
@@ -395,56 +429,64 @@
             // 
             this.anahtarKaybiToolStripMenuItem.CheckOnClick = true;
             this.anahtarKaybiToolStripMenuItem.Name = "anahtarKaybiToolStripMenuItem";
-            this.anahtarKaybiToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.anahtarKaybiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.anahtarKaybiToolStripMenuItem.Text = "Anahtar Kaybi";
+            this.anahtarKaybiToolStripMenuItem.Click += new System.EventHandler(this.anahtarKaybiToolStripMenuItem_Click);
             // 
             // aracHasarToolStripMenuItem
             // 
             this.aracHasarToolStripMenuItem.CheckOnClick = true;
             this.aracHasarToolStripMenuItem.Name = "aracHasarToolStripMenuItem";
-            this.aracHasarToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.aracHasarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aracHasarToolStripMenuItem.Text = "Arac Hasar";
+            this.aracHasarToolStripMenuItem.Click += new System.EventHandler(this.aracHasarToolStripMenuItem_Click);
             // 
             // camAcikToolStripMenuItem
             // 
             this.camAcikToolStripMenuItem.CheckOnClick = true;
             this.camAcikToolStripMenuItem.Name = "camAcikToolStripMenuItem";
-            this.camAcikToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.camAcikToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.camAcikToolStripMenuItem.Text = "Cam Acik";
+            this.camAcikToolStripMenuItem.Click += new System.EventHandler(this.camAcikToolStripMenuItem_Click);
             // 
             // vitesKonumToolStripMenuItem
             // 
             this.vitesKonumToolStripMenuItem.CheckOnClick = true;
             this.vitesKonumToolStripMenuItem.Name = "vitesKonumToolStripMenuItem";
-            this.vitesKonumToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.vitesKonumToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.vitesKonumToolStripMenuItem.Text = "Vites Konum";
+            this.vitesKonumToolStripMenuItem.Click += new System.EventHandler(this.vitesKonumToolStripMenuItem_Click);
             // 
             // elfrenKonumToolStripMenuItem
             // 
             this.elfrenKonumToolStripMenuItem.CheckOnClick = true;
             this.elfrenKonumToolStripMenuItem.Name = "elfrenKonumToolStripMenuItem";
-            this.elfrenKonumToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.elfrenKonumToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.elfrenKonumToolStripMenuItem.Text = "Elfren Konum";
+            this.elfrenKonumToolStripMenuItem.Click += new System.EventHandler(this.elfrenKonumToolStripMenuItem_Click);
             // 
             // digerToolStripMenuItem
             // 
             this.digerToolStripMenuItem.CheckOnClick = true;
             this.digerToolStripMenuItem.Name = "digerToolStripMenuItem";
-            this.digerToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.digerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.digerToolStripMenuItem.Text = "Diger";
+            this.digerToolStripMenuItem.Click += new System.EventHandler(this.digerToolStripMenuItem_Click);
             // 
             // soruncYokToolStripMenuItem
             // 
             this.soruncYokToolStripMenuItem.CheckOnClick = true;
             this.soruncYokToolStripMenuItem.Name = "soruncYokToolStripMenuItem";
-            this.soruncYokToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.soruncYokToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.soruncYokToolStripMenuItem.Text = "SorunYok";
+            this.soruncYokToolStripMenuItem.Click += new System.EventHandler(this.soruncYokToolStripMenuItem_Click);
             // 
             // SorunluKayitlariListeleToolStripMenuItem
             // 
             this.SorunluKayitlariListeleToolStripMenuItem.Name = "SorunluKayitlariListeleToolStripMenuItem";
             this.SorunluKayitlariListeleToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.SorunluKayitlariListeleToolStripMenuItem.Text = "Sorunlu Kayıtları Listele";
+            this.SorunluKayitlariListeleToolStripMenuItem.Click += new System.EventHandler(this.SorunluKayitlariListeleToolStripMenuItem_Click);
             // 
             // lblToplamKayit
             // 
@@ -469,28 +511,6 @@
             this.panel3.Size = new System.Drawing.Size(972, 48);
             this.panel3.TabIndex = 8;
             // 
-            // btnTarihAra
-            // 
-            this.btnTarihAra.BackgroundImage = global::BD.WindowsForm.Properties.Resources.saarArama;
-            this.btnTarihAra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnTarihAra.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTarihAra.Location = new System.Drawing.Point(177, 76);
-            this.btnTarihAra.Name = "btnTarihAra";
-            this.btnTarihAra.Size = new System.Drawing.Size(48, 46);
-            this.btnTarihAra.TabIndex = 14;
-            this.btnTarihAra.UseVisualStyleBackColor = true;
-            // 
-            // btnGetir
-            // 
-            this.btnGetir.BackgroundImage = global::BD.WindowsForm.Properties.Resources.search;
-            this.btnGetir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnGetir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGetir.Location = new System.Drawing.Point(91, 248);
-            this.btnGetir.Name = "btnGetir";
-            this.btnGetir.Size = new System.Drawing.Size(48, 49);
-            this.btnGetir.TabIndex = 6;
-            this.btnGetir.UseVisualStyleBackColor = true;
-            // 
             // btnYazdır
             // 
             this.btnYazdır.BackgroundImage = global::BD.WindowsForm.Properties.Resources.Print;
@@ -499,8 +519,10 @@
             this.btnYazdır.Location = new System.Drawing.Point(837, 2);
             this.btnYazdır.Name = "btnYazdır";
             this.btnYazdır.Size = new System.Drawing.Size(61, 41);
-            this.btnYazdır.TabIndex = 16;
+            this.btnYazdır.TabIndex = 12;
             this.btnYazdır.UseVisualStyleBackColor = true;
+            this.btnYazdır.Click += new System.EventHandler(this.btnYazdır_Click);
+            this.btnYazdır.MouseHover += new System.EventHandler(this.btnYazdır_MouseHover);
             // 
             // btnPDF
             // 
@@ -510,8 +532,10 @@
             this.btnPDF.Location = new System.Drawing.Point(770, 2);
             this.btnPDF.Name = "btnPDF";
             this.btnPDF.Size = new System.Drawing.Size(61, 41);
-            this.btnPDF.TabIndex = 15;
+            this.btnPDF.TabIndex = 11;
             this.btnPDF.UseVisualStyleBackColor = true;
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
+            this.btnPDF.MouseHover += new System.EventHandler(this.btnPDF_MouseHover);
             // 
             // Raporlar
             // 
