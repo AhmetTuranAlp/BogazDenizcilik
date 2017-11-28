@@ -1,10 +1,12 @@
 ﻿using BD.Data;
+using MessagingToolkit.QRCode.Codec;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,9 +22,23 @@ namespace BD.WindowsForm
 
         FTPIslemleri ftp = new FTPIslemleri();
 
+        private Image qrCreate(string Data, int qrCode)
+        {
+            QRCodeEncoder code = new QRCodeEncoder();
+            code.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE;
+            code.QRCodeErrorCorrect = QRCodeEncoder.ERROR_CORRECTION.L;
+            code.QRCodeVersion = qrCode;
+
+            Bitmap bt = code.Encode(Data);
+            return bt;
+        }
+
         private void FtpDosyaAktarimi_Load(object sender, EventArgs e)
         {
+            string bilgisayarAdi = Dns.GetHostName();
+            string ipAdresi = Dns.GetHostByName(bilgisayarAdi).AddressList[0].ToString();
 
+            pictureBox1.Image = qrCreate(ipAdresi, 6);
         }
     }
 }
