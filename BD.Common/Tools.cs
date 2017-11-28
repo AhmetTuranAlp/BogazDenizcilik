@@ -16,10 +16,18 @@ namespace BD.Common
     {
         public void DatagridBoyutlandir(DataGridView grid, int sayi)
         {
-            for (int i = 0; i < sayi; i++)
+            try
             {
-                grid.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                for (int i = 0; i < sayi; i++)
+                {
+                    grid.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
 
         public void HataliOperasyonKayitlari(DataGridView grid)

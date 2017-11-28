@@ -79,6 +79,7 @@ namespace BD.WindowsForm
                     MessageBox.Show("Kayıt Eklendi.");
                 else
                     MessageBox.Show("Kayıt ekleme işleminde hata oluştu.");
+                OperasyonListeleme();
             }
         }
 
