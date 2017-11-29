@@ -81,6 +81,10 @@ namespace BD.WindowsForm
                     MessageBox.Show("Kayıt ekleme işleminde hata oluştu.");
                 OperasyonListeleme();
             }
+            else
+            {
+                MessageBox.Show("Operasyonun barkod ve personel bilgilerini giriniz.");
+            }
         }
 
         private void btnArac_Click(object sender, EventArgs e)

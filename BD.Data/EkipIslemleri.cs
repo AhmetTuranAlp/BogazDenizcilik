@@ -26,22 +26,29 @@ namespace BD.Data
             {
                 return new List<DTO.EkiplerDTO>();
             }
-        
+
         }
 
         public bool Ekle(DTO.EkiplerDTO ekipDTO)
         {
             try
             {
-                using (var db = new ProjeBEntities())
+                if (ekipDTO.EkipAdi != "")
                 {
-                    db.Ekipler.Add(new Ekipler()
+                    using (var db = new ProjeBEntities())
                     {
-                        EkipAdi = ekipDTO.EkipAdi,
-                        Durum = ekipDTO.Durum
-                    });
-                    db.SaveChanges();
-                    return true;
+                        db.Ekipler.Add(new Ekipler()
+                        {
+                            EkipAdi = ekipDTO.EkipAdi,
+                            Durum = ekipDTO.Durum
+                        });
+                        db.SaveChanges();
+                        return true;
+                    }
+                }
+                else
+                {
+                    return false;
                 }
             }
             catch (Exception)
@@ -49,7 +56,7 @@ namespace BD.Data
                 return false;
             }
         }
-            
+
         public bool Duzenle(DTO.EkiplerDTO ekipDTO)
         {
             try

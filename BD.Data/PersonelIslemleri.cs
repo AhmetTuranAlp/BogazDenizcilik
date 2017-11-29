@@ -13,19 +13,26 @@ namespace BD.Data
         {
             try
             {
-                using (var db = new ProjeBEntities())
+                if (personel.Adi != "" && personel.Soyad != "" && personel.KartID != "")
                 {
-                    db.Personel.Add(new Personel()
+                    using (var db = new ProjeBEntities())
                     {
-                        Adi = personel.Adi,
-                        Soyad = personel.Soyad,
-                        EkipID = personel.EkipID,
-                        KartID = personel.KartID,
-                        PersonelID = personel.PersonelID,
-                        Durum = personel.Durum
-                    });
-                    db.SaveChanges();
-                    return true;
+                        db.Personel.Add(new Personel()
+                        {
+                            Adi = personel.Adi,
+                            Soyad = personel.Soyad,
+                            EkipID = personel.EkipID,
+                            KartID = personel.KartID,
+                            PersonelID = personel.PersonelID,
+                            Durum = personel.Durum
+                        });
+                        db.SaveChanges();
+                        return true;
+                    }
+                }
+                else
+                {
+                    return false;
                 }
             }
             catch (Exception)

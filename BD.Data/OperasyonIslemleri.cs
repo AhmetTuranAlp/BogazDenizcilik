@@ -453,11 +453,19 @@ namespace BD.Data
 
         public DateTime Zaman(string barkod)
         {
-            using (var db = new ProjeBEntities())
+            try
             {
-                Operasyon operasyon = db.Operasyon.FirstOrDefault(x => x.Barkod == barkod);
-                return Convert.ToDateTime(operasyon.Zaman);
+                using (var db = new ProjeBEntities())
+                {
+                    Operasyon operasyon = db.Operasyon.FirstOrDefault(x => x.Barkod == barkod);
+                    return Convert.ToDateTime(operasyon.Zaman);
+                }
             }
+            catch (Exception)
+            {
+                return DateTime.MaxValue;
+            }
+            
         }
     }
 }
