@@ -608,13 +608,6 @@ namespace BD.WindowsForm
             lblToplamKayit.Text = "Operasyon Adet: " + dataGridView1.RowCount;
         }
 
-        private void SorunluKayitlariListeleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = operasyon.SorunluKayitlariListeleme();
-            arac.DatagridBoyutlandir(dataGridView1, 16);
-            arac.HataliOperasyonKayitlari(dataGridView1);
-            lblToplamKayit.Text = "Operasyon Adet: " + dataGridView1.RowCount;
-        }
 
         private void btnPDF_Click(object sender, EventArgs e)
         {
@@ -681,6 +674,14 @@ namespace BD.WindowsForm
             {
                 MessageBox.Show("Tüm kriterleri girmeniz gerekiyor.");
             }
+            lblToplamKayit.Text = "Operasyon Adet: " + dataGridView1.RowCount;
+        }
+
+        private void SorunluKayitlariListeleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = operasyon.SorunluKayitlariListeleme();
+            arac.DatagridBoyutlandir(dataGridView1, 16);
+            arac.HataliOperasyonKayitlari(dataGridView1);
             lblToplamKayit.Text = "Operasyon Adet: " + dataGridView1.RowCount;
         }
     }

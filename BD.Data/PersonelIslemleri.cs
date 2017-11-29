@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,10 @@ namespace BD.Data
 {
     public class PersonelIslemleri
     {
+       
         public bool Ekle(DTO.PersonelDTO personel)
         {
+           
             try
             {
                 if (personel.Adi != "" && personel.Soyad != "" && personel.KartID != "")

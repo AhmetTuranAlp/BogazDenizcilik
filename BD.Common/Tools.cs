@@ -32,16 +32,24 @@ namespace BD.Common
 
         public void HataliOperasyonKayitlari(DataGridView grid)
         {
-            for (int i = 0; i < grid.Rows.Count; i++)
+            try
             {
-                Application.DoEvents();
-                DataGridViewCellStyle renk = new DataGridViewCellStyle();
-                if (grid.Rows[i].Cells["SorunYok"].Value.ToString() == "False")
+                for (int i = 0; i < grid.Rows.Count; i++)
                 {
-                    renk.BackColor = Color.Red;
+                    Application.DoEvents();
+                    DataGridViewCellStyle renk = new DataGridViewCellStyle();
+                    if (grid.Rows[i].Cells["SorunYok"].Value.ToString() == "False")
+                    {
+                        renk.BackColor = Color.Red;
+                    }
+                    grid.Rows[i].DefaultCellStyle = renk;
                 }
-                grid.Rows[i].DefaultCellStyle = renk;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         public void SorunFiltre(DataGridView izgara, int index, ToolStripMenuItem menu)
@@ -128,5 +136,7 @@ namespace BD.Common
             }
 
         }
+
+
     }
 }

@@ -409,7 +409,7 @@
             this.sorunFiltrelemeToolStripMenuItem,
             this.SorunluKayitlariListeleToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(197, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(197, 70);
             // 
             // sorunFiltrelemeToolStripMenuItem
             // 
@@ -607,10 +607,10 @@
         private System.Windows.Forms.ToolStripMenuItem elfrenKonumToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem digerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem soruncYokToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem SorunluKayitlariListeleToolStripMenuItem;
         private System.Windows.Forms.Button btnYazdır;
         private System.Windows.Forms.Label lblToplamKayit;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnPDF;
+        private System.Windows.Forms.ToolStripMenuItem SorunluKayitlariListeleToolStripMenuItem;
     }
 }

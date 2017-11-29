@@ -108,7 +108,7 @@ namespace BD.Data
                         Aciklama = sorun.Aciklama,
                         Zaman = sorun.Zaman
                     });
-                    Operasyon ope = db.Operasyon.FirstOrDefault(x => x.Barkod == sorun.Barkod);
+                    Operasyon ope = db.Operasyon.FirstOrDefault(x => x.Barkod == sorun.Barkod && x.PersonelID == sorun.PersonelID);
                     ope.SorunDurum = false;
                     db.SaveChanges();
                     return true;

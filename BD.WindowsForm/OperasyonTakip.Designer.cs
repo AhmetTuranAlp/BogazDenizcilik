@@ -33,14 +33,17 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblToplamKayit = new System.Windows.Forms.Label();
+            this.btnTemizle = new System.Windows.Forms.Button();
+            this.btnArac = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAra = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnTemizle = new System.Windows.Forms.Button();
-            this.btnArac = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.aramaKutusunaBarkodAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -56,6 +59,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Location = new System.Drawing.Point(1, 1);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1033, 515);
@@ -86,23 +90,6 @@
             this.lblToplamKayit.TabIndex = 5;
             this.lblToplamKayit.Text = "Toplam Kayıt:";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(599, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Barkod:";
-            // 
-            // txtAra
-            // 
-            this.txtAra.Location = new System.Drawing.Point(656, 14);
-            this.txtAra.Name = "txtAra";
-            this.txtAra.Size = new System.Drawing.Size(248, 20);
-            this.txtAra.TabIndex = 0;
-            // 
             // btnTemizle
             // 
             this.btnTemizle.BackgroundImage = global::BD.WindowsForm.Properties.Resources.Yenile;
@@ -127,6 +114,37 @@
             this.btnArac.UseVisualStyleBackColor = true;
             this.btnArac.Click += new System.EventHandler(this.btnArac_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(599, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Barkod:";
+            // 
+            // txtAra
+            // 
+            this.txtAra.Location = new System.Drawing.Point(656, 14);
+            this.txtAra.Name = "txtAra";
+            this.txtAra.Size = new System.Drawing.Size(248, 20);
+            this.txtAra.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aramaKutusunaBarkodAktarToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(234, 26);
+            // 
+            // aramaKutusunaBarkodAktarToolStripMenuItem
+            // 
+            this.aramaKutusunaBarkodAktarToolStripMenuItem.Name = "aramaKutusunaBarkodAktarToolStripMenuItem";
+            this.aramaKutusunaBarkodAktarToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+            this.aramaKutusunaBarkodAktarToolStripMenuItem.Text = "Arama Kutusuna Barkod Aktar";
+            this.aramaKutusunaBarkodAktarToolStripMenuItem.Click += new System.EventHandler(this.aramaKutusunaBarkodAktarToolStripMenuItem_Click);
+            // 
             // OperasyonTakip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,12 +155,13 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "OperasyonTakip";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "OperasyonTakip";
+            this.Text = "Operasyon Takip";
             this.Load += new System.EventHandler(this.OperasyonTakip_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -158,5 +177,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAra;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem aramaKutusunaBarkodAktarToolStripMenuItem;
     }
 }

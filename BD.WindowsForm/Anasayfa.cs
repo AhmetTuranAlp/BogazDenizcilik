@@ -99,5 +99,10 @@ namespace BD.WindowsForm
             FtpDosyaAktarimi ftp = new FtpDosyaAktarimi();
             yavruform(ftp);
         }
+
+        private void Anasayfa_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

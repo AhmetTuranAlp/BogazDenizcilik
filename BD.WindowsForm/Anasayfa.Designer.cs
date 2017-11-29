@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Anasayfa));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.elTerminaldenAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operasyonTakipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,10 +138,12 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(853, 467);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "Anasayfa";
-            this.Text = "Anasayfa";
+            this.Text = "Boğaz Denizcilik";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Anasayfa_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

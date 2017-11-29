@@ -53,6 +53,7 @@ namespace BD.WindowsForm
         private void btnTemizle_Click(object sender, EventArgs e)
         {
             OperasyonListeleme();
+            txtAra.Clear();
         }
 
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -61,6 +62,12 @@ namespace BD.WindowsForm
             {
                 operasyon.gridViewSiralama(dataGridView1, e.ColumnIndex);
             }
+        }
+
+        private void aramaKutusunaBarkodAktarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dataGridView1.CurrentRow;
+            txtAra.Text = row.Cells["Barkod"].Value.ToString();
         }
     }
 }
