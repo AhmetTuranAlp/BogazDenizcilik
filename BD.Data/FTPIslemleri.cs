@@ -102,7 +102,11 @@ namespace BD.Data
                     {
                         o.SorunDurum = false;
                     }
-                    Operasyon.Ekle(o);
+                    if (o != null)
+                    {
+                        Operasyon.Ekle(o);
+                    }
+                    
                 }
 
                 MessageBox.Show("Dosyalar Kaydedidi.");

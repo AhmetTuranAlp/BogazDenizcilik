@@ -5,7 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -207,5 +209,77 @@ namespace BD.WindowsForm
                 textBox2.UseSystemPasswordChar = true;
             }
         }
+
+        //C:\--Özellikler--Güvenlik--Düzenle--Kullanıcı Sec--Yazma=Yetki Ver.
+        private void btnBackupKonum_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                txtBackup.Text = dlg.SelectedPath;
+                btnBackup.Enabled = true;
+            }
+        }
+        
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string tarih = DateTime.Now.ToString("dd-MM-yyyy--HH-mm-sss");
+                string connectionString1 = ("data source=.;initial catalog=ProjeB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+                SqlConnection cn = new SqlConnection(connectionString1);
+                cn.Open();
+                SqlCommand cmd = new SqlCommand();
+                SqlDataReader reader;
+                cmd.CommandText = @"BACKUP DATABASE ProjeB TO DISK ='" + txtBackup.Text + "\\" + tarih + "_BoğazDenizcilik.bak'";
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+                reader = cmd.ExecuteReader();
+                cn.Close();
+                MessageBox.Show("Database Backup Successfull.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        
+        private void btnResoreKonum_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+
+            dlg.Title = "Database restore";
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                txtRestore.Text = dlg.FileName;
+                btnRestore.Enabled = true;
+            }
+        }
+
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string connectionString1 = ("data source=.;initial catalog=ProjeB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+                SqlConnection cn = new SqlConnection(connectionString1);
+                cn.Open();
+
+                SqlCommand cmd = new SqlCommand();
+                SqlDataReader reader;
+                cmd.CommandText = @"use master; RESTORE DATABASE ProjeB FROM DISK = '" + textBox2.Text + "'WITH REPLACE;";
+                cmd.CommandText = "DBCC CHECKDB ('ProjeB')";
+                cmd.CommandType = CommandType.Text;
+                cmd.Connection = cn;
+                reader = cmd.ExecuteReader();
+                cn.Close();
+                MessageBox.Show("Database Restored Successfull.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
+

@@ -48,14 +48,6 @@
             this.txtRestore = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnResoreKonum = new System.Windows.Forms.Button();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -103,7 +95,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.tabPage6.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -176,7 +167,6 @@
             // 
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Controls.Add(this.tabPage5);
-            this.tabControl2.Controls.Add(this.tabPage6);
             this.tabControl2.Location = new System.Drawing.Point(0, 0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -200,10 +190,11 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Image = global::BD.WindowsForm.Properties.Resources.logo;
             this.pictureBox2.Location = new System.Drawing.Point(134, 54);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(176, 92);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 43;
             this.pictureBox2.TabStop = false;
             // 
@@ -215,6 +206,7 @@
             this.btnBackup.TabIndex = 5;
             this.btnBackup.Text = "Backup";
             this.btnBackup.UseVisualStyleBackColor = true;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
             // txtBackup
             // 
@@ -231,6 +223,7 @@
             this.btnBackupKonum.TabIndex = 4;
             this.btnBackupKonum.Text = "Browse";
             this.btnBackupKonum.UseVisualStyleBackColor = true;
+            this.btnBackupKonum.Click += new System.EventHandler(this.btnBackupKonum_Click);
             // 
             // label9
             // 
@@ -258,10 +251,11 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Image = global::BD.WindowsForm.Properties.Resources.logo;
             this.pictureBox3.Location = new System.Drawing.Point(134, 54);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(176, 92);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 43;
             this.pictureBox3.TabStop = false;
             // 
@@ -273,6 +267,7 @@
             this.btnRestore.TabIndex = 9;
             this.btnRestore.Text = "Restore";
             this.btnRestore.UseVisualStyleBackColor = true;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // txtRestore
             // 
@@ -298,98 +293,7 @@
             this.btnResoreKonum.TabIndex = 8;
             this.btnResoreKonum.Text = "Browse";
             this.btnResoreKonum.UseVisualStyleBackColor = true;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage6.Controls.Add(this.button1);
-            this.tabPage6.Controls.Add(this.radioButton4);
-            this.tabPage6.Controls.Add(this.radioButton3);
-            this.tabPage6.Controls.Add(this.radioButton2);
-            this.tabPage6.Controls.Add(this.radioButton1);
-            this.tabPage6.Controls.Add(this.label12);
-            this.tabPage6.Controls.Add(this.label11);
-            this.tabPage6.Location = new System.Drawing.Point(4, 23);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(405, 431);
-            this.tabPage6.TabIndex = 2;
-            this.tabPage6.Text = "Yedek Ayarları";
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Location = new System.Drawing.Point(58, 322);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(300, 50);
-            this.button1.TabIndex = 47;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(58, 270);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(154, 18);
-            this.radioButton4.TabIndex = 46;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Saat 15:00 ile 17:00 arası";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(58, 224);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(154, 18);
-            this.radioButton3.TabIndex = 46;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Saat 13:00 ile 15:00 arası";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(58, 181);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(153, 18);
-            this.radioButton2.TabIndex = 46;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Saat 11:00 ile 13:00 arası";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(58, 141);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(147, 18);
-            this.radioButton1.TabIndex = 46;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Saat 9:00 ile 11:00 arası";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label12.Location = new System.Drawing.Point(55, 99);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(151, 14);
-            this.label12.TabIndex = 45;
-            this.label12.Text = "Yedek Alıncak Saat Aralığı:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.DarkRed;
-            this.label11.Location = new System.Drawing.Point(55, 30);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(303, 28);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "Dosya Konum: C:\\Program Files\\Microsoft SQL Server\\\r\nMSSQL13.MSSQLSERVER\\MSSQL\\Ba" +
-    "ckup";
+            this.btnResoreKonum.Click += new System.EventHandler(this.btnResoreKonum_Click);
             // 
             // panel2
             // 
@@ -802,8 +706,6 @@
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage6.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -834,27 +736,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn VeritabaniYedek;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button btnBackup;
-        private System.Windows.Forms.TextBox txtBackup;
-        private System.Windows.Forms.Button btnBackupKonum;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button btnRestore;
-        private System.Windows.Forms.TextBox txtRestore;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btnResoreKonum;
-        private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox checkBox1;
@@ -889,5 +770,18 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnBackup;
+        private System.Windows.Forms.TextBox txtBackup;
+        private System.Windows.Forms.Button btnBackupKonum;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btnRestore;
+        private System.Windows.Forms.TextBox txtRestore;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnResoreKonum;
     }
 }

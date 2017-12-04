@@ -124,6 +124,7 @@
             this.btnDosyaAktar.TabIndex = 7;
             this.btnDosyaAktar.Text = "Operasyon Kayıtları Al";
             this.btnDosyaAktar.UseVisualStyleBackColor = false;
+            this.btnDosyaAktar.Click += new System.EventHandler(this.btnDosyaAktar_Click);
             // 
             // FtpDosyaAktarimi
             // 

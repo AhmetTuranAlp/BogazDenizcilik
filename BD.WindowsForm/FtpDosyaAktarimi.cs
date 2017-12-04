@@ -40,5 +40,10 @@ namespace BD.WindowsForm
 
             pictureBox1.Image = qrCreate(ipAdresi, 6);
         }
+
+        private void btnDosyaAktar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
