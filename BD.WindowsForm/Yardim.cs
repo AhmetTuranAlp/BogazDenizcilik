@@ -31,5 +31,20 @@ namespace BD.WindowsForm
         {
             System.Diagnostics.Process.Start("https://anydesk.com/tr/download");
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("mailto:destek@proje54.com");
+        }
+
+        private void label3_MouseHover(object sender, EventArgs e)
+        {
+            label3.ForeColor = Color.Navy;
+        }
+
+        private void label3_MouseLeave(object sender, EventArgs e)
+        {
+            label3.ForeColor = Color.Black;
+        }
     }
 }
