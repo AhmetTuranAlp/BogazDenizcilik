@@ -33,5 +33,6 @@ namespace BD.Data
         public virtual DbSet<Personel> Personel { get; set; }
         public virtual DbSet<SifreGirisZamanaları> SifreGirisZamanaları { get; set; }
         public virtual DbSet<Sorunlar> Sorunlar { get; set; }
+        public virtual DbSet<VeritabaniYedek> VeritabaniYedek { get; set; }
     }
 }

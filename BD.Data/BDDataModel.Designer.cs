@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Ahmet Turan Alp\source\repos\BogazDenizcilikOtomasyonu\BD.Data\BDDataModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Ahmet Turan Alp\Documents\Github -Projects\BogazDenizcilik\BD.Data\BDDataModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

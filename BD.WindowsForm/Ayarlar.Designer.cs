@@ -33,7 +33,6 @@
             this.dtgSifreView = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.VeritabaniYedek = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel8 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -85,6 +84,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.cmsBackup = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.konumAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSifreView)).BeginInit();
             this.panel7.SuspendLayout();
@@ -107,6 +108,7 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.cmsBackup.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel6
@@ -141,18 +143,11 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.VeritabaniYedek});
+            this.dataGridView2.ContextMenuStrip = this.cmsBackup;
             this.dataGridView2.Location = new System.Drawing.Point(2, 2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(514, 462);
             this.dataGridView2.TabIndex = 4;
-            // 
-            // VeritabaniYedek
-            // 
-            this.VeritabaniYedek.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.VeritabaniYedek.HeaderText = "Veritabani Yedekleri";
-            this.VeritabaniYedek.Name = "VeritabaniYedek";
             // 
             // panel8
             // 
@@ -683,6 +678,20 @@
             this.tabControl1.Size = new System.Drawing.Size(947, 497);
             this.tabControl1.TabIndex = 2;
             // 
+            // cmsBackup
+            // 
+            this.cmsBackup.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.konumAktarToolStripMenuItem});
+            this.cmsBackup.Name = "cmsBackup";
+            this.cmsBackup.Size = new System.Drawing.Size(153, 48);
+            // 
+            // konumAktarToolStripMenuItem
+            // 
+            this.konumAktarToolStripMenuItem.Name = "konumAktarToolStripMenuItem";
+            this.konumAktarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.konumAktarToolStripMenuItem.Text = "Konum Aktar";
+            this.konumAktarToolStripMenuItem.Click += new System.EventHandler(this.konumAktarToolStripMenuItem_Click);
+            // 
             // Ayarlar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -721,6 +730,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.cmsBackup.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -734,7 +744,6 @@
         private System.Windows.Forms.Button btnKaydet;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VeritabaniYedek;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBox1;
@@ -783,5 +792,7 @@
         private System.Windows.Forms.TextBox txtRestore;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnResoreKonum;
+        private System.Windows.Forms.ContextMenuStrip cmsBackup;
+        private System.Windows.Forms.ToolStripMenuItem konumAktarToolStripMenuItem;
     }
 }

@@ -91,14 +91,18 @@
     <Compile Include="PersonelIslemleri.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RaporIslemleri.cs" />
-    <Compile Include="SifreIslemleri.cs" />
     <Compile Include="SifreGirisZamanaları.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SifreIslemleri.cs" />
     <Compile Include="SorunKontrolIslemleri.cs" />
     <Compile Include="Sorunlar.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="VeritabaniYedek.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VeritabaniYedekIslemleri.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BD.Common\BD.Common.csproj">
@@ -111,32 +115,30 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="BDDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BDDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="BDDataModel.edmx.diagram">
       <DependentUpon>BDDataModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="BDDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BDDataModel.Context.cs</LastGenOutput>
       <DependentUpon>BDDataModel.edmx</DependentUpon>
+      <LastGenOutput>BDDataModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="BDDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BDDataModel.edmx</DependentUpon>
       <LastGenOutput>BDDataModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -88,6 +88,14 @@
           <Property Name="Zaman" Type="datetime" />
           <Property Name="Aciklama" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="VeritabaniYedek">
+          <Key>
+            <PropertyRef Name="BackupID" />
+          </Key>
+          <Property Name="BackupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BackupAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="BackupKonum" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityContainer Name="ProjeBModelStoreContainer">
           <EntitySet Name="Ayarlar" EntityType="Self.Ayarlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cihaz" EntityType="Self.Cihaz" Schema="dbo" store:Type="Tables" />
@@ -97,6 +105,7 @@
           <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SifreGirisZamanaları" EntityType="Self.SifreGirisZamanaları" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sorunlar" EntityType="Self.Sorunlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VeritabaniYedek" EntityType="Self.VeritabaniYedek" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -186,7 +195,15 @@
           <Property Name="Zaman" Type="DateTime" Precision="3" />
           <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="ProjeBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityType Name="VeritabaniYedek">
+          <Key>
+            <PropertyRef Name="BackupID" />
+          </Key>
+          <Property Name="BackupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BackupAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BackupKonum" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Ayarlar" EntityType="Self.Ayarlar" />
           <EntitySet Name="Cihaz" EntityType="Self.Cihaz" />
           <EntitySet Name="Ekipler" EntityType="Self.Ekipler" />
@@ -195,13 +212,14 @@
           <EntitySet Name="Personel" EntityType="Self.Personel" />
           <EntitySet Name="SifreGirisZamanaları" EntityType="Self.SifreGirisZamanaları" />
           <EntitySet Name="Sorunlar" EntityType="Self.Sorunlar" />
+          <EntitySet Name="VeritabaniYedek" EntityType="Self.VeritabaniYedek" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProjeBModelStoreContainer" CdmEntityContainer="ProjeBEntities">
+        <EntityContainerMapping StorageEntityContainer="ProjeBModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Ayarlar">
             <EntityTypeMapping TypeName="ProjeBModel.Ayarlar">
               <MappingFragment StoreEntitySet="Ayarlar">
@@ -290,6 +308,15 @@
                 <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
                 <ScalarProperty Name="Zaman" ColumnName="Zaman" />
                 <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VeritabaniYedek">
+            <EntityTypeMapping TypeName="ProjeBModel.VeritabaniYedek">
+              <MappingFragment StoreEntitySet="VeritabaniYedek">
+                <ScalarProperty Name="BackupID" ColumnName="BackupID" />
+                <ScalarProperty Name="BackupAdi" ColumnName="BackupAdi" />
+                <ScalarProperty Name="BackupKonum" ColumnName="BackupKonum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

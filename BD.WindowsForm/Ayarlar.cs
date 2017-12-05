@@ -25,6 +25,7 @@ namespace BD.WindowsForm
         CihazIslemleri cihaz = new CihazIslemleri();
         Tools arac = new Tools();
         SifreIslemleri sifre = new SifreIslemleri();
+        VeritabaniYedekIslemleri dbIslem = new VeritabaniYedekIslemleri();
 
         public void CihazListeleme()
         {
@@ -52,6 +53,7 @@ namespace BD.WindowsForm
         {
             CihazListeleme();
             SifreTabloListeleme();
+            VeritabaniListeleme();
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
@@ -211,6 +213,13 @@ namespace BD.WindowsForm
         }
 
         //C:\--Özellikler--Güvenlik--Düzenle--Kullanıcı Sec--Yazma=Yetki Ver.
+
+        public void VeritabaniListeleme()
+        {
+            dataGridView2.DataSource = dbIslem.Listeleme();
+            arac.DatagridBoyutlandir(dataGridView2, 3);
+        }
+
         private void btnBackupKonum_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dlg = new FolderBrowserDialog();
@@ -220,7 +229,7 @@ namespace BD.WindowsForm
                 btnBackup.Enabled = true;
             }
         }
-        
+
         private void btnBackup_Click(object sender, EventArgs e)
         {
             try
@@ -237,14 +246,21 @@ namespace BD.WindowsForm
                 cmd.Connection = cn;
                 reader = cmd.ExecuteReader();
                 cn.Close();
+
+                VeritabaniYedekDTO backup = new VeritabaniYedekDTO();
+                backup.BackupAdi = tarih + "_BoğazDenizcilik.bak";
+                backup.BackupKonum = txtBackup.Text;
+                dbIslem.Ekle(backup);
+                VeritabaniListeleme();
                 MessageBox.Show("Database Backup Successfull.");
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-        
+
         private void btnResoreKonum_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -257,27 +273,61 @@ namespace BD.WindowsForm
             }
         }
 
+        string resDosyaAdi;
         private void btnRestore_Click(object sender, EventArgs e)
         {
             try
             {
-                string connectionString1 = ("data source=.;initial catalog=ProjeB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
-                SqlConnection cn = new SqlConnection(connectionString1);
-                cn.Open();
+                string konum = txtRestore.Text;
+                if (konum == "")
+                {
+                    MessageBox.Show("Backup dosyası seçin.");
+                }
+                else
+                {
+                    if (File.Exists(konum) == false)
+                    {
+                        dbIslem.Sil(resDosyaAdi);
+                        MessageBox.Show("Belirtilen konumdaki backup dosyası bulunamadı.");
+                    }
+                    else
+                    {
+                        string connectionString1 = ("data source=.;initial catalog=ProjeB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+                        SqlConnection cn = new SqlConnection(connectionString1);
+                        cn.Open();
 
-                SqlCommand cmd = new SqlCommand();
-                SqlDataReader reader;
-                cmd.CommandText = @"use master; RESTORE DATABASE ProjeB FROM DISK = '" + textBox2.Text + "'WITH REPLACE;";
-                cmd.CommandText = "DBCC CHECKDB ('ProjeB')";
-                cmd.CommandType = CommandType.Text;
-                cmd.Connection = cn;
-                reader = cmd.ExecuteReader();
-                cn.Close();
-                MessageBox.Show("Database Restored Successfull.");
+                        SqlCommand cmd = new SqlCommand();
+                        SqlDataReader reader;
+                        cmd.CommandText = @"use master; RESTORE DATABASE ProjeB FROM DISK = '" + txtRestore.Text + "'WITH REPLACE;";
+                        cmd.CommandText = "DBCC CHECKDB ('ProjeB')";
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Connection = cn;
+                        reader = cmd.ExecuteReader();
+                        cn.Close();
+                        MessageBox.Show("Database Restored Successfull.");
+                    }
+                }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void konumAktarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = dataGridView2.CurrentRow;
+                string adi = row.Cells["BackupAdi"].Value.ToString();
+                string konum = row.Cells["BackupKonum"].Value.ToString();
+                txtRestore.Text = konum + "\\" + adi;
+                resDosyaAdi = adi;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
