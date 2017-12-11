@@ -12,6 +12,7 @@ namespace BD.Data
 {
     public class FTPIslemleri
     {
+
         CihazIslemleri Cihaz = new CihazIslemleri();
         PersonelIslemleri Personel = new PersonelIslemleri();
         OperasyonIslemleri Operasyon = new OperasyonIslemleri();
@@ -65,70 +66,6 @@ namespace BD.Data
 
         }
 
-        public void XmlKaydet()
-        {
-            try
-            {
-                XmlDocument doc = new XmlDocument();
-                foreach (string data in dataKloser)
-                {
-                    DTO.PersonelDTO GelenPersonel = new DTO.PersonelDTO();
-            
-                    doc.Load("../XmlData/" + data);
-                    XmlNode operasyon = doc.SelectSingleNode("operasyon");
-               
-                    string kartID = operasyon.SelectSingleNode("Personel").InnerText;
-                    GelenPersonel = Personel.TekPersonel(kartID);
-
-                    DTO.OperasyonDTO o = new DTO.OperasyonDTO();
-                    o.PersonelID = GelenPersonel.PersonelID;
-                    o.EkipID = GelenPersonel.EkipID;
-                    o.Barkod = operasyon.SelectSingleNode("Barkod").InnerText.ToString();
-                    o.Tip = operasyon.SelectSingleNode("Tip").InnerText.ToString();
-                    o.Zaman = Convert.ToDateTime(operasyon.SelectSingleNode("Zaman").InnerText);
-                    o.AnahtarKaybi = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("AnahtarKaybi").InnerText));
-                    o.AracHasar = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("AracHasar").InnerText));
-                    o.CamAcik = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("CamAcik").InnerText));
-                    o.VitesKonum = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("VitesKonum").InnerText));
-                    o.ElfrenKonum = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("ElfrenKonum").InnerText));
-                    o.Diger = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("Diger").InnerText));
-                    o.SorunYok = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("SorunYok").InnerText));
-
-                    if (o.SorunYok == false)
-                    {
-                        o.SorunDurum = true;
-                    }
-                    else
-                    {
-                        o.SorunDurum = false;
-                    }
-                    if (o != null)
-                    {
-                        Operasyon.Ekle(o);
-                    }
-                    
-                }
-
-                MessageBox.Show("Dosyalar Kaydedidi.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Hata");
-            }
-        }
-
-        public void XmlDosyaTasima()
-        {
-            if (System.IO.Directory.Exists("../XmlBackup") == false)
-            {
-                Directory.CreateDirectory("../XmlBackup");
-            }
-            foreach (var dosya in dataKloser)
-            {
-                File.Move("../XmlData/" + dosya, "../XmlBackup/" + dosya);
-            }
-        }
-        
         public void XmlDosyaSilme(int id)
         {
             var ayarlar = Cihaz.CihazId(id);
@@ -159,5 +96,81 @@ namespace BD.Data
                 MessageBox.Show(ex.Message, "FTP 2.0 Delete");
             }
         }
+
+
+        public void Listeleme()
+        {
+            string path = Application.StartupPath + @"\XmlData\";
+            DirectoryInfo di = new DirectoryInfo(path);
+            FileInfo[] rgFiles = di.GetFiles();
+            foreach (FileInfo fi in rgFiles)
+            {
+                dataKloser.Add(fi.Name);
+            }
+        }
+
+        public void XmlKaydet(ProgressBar bar)
+        {
+            try
+            {
+                int dosyaSayisi = Directory.GetFiles(Application.StartupPath + @"\XmlData", "*.*", SearchOption.AllDirectories).Length;
+                bar.Minimum = 0;
+                bar.Maximum = dosyaSayisi;
+                bar.Step = 1;
+                
+                int sayac = 0;
+                XmlDocument doc = new XmlDocument();
+                foreach (string data in dataKloser)
+                {
+                    DTO.PersonelDTO GelenPersonel = new DTO.PersonelDTO();
+                    doc.Load((Application.StartupPath + @"\XmlData\" + data));
+                    XmlNode operasyon = doc.SelectSingleNode("operasyon");
+                    string kartID = operasyon.SelectSingleNode("Personel").InnerText;
+                    GelenPersonel = Personel.TekPersonel(kartID);
+                    DTO.OperasyonDTO o = new DTO.OperasyonDTO();
+                    o.PersonelID = GelenPersonel.PersonelID;
+                    o.EkipID = GelenPersonel.EkipID;
+                    o.Barkod = operasyon.SelectSingleNode("Barkod").InnerText.ToString();
+                    o.Tip = operasyon.SelectSingleNode("Tip").InnerText.ToString();
+                    o.Zaman = Convert.ToDateTime(operasyon.SelectSingleNode("Zaman").InnerText);
+                    o.AnahtarKaybi = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("AnahtarKaybi").InnerText));
+                    o.AracHasar = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("AracHasar").InnerText));
+                    o.CamAcik = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("CamAcik").InnerText));
+                    o.VitesKonum = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("VitesKonum").InnerText));
+                    o.ElfrenKonum = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("ElfrenKonum").InnerText));
+                    o.Diger = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("Diger").InnerText));
+                    o.SorunYok = Convert.ToBoolean(Int32.Parse(operasyon.SelectSingleNode("SorunYok").InnerText));
+
+                    if (o.SorunYok == false)
+                    {
+                        o.SorunDurum = true;
+                    }
+                    else
+                    {
+                        o.SorunDurum = false;
+                    }
+                    Operasyon.Ekle(o);
+                    bar.Value = sayac++;
+                }
+                MessageBox.Show("Kayıt Aktarımı Tamamlandı.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void XmlDosyaTasima()
+        {
+            if (!Directory.Exists(Application.StartupPath + @"\XmlBackup"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + @"\XmlBackup");
+            }
+            foreach (var dosya in dataKloser)
+            {
+                File.Move("../XmlData/" + dosya, "../XmlBackup/" + dosya);
+            }
+        }
+
     }
 }

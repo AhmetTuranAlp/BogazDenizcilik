@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace BD.WindowsForm
 {
@@ -39,10 +41,18 @@ namespace BD.WindowsForm
             string ipAdresi = Dns.GetHostByName(bilgisayarAdi).AddressList[0].ToString();
 
             pictureBox1.Image = qrCreate(ipAdresi, 6);
+
+            if (!Directory.Exists(Application.StartupPath + @"\XmlData"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + @"\XmlData");
+            }
+
         }
 
-        private void btnDosyaAktar_Click(object sender, EventArgs e)
+        private void btnDosyaKaydet_Click(object sender, EventArgs e)
         {
+            ftp.Listeleme();
+            ftp.XmlKaydet(progressBar1);
 
         }
     }

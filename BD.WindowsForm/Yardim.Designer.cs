@@ -73,7 +73,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(20, 140);
+            this.label2.Location = new System.Drawing.Point(20, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(559, 30);
             this.label2.TabIndex = 4;
@@ -107,12 +107,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(20, 111);
+            this.label1.Location = new System.Drawing.Point(20, 102);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(557, 15);
+            this.label1.Size = new System.Drawing.Size(576, 30);
             this.label1.TabIndex = 5;
             this.label1.Text = "Destek almak için lütfen aşağıdaki programlardan birini indirip bilgisayarınıza k" +
-    "urun ve bizi arayın.";
+    "urun ve belirtilen mail \r\nadresi ile bizimle iletişime geçin.";
             // 
             // panel1
             // 

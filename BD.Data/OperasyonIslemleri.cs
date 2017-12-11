@@ -181,7 +181,7 @@ namespace BD.Data
                         DataGridViewCellStyle rowColor = new DataGridViewCellStyle();
                         rowColor.BackColor = Color.Red;
                         grid.Rows[0].DefaultCellStyle = rowColor;
-                        MessageBox.Show("Bu Kayıtlı araç'ta yükleme aşamasında sorunlar tesbit edilmiştir.");
+                        MessageBox.Show("Bu kayıtlı araç'ta sorun tesbit edilmiştir.");
 
                     }
 
