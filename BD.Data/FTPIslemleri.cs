@@ -13,90 +13,32 @@ namespace BD.Data
     public class FTPIslemleri
     {
 
-        CihazIslemleri Cihaz = new CihazIslemleri();
         PersonelIslemleri Personel = new PersonelIslemleri();
         OperasyonIslemleri Operasyon = new OperasyonIslemleri();
 
-        List<string> files = new List<string>();
-        List<string> dataKloser = new List<string>();
-
-        public void XmlListeleme(int id)
+        public DTO.FtpServerDTO FtpServer()
         {
-            var ayarlar = Cihaz.CihazId(id);
             try
             {
-                FtpWebRequest reguest = FtpWebRequest.Create("ftp://" + ayarlar.FtpAdres + ":" + ayarlar.ftpPort) as FtpWebRequest;
-                reguest.Method = WebRequestMethods.Ftp.ListDirectory;
-                reguest.Credentials = new NetworkCredential(ayarlar.FtpUser, ayarlar.FtpPas.ToString());
-                FtpWebResponse response = (FtpWebResponse)reguest.GetResponse();
-                Stream responseStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(responseStream);
-                while (!reader.EndOfStream)
+                using (var db = new ProjeBEntities())
                 {
-                    Application.DoEvents();
-                    files.Add(reader.ReadLine());
-                }
-                response.Close();
-                responseStream.Close();
-                reader.Close();
-
-                if (System.IO.Directory.Exists("../XmlData") == false)
-                {
-                    Directory.CreateDirectory("../XmlData");
-                }
-
-                foreach (string xml in files)
-                {
-                    if (xml.Contains(".xml"))
+                    return db.FtpServer.Select(x => new DTO.FtpServerDTO()
                     {
-                        WebClient istemci = new WebClient();
-                        istemci.Credentials = new NetworkCredential(ayarlar.FtpUser, ayarlar.FtpPas);
-                        byte[] veriDosya = istemci.DownloadData("ftp://" + ayarlar.FtpAdres + ":" + ayarlar.ftpPort + "/" + xml);
-                        FileStream dosya = File.Create("../XmlData/" + xml);
-                        dosya.Write(veriDosya, 0, veriDosya.Length);
-                        dosya.Close();
-                        dataKloser.Add(xml);
-                    }
+                        ServerID = x.ServerID,
+                        FtpUser = x.FtpUser,
+                        FtpPass = x.FtpPass,
+                        FtpPort = x.FtpPort
+                    }).FirstOrDefault(x => x.ServerID == 1);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "Hata");
+                return new DTO.FtpServerDTO();
             }
 
         }
 
-        public void XmlDosyaSilme(int id)
-        {
-            var ayarlar = Cihaz.CihazId(id);
-            try
-            {
-                foreach (var xml in dataKloser)
-                {
-                    string uri = "ftp://" + ayarlar.FtpAdres + ":" + ayarlar.ftpPort + "/" + xml;
-                    FtpWebRequest reqFTP;
-                    reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri(uri));
-                    reqFTP.Credentials = new NetworkCredential(ayarlar.FtpUser, ayarlar.FtpPas);
-                    reqFTP.KeepAlive = false;
-                    reqFTP.Method = WebRequestMethods.Ftp.DeleteFile;
-                    string result = String.Empty;
-                    FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
-                    long size = response.ContentLength;
-                    Stream datastream = response.GetResponseStream();
-                    StreamReader sr = new StreamReader(datastream);
-                    result = sr.ReadToEnd();
-                    sr.Close();
-                    datastream.Close();
-                    response.Close();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "FTP 2.0 Delete");
-            }
-        }
-
+        List<string> dataKloser = new List<string>();
 
         public void Listeleme()
         {
@@ -117,9 +59,16 @@ namespace BD.Data
                 bar.Minimum = 0;
                 bar.Maximum = dosyaSayisi;
                 bar.Step = 1;
-                
+
                 int sayac = 0;
                 XmlDocument doc = new XmlDocument();
+
+
+                if (!Directory.Exists(Application.StartupPath + @"\XmlBackup"))
+                {
+                    Directory.CreateDirectory(Application.StartupPath + @"\XmlBackup");
+                }
+
                 foreach (string data in dataKloser)
                 {
                     DTO.PersonelDTO GelenPersonel = new DTO.PersonelDTO();
@@ -151,24 +100,14 @@ namespace BD.Data
                     }
                     Operasyon.Ekle(o);
                     bar.Value = sayac++;
+                    File.Move(Application.StartupPath + @"\XmlData\" + data, Application.StartupPath + @"\XmlBackup\" + data);
                 }
-                MessageBox.Show("Kayıt Aktarımı Tamamlandı.");
+
+                MessageBox.Show("Kaydetme İşlemi Tamamlandı.");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-        }
-
-        public void XmlDosyaTasima()
-        {
-            if (!Directory.Exists(Application.StartupPath + @"\XmlBackup"))
-            {
-                Directory.CreateDirectory(Application.StartupPath + @"\XmlBackup");
-            }
-            foreach (var dosya in dataKloser)
-            {
-                File.Move("../XmlData/" + dosya, "../XmlBackup/" + dosya);
             }
         }
 

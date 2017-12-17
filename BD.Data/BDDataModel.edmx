@@ -37,7 +37,7 @@
           </Key>
           <Property Name="ServerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FtpPort" Type="int" />
-          <Property Name="FtpUser" Type="char" MaxLength="10" />
+          <Property Name="FtpUser" Type="nvarchar" MaxLength="10" />
           <Property Name="FtpPass" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Operasyon">
@@ -144,7 +144,7 @@
           </Key>
           <Property Name="ServerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FtpPort" Type="Int32" />
-          <Property Name="FtpUser" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="FtpUser" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="FtpPass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Operasyon">

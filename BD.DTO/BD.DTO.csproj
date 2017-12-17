@@ -43,6 +43,7 @@
     <Compile Include="AyarlarDTO.cs" />
     <Compile Include="CihazDTO.cs" />
     <Compile Include="EkiplerDTO.cs" />
+    <Compile Include="FtpServerDTO.cs" />
     <Compile Include="OperasyonDTO.cs" />
     <Compile Include="OperasyonModelViewDTO.cs" />
     <Compile Include="PersonelDTO.cs" />

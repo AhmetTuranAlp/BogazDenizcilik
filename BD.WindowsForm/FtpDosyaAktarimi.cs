@@ -40,8 +40,9 @@ namespace BD.WindowsForm
             string bilgisayarAdi = Dns.GetHostName();
             string ipAdresi = Dns.GetHostByName(bilgisayarAdi).AddressList[0].ToString();
 
-            pictureBox1.Image = qrCreate(ipAdresi, 6);
-
+            var server = ftp.FtpServer();
+            string qrcode = "Ftp," + ipAdresi + "," + server.FtpPort + "," + server.FtpUser + "," + server.FtpPass;
+            pictureBox1.Image = qrCreate(qrcode, 6);
             if (!Directory.Exists(Application.StartupPath + @"\XmlData"))
             {
                 Directory.CreateDirectory(Application.StartupPath + @"\XmlData");
@@ -51,9 +52,10 @@ namespace BD.WindowsForm
 
         private void btnDosyaKaydet_Click(object sender, EventArgs e)
         {
+            label1.Text = "Dosya Kaydetme İşlemi Başladı.";
             ftp.Listeleme();
             ftp.XmlKaydet(progressBar1);
-
+            label1.Text = "Dosya Kaydetme İşlemi Tamamlandı.";
         }
     }
 }
