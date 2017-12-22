@@ -12,6 +12,8 @@ namespace BD.Data
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ProjeBEntities : DbContext
     {
@@ -34,5 +36,20 @@ namespace BD.Data
         public virtual DbSet<SifreGirisZamanaları> SifreGirisZamanaları { get; set; }
         public virtual DbSet<Sorunlar> Sorunlar { get; set; }
         public virtual DbSet<VeritabaniYedek> VeritabaniYedek { get; set; }
+    
+        public virtual ObjectResult<spEkipGenelPerformans_Result> spEkipGenelPerformans()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spEkipGenelPerformans_Result>("spEkipGenelPerformans");
+        }
+    
+        public virtual ObjectResult<spOperasyonListe_Result> spOperasyonListe()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spOperasyonListe_Result>("spOperasyonListe");
+        }
+    
+        public virtual ObjectResult<spPersonelGenelPerformans_Result> spPersonelGenelPerformans()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spPersonelGenelPerformans_Result>("spPersonelGenelPerformans");
+        }
     }
 }

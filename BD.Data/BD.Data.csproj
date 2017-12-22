@@ -98,6 +98,15 @@
     <Compile Include="Sorunlar.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="spEkipGenelPerformans_Result.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spOperasyonListe_Result.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spPersonelGenelPerformans_Result.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="VeritabaniYedek.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
@@ -114,7 +123,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="BDDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BDDataModel.Designer.cs</LastGenOutput>

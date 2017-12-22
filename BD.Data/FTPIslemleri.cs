@@ -53,30 +53,38 @@ namespace BD.Data
 
         public void XmlKaydet(ProgressBar bar)
         {
-            try
+            int dosyaSayisi = Directory.GetFiles(Application.StartupPath + @"\XmlData", "*.*", SearchOption.AllDirectories).Length;
+            bar.Minimum = 0;
+            bar.Maximum = dosyaSayisi;
+            bar.Step = 1;
+
+            int sayac = 0;
+
+            if (!Directory.Exists(Application.StartupPath + @"\XmlBackup"))
             {
-                int dosyaSayisi = Directory.GetFiles(Application.StartupPath + @"\XmlData", "*.*", SearchOption.AllDirectories).Length;
-                bar.Minimum = 0;
-                bar.Maximum = dosyaSayisi;
-                bar.Step = 1;
+                Directory.CreateDirectory(Application.StartupPath + @"\XmlBackup");
+            }
 
-                int sayac = 0;
+
+            if (!Directory.Exists(Application.StartupPath + @"\XmlHata"))
+            {
+                Directory.CreateDirectory(Application.StartupPath + @"\XmlHata");
+            }
+
+
+            List<string> HataPersonelListe = new List<string>();
+            foreach (string data in dataKloser)
+            {
+
+                DTO.PersonelDTO GelenPersonel = new DTO.PersonelDTO();
+                DTO.OperasyonDTO o = new DTO.OperasyonDTO();
                 XmlDocument doc = new XmlDocument();
-
-
-                if (!Directory.Exists(Application.StartupPath + @"\XmlBackup"))
+                doc.Load((Application.StartupPath + @"\XmlData\" + data));
+                XmlNode operasyon = doc.SelectSingleNode("operasyon");
+                string kartID = operasyon.SelectSingleNode("Personel").InnerText;
+                try
                 {
-                    Directory.CreateDirectory(Application.StartupPath + @"\XmlBackup");
-                }
-
-                foreach (string data in dataKloser)
-                {
-                    DTO.PersonelDTO GelenPersonel = new DTO.PersonelDTO();
-                    doc.Load((Application.StartupPath + @"\XmlData\" + data));
-                    XmlNode operasyon = doc.SelectSingleNode("operasyon");
-                    string kartID = operasyon.SelectSingleNode("Personel").InnerText;
                     GelenPersonel = Personel.TekPersonel(kartID);
-                    DTO.OperasyonDTO o = new DTO.OperasyonDTO();
                     o.PersonelID = GelenPersonel.PersonelID;
                     o.EkipID = GelenPersonel.EkipID;
                     o.Barkod = operasyon.SelectSingleNode("Barkod").InnerText.ToString();
@@ -102,13 +110,26 @@ namespace BD.Data
                     bar.Value = sayac++;
                     File.Move(Application.StartupPath + @"\XmlData\" + data, Application.StartupPath + @"\XmlBackup\" + data);
                 }
-
-                MessageBox.Show("Kaydetme İşlemi Tamamlandı.");
+                catch
+                {
+                    if (!HataPersonelListe.Contains(kartID))
+                    {
+                        HataPersonelListe.Add(kartID.ToString());
+                    }
+                    File.Move(Application.StartupPath + @"\XmlData\" + data, Application.StartupPath + @"\XmlHata\" + data);
+                }
             }
-            catch (Exception ex)
+            bar.Value = dosyaSayisi;
+            if (HataPersonelListe.Count != 0)
             {
-                MessageBox.Show(ex.Message);
+                string hata = "";
+                foreach (string item in HataPersonelListe)
+                {
+                    hata = hata + ("'" + item + "'" + ",");
+                }
+                MessageBox.Show("Kaydetme işlemi sırasında hata oluşan KartID : " + hata);
             }
+           
         }
 
     }

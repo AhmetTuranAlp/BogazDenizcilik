@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,10 @@ namespace BD.WindowsForm
         }
         OperasyonIslemleri operasyon = new OperasyonIslemleri();
         Tools arac = new Tools();
+
         public void OperasyonListeleme()
         {
-            dataGridView1.DataSource = operasyon.Listeleme();
+            dataGridView1.DataSource = operasyon.TableListe("spOperasyonListe");
             arac.DatagridBoyutlandir(dataGridView1, 16);
             arac.HataliOperasyonKayitlari(dataGridView1);
             lblToplamKayit.Text = "Toplam Kayıt: " + dataGridView1.RowCount;
@@ -46,7 +48,7 @@ namespace BD.WindowsForm
                 dataGridView1.DataSource = operasyon.OperasyonAramaListe(ara);
                 arac.DatagridBoyutlandir(dataGridView1, 16);
                 lblToplamKayit.Text = "Toplam Kayıt: " + dataGridView1.RowCount;
-                operasyon.OperasyonHataKontrol(ara, dataGridView1);
+                
             }
         }
 
@@ -54,14 +56,6 @@ namespace BD.WindowsForm
         {
             OperasyonListeleme();
             txtAra.Clear();
-        }
-
-        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-               if (dataGridView1.Rows.Count > 1)
-            {
-                operasyon.gridViewSiralama(dataGridView1, e.ColumnIndex);
-            }
         }
 
         private void aramaKutusunaBarkodAktarToolStripMenuItem_Click(object sender, EventArgs e)

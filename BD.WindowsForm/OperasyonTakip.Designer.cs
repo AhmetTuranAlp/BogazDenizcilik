@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.aramaKutusunaBarkodAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblToplamKayit = new System.Windows.Forms.Label();
             this.btnTemizle = new System.Windows.Forms.Button();
@@ -38,12 +40,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtAra = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.aramaKutusunaBarkodAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -64,7 +64,20 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1033, 515);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aramaKutusunaBarkodAktarToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(234, 26);
+            // 
+            // aramaKutusunaBarkodAktarToolStripMenuItem
+            // 
+            this.aramaKutusunaBarkodAktarToolStripMenuItem.Name = "aramaKutusunaBarkodAktarToolStripMenuItem";
+            this.aramaKutusunaBarkodAktarToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+            this.aramaKutusunaBarkodAktarToolStripMenuItem.Text = "Arama Kutusuna Barkod Aktar";
+            this.aramaKutusunaBarkodAktarToolStripMenuItem.Click += new System.EventHandler(this.aramaKutusunaBarkodAktarToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -131,20 +144,6 @@
             this.txtAra.Size = new System.Drawing.Size(248, 20);
             this.txtAra.TabIndex = 0;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aramaKutusunaBarkodAktarToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(234, 26);
-            // 
-            // aramaKutusunaBarkodAktarToolStripMenuItem
-            // 
-            this.aramaKutusunaBarkodAktarToolStripMenuItem.Name = "aramaKutusunaBarkodAktarToolStripMenuItem";
-            this.aramaKutusunaBarkodAktarToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
-            this.aramaKutusunaBarkodAktarToolStripMenuItem.Text = "Arama Kutusuna Barkod Aktar";
-            this.aramaKutusunaBarkodAktarToolStripMenuItem.Click += new System.EventHandler(this.aramaKutusunaBarkodAktarToolStripMenuItem_Click);
-            // 
             // OperasyonTakip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -159,9 +158,9 @@
             this.Load += new System.EventHandler(this.OperasyonTakip_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

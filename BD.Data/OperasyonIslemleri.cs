@@ -1,5 +1,9 @@
-﻿using System;
+﻿using BD.Common;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,19 +22,19 @@ namespace BD.Data
                 {
                     db.Operasyon.Add(new Operasyon()
                     {
-                       PersonelID =dosya.PersonelID,
-                       EkipID=dosya.EkipID,
-                       Barkod = dosya.Barkod,
-                       Tip = dosya.Tip,
-                       Zaman=dosya.Zaman,
-                       AnahtarKaybi=dosya.AnahtarKaybi,
-                       AracHasar=dosya.AracHasar,
-                       CamAcik=dosya.CamAcik,
-                       VitesKonum=dosya.VitesKonum,
-                       ElfrenKonum=dosya.ElfrenKonum,
-                       Diger=dosya.Diger,
-                       SorunYok=dosya.SorunYok,
-                       SorunDurum=dosya.SorunDurum
+                        PersonelID = dosya.PersonelID,
+                        EkipID = dosya.EkipID,
+                        Barkod = dosya.Barkod,
+                        Tip = dosya.Tip,
+                        Zaman = dosya.Zaman,
+                        AnahtarKaybi = dosya.AnahtarKaybi,
+                        AracHasar = dosya.AracHasar,
+                        CamAcik = dosya.CamAcik,
+                        VitesKonum = dosya.VitesKonum,
+                        ElfrenKonum = dosya.ElfrenKonum,
+                        Diger = dosya.Diger,
+                        SorunYok = dosya.SorunYok,
+                        SorunDurum = dosya.SorunDurum
                     });
                     db.SaveChanges();
                     return true;
@@ -194,263 +198,6 @@ namespace BD.Data
             }
         }
 
-        int deger = 1;
-        public void gridViewSiralama(DataGridView izgara, int column)
-        {
-            using (var db = new ProjeBEntities())
-            {
-                try
-                {
-                    var liste = (from op in db.Operasyon
-                                 from p in db.Personel
-                                 from ek in db.Ekipler
-                                 where op.PersonelID == p.PersonelID && p.EkipID == ek.EkipID
-                                 select new DTO.OperasyonModelViewDTO
-                                 {
-                                     OperasyonID = (int)op.OperasyonID,
-                                     Barkod = op.Barkod,
-                                     Adi = p.Adi,
-                                     Soyad = p.Soyad,
-                                     Tip = op.Tip,
-                                     KartID = p.KartID,
-                                     EkipAdi = ek.EkipAdi,
-                                     Zaman = (DateTime)op.Zaman,
-                                     AnahtarKaybi = (bool)op.AnahtarKaybi,
-                                     AracHasar = (bool)op.AracHasar,
-                                     CamAcik = (bool)op.CamAcik,
-                                     VitesKonum = (bool)op.VitesKonum,
-                                     ElfrenKonum = (bool)op.ElfrenKonum,
-                                     Diger = (bool)op.Diger,
-                                     SorunYok = (bool)op.SorunYok,
-                                     SorunDurum = (bool)op.SorunDurum
-                                 }).OrderBy(x => x.OperasyonID).ToList();
-
-                    if (izgara.Columns[column].Name == "OperasyonID")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.OperasyonID).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.OperasyonID).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "Barkod")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.Barkod).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.Barkod).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "Adi")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.Adi).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.Adi).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "Soyad")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.Soyad).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.Soyad).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "KartID")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.KartID).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.KartID).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "EkipAdi")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.EkipAdi).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.EkipAdi).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "Tip")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.Tip).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.Tip).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "Zaman")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.Zaman).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.Zaman).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "AnahtarKaybi")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.AnahtarKaybi).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.AnahtarKaybi).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "AracHasar")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.AracHasar).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.AracHasar).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "CamAcik")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.CamAcik).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.CamAcik).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "VitesKonum")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.VitesKonum).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.VitesKonum).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "ElfrenKonum")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.ElfrenKonum).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.ElfrenKonum).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "Diger")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.Diger).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.Diger).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "SorunYok")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.SorunYok).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.SorunYok).ToList();
-                            deger = 1;
-                        }
-                    }
-                    else if (izgara.Columns[column].Name == "SorunDurum")
-                    {
-                        if (deger == 1)
-                        {
-                            izgara.DataSource = liste.OrderByDescending(x => x.SorunDurum).ToList();
-                            deger = 2;
-                        }
-                        else if (deger == 2)
-                        {
-                            izgara.DataSource = liste.OrderBy(x => x.SorunDurum).ToList();
-                            deger = 1;
-                        }
-                    }
-                    for (int i = 0; i < izgara.Rows.Count; i++)
-                    {
-                        Application.DoEvents();
-                        DataGridViewCellStyle renk = new DataGridViewCellStyle();
-                        if (izgara.Rows[i].Cells["SorunYok"].Value.ToString() == "False")
-                        {
-                            renk.BackColor = Color.Red;
-                        }
-                        izgara.Rows[i].DefaultCellStyle = renk;
-                    }
-                }
-                catch (Exception)
-                {
-                }
-
-            }
-        }
-
         public DateTime Zaman(string barkod)
         {
             try
@@ -465,7 +212,18 @@ namespace BD.Data
             {
                 return DateTime.MaxValue;
             }
-            
+
         }
+
+        public DataTable TableListe(string sp)
+        {
+            SqlConnection con = new SqlConnection("data source =.; initial catalog = ProjeB; integrated security = True; MultipleActiveResultSets = True; App = EntityFramework");
+            SqlDataAdapter adp = new SqlDataAdapter(sp, con);
+            DataTable tablo = new DataTable();
+            adp.Fill(tablo);
+            return tablo;
+        }
+
+
     }
 }

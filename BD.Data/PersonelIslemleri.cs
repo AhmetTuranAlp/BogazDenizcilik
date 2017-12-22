@@ -10,10 +10,9 @@ namespace BD.Data
 {
     public class PersonelIslemleri
     {
-       
         public bool Ekle(DTO.PersonelDTO personel)
         {
-           
+
             try
             {
                 if (personel.Adi != "" && personel.Soyad != "" && personel.KartID != "")
@@ -160,7 +159,7 @@ namespace BD.Data
                                      KartID = p.KartID,
                                      PersonelID = p.PersonelID,
                                      Soyad = p.Soyad
-                                 }).Where(x => x.Durum == true && x.Adi.Contains(arama) || x.Soyad.Contains(arama)).ToList();
+                                 }).Where(x => x.Durum == true && x.Adi.Contains(arama) || x.Soyad.Contains(arama) || x.KartID.Contains(arama) || x.EkipAdi.Contains(arama)).ToList();
                     return liste;
                 }
                 catch (Exception)
@@ -235,6 +234,17 @@ namespace BD.Data
                 {
                     return new DTO.PersonelDTO();
                 }
+            }
+        }
+        public bool KartIDKontrol(string kartId)
+        {
+            using (var db = new ProjeBEntities())
+            {
+                Personel kontrol = db.Personel.FirstOrDefault(x => x.KartID == kartId);
+                if (kontrol == null)
+                    return true;
+                else
+                    return false;
             }
         }
     }

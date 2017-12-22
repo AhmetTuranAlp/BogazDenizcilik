@@ -52,10 +52,10 @@ namespace BD.WindowsForm
 
         private void btnDosyaKaydet_Click(object sender, EventArgs e)
         {
-            label1.Text = "Dosya Kaydetme İşlemi Başladı.";
             ftp.Listeleme();
             ftp.XmlKaydet(progressBar1);
             label1.Text = "Dosya Kaydetme İşlemi Tamamlandı.";
+
         }
     }
 }

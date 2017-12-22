@@ -33,6 +33,8 @@
             this.dtgSifreView = new System.Windows.Forms.DataGridView();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.cmsBackup = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.konumAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel8 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -56,40 +58,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnKaydet = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.bilgileriAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.kayıtSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtFtpPort = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtFtpPas = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtFtpUser = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtFtpAdres = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtCihazAd = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtAra = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnSil = new System.Windows.Forms.Button();
-            this.btnGuncelle = new System.Windows.Forms.Button();
-            this.btnEkle = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.cmsBackup = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.konumAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSifreView)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.cmsBackup.SuspendLayout();
             this.panel8.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -98,17 +75,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabPage1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.cmsBackup.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel6
@@ -148,6 +117,20 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(514, 462);
             this.dataGridView2.TabIndex = 4;
+            // 
+            // cmsBackup
+            // 
+            this.cmsBackup.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.konumAktarToolStripMenuItem});
+            this.cmsBackup.Name = "cmsBackup";
+            this.cmsBackup.Size = new System.Drawing.Size(145, 26);
+            // 
+            // konumAktarToolStripMenuItem
+            // 
+            this.konumAktarToolStripMenuItem.Name = "konumAktarToolStripMenuItem";
+            this.konumAktarToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.konumAktarToolStripMenuItem.Text = "Konum Aktar";
+            this.konumAktarToolStripMenuItem.Click += new System.EventHandler(this.konumAktarToolStripMenuItem_Click);
             // 
             // panel8
             // 
@@ -392,257 +375,6 @@
             this.textBox2.TabIndex = 39;
             this.textBox2.UseSystemPasswordChar = true;
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Controls.Add(this.panel4);
-            this.tabPage1.Controls.Add(this.panel5);
-            this.tabPage1.Controls.Add(this.panel3);
-            this.tabPage1.Location = new System.Drawing.Point(4, 23);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(939, 470);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Cihaz İşlemleri";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(308, 59);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(628, 409);
-            this.panel1.TabIndex = 14;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(618, 399);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bilgileriAktarToolStripMenuItem,
-            this.kayıtSilToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(145, 48);
-            // 
-            // bilgileriAktarToolStripMenuItem
-            // 
-            this.bilgileriAktarToolStripMenuItem.Name = "bilgileriAktarToolStripMenuItem";
-            this.bilgileriAktarToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.bilgileriAktarToolStripMenuItem.Text = "Bilgileri Aktar";
-            this.bilgileriAktarToolStripMenuItem.Click += new System.EventHandler(this.bilgileriAktarToolStripMenuItem_Click);
-            // 
-            // kayıtSilToolStripMenuItem
-            // 
-            this.kayıtSilToolStripMenuItem.Name = "kayıtSilToolStripMenuItem";
-            this.kayıtSilToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.kayıtSilToolStripMenuItem.Text = "Kayıt Sil";
-            this.kayıtSilToolStripMenuItem.Click += new System.EventHandler(this.kayıtSilToolStripMenuItem_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.SystemColors.Control;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel4.Controls.Add(this.txtFtpPort);
-            this.panel4.Controls.Add(this.label7);
-            this.panel4.Controls.Add(this.txtFtpPas);
-            this.panel4.Controls.Add(this.label8);
-            this.panel4.Controls.Add(this.txtFtpUser);
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Controls.Add(this.txtFtpAdres);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.txtCihazAd);
-            this.panel4.Controls.Add(this.label5);
-            this.panel4.Location = new System.Drawing.Point(3, 59);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(303, 409);
-            this.panel4.TabIndex = 13;
-            // 
-            // txtFtpPort
-            // 
-            this.txtFtpPort.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtFtpPort.Location = new System.Drawing.Point(12, 275);
-            this.txtFtpPort.Name = "txtFtpPort";
-            this.txtFtpPort.Size = new System.Drawing.Size(273, 20);
-            this.txtFtpPort.TabIndex = 9;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label7.Location = new System.Drawing.Point(9, 258);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 14);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Ftp Port:";
-            // 
-            // txtFtpPas
-            // 
-            this.txtFtpPas.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtFtpPas.Location = new System.Drawing.Point(12, 221);
-            this.txtFtpPas.Name = "txtFtpPas";
-            this.txtFtpPas.Size = new System.Drawing.Size(273, 20);
-            this.txtFtpPas.TabIndex = 7;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label8.Location = new System.Drawing.Point(9, 204);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 14);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Ftp Şifre:";
-            // 
-            // txtFtpUser
-            // 
-            this.txtFtpUser.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtFtpUser.Location = new System.Drawing.Point(12, 166);
-            this.txtFtpUser.Name = "txtFtpUser";
-            this.txtFtpUser.Size = new System.Drawing.Size(273, 20);
-            this.txtFtpUser.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(9, 149);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 14);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "FtpUser:";
-            // 
-            // txtFtpAdres
-            // 
-            this.txtFtpAdres.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtFtpAdres.Location = new System.Drawing.Point(12, 112);
-            this.txtFtpAdres.Name = "txtFtpAdres";
-            this.txtFtpAdres.Size = new System.Drawing.Size(273, 20);
-            this.txtFtpAdres.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(9, 95);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 14);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Ftp Adres:";
-            // 
-            // txtCihazAd
-            // 
-            this.txtCihazAd.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtCihazAd.Location = new System.Drawing.Point(12, 58);
-            this.txtCihazAd.Name = "txtCihazAd";
-            this.txtCihazAd.Size = new System.Drawing.Size(273, 20);
-            this.txtCihazAd.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(9, 41);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 14);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Cihaz Adı:";
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.Control;
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Controls.Add(this.txtAra);
-            this.panel5.Location = new System.Drawing.Point(308, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(628, 54);
-            this.panel5.TabIndex = 12;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(309, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 14);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Cihaz Ara:";
-            // 
-            // txtAra
-            // 
-            this.txtAra.Location = new System.Drawing.Point(377, 16);
-            this.txtAra.Multiline = true;
-            this.txtAra.Name = "txtAra";
-            this.txtAra.Size = new System.Drawing.Size(234, 20);
-            this.txtAra.TabIndex = 6;
-            this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Controls.Add(this.btnSil);
-            this.panel3.Controls.Add(this.btnGuncelle);
-            this.panel3.Controls.Add(this.btnEkle);
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(303, 54);
-            this.panel3.TabIndex = 9;
-            // 
-            // btnSil
-            // 
-            this.btnSil.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSil.BackgroundImage = global::BD.WindowsForm.Properties.Resources.cihazsil;
-            this.btnSil.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSil.Location = new System.Drawing.Point(202, 3);
-            this.btnSil.Name = "btnSil";
-            this.btnSil.Size = new System.Drawing.Size(94, 45);
-            this.btnSil.TabIndex = 4;
-            this.btnSil.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSil.UseVisualStyleBackColor = false;
-            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
-            this.btnSil.MouseHover += new System.EventHandler(this.btnSil_MouseHover);
-            // 
-            // btnGuncelle
-            // 
-            this.btnGuncelle.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGuncelle.BackgroundImage = global::BD.WindowsForm.Properties.Resources.cihazguncelle;
-            this.btnGuncelle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGuncelle.Location = new System.Drawing.Point(103, 3);
-            this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(94, 45);
-            this.btnGuncelle.TabIndex = 3;
-            this.btnGuncelle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuncelle.UseVisualStyleBackColor = false;
-            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
-            this.btnGuncelle.MouseHover += new System.EventHandler(this.btnGuncelle_MouseHover);
-            // 
-            // btnEkle
-            // 
-            this.btnEkle.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEkle.BackgroundImage = global::BD.WindowsForm.Properties.Resources.cihazekle;
-            this.btnEkle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEkle.Location = new System.Drawing.Point(3, 3);
-            this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(94, 45);
-            this.btnEkle.TabIndex = 2;
-            this.btnEkle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEkle.UseVisualStyleBackColor = false;
-            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
-            this.btnEkle.MouseHover += new System.EventHandler(this.btnEkle_MouseHover);
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panel6);
@@ -668,7 +400,6 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -677,20 +408,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(947, 497);
             this.tabControl1.TabIndex = 2;
-            // 
-            // cmsBackup
-            // 
-            this.cmsBackup.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.konumAktarToolStripMenuItem});
-            this.cmsBackup.Name = "cmsBackup";
-            this.cmsBackup.Size = new System.Drawing.Size(153, 48);
-            // 
-            // konumAktarToolStripMenuItem
-            // 
-            this.konumAktarToolStripMenuItem.Name = "konumAktarToolStripMenuItem";
-            this.konumAktarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.konumAktarToolStripMenuItem.Text = "Konum Aktar";
-            this.konumAktarToolStripMenuItem.Click += new System.EventHandler(this.konumAktarToolStripMenuItem_Click);
             // 
             // Ayarlar
             // 
@@ -707,6 +424,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgSifreView)).EndInit();
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.cmsBackup.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
@@ -718,19 +436,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabPage1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel3.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.cmsBackup.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -751,30 +459,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem bilgileriAktarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem kayıtSilToolStripMenuItem;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox txtFtpPort;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtFtpPas;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtFtpUser;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtFtpAdres;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtCihazAd;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtAra;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnSil;
-        private System.Windows.Forms.Button btnGuncelle;
-        private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;

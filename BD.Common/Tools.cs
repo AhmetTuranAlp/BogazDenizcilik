@@ -27,14 +27,14 @@ namespace BD.Common
             {
                 MessageBox.Show(ex.Message);
             }
-           
+
         }
 
         public void HataliOperasyonKayitlari(DataGridView grid)
         {
             try
             {
-                for (int i = 0; i < grid.Rows.Count; i++)
+                for (int i = 0; i < grid.Rows.Count - 1; i++)
                 {
                     Application.DoEvents();
                     DataGridViewCellStyle renk = new DataGridViewCellStyle();
@@ -49,7 +49,7 @@ namespace BD.Common
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         public void SorunFiltre(DataGridView izgara, int index, ToolStripMenuItem menu)

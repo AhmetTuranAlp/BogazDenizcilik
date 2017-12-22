@@ -62,10 +62,11 @@ namespace BD.WindowsForm
             EkipListe();
             PersonelListe();
             GridFont();
+
             cmbEkip.DataSource = ekip.Listeleme();
             cmbEkip.DisplayMember = "EkipAdi";
             cmbEkip.ValueMember = "EkipID";
-            cmbEkip.Text = "";
+            cmbEkip.SelectedIndex = 15;
         }
 
         private void btnEkle_Click(object sender, EventArgs e)
@@ -76,10 +77,24 @@ namespace BD.WindowsForm
             perDtoEkle.KartID = txtKartID.Text;
             perDtoEkle.EkipID = (int)cmbEkip.SelectedValue;
             perDtoEkle.Durum = true;
-            if (per.Ekle(perDtoEkle))
-                MessageBox.Show("Personel Eklendi.");
+            if (per.KartIDKontrol(perDtoEkle.KartID))
+            {
+                if (per.Ekle(perDtoEkle))
+                {
+                    if (perDtoEkle.EkipID == 16)
+                        MessageBox.Show("Personel Eklendi. Ekip seçmediğiniz için personel 'GENEL' grubuna atandı.");
+                    else
+                        MessageBox.Show("Personel Eklendi.");
+                }
+
+                else
+                    MessageBox.Show("Personel ekleme işleminde hata oluştu.");
+            }
             else
-                MessageBox.Show("Personel ekleme işleminde hata oluştu.");
+            {
+                MessageBox.Show("KartID'e ait personel vardır. Bu KartID ile personel ekleme yapılamaz.");
+            }
+
             PersonelListe();
         }
 
@@ -92,10 +107,22 @@ namespace BD.WindowsForm
             perDtoDuzenle.KartID = txtKartID.Text;
             perDtoDuzenle.EkipID = (int)cmbEkip.SelectedValue;
             perDtoDuzenle.Durum = true;
-            if (per.Duzenle(perDtoDuzenle))
-                MessageBox.Show("Personel bilgileri düzenlendi.");
+            if (per.KartIDKontrol(perDtoDuzenle.KartID))
+            {
+                if (per.Duzenle(perDtoDuzenle))
+                {
+                    if (perDtoDuzenle.EkipID==16)
+                        MessageBox.Show("Personel bilgileri düzenlendi. Ekip seçmediğiniz için personel 'GENEL' grubuna atandı.");
+                }
+                else
+                {
+                    MessageBox.Show("Personel bilgi düzenleme işleminde hata oluştu.");
+                }  
+            }
             else
-                MessageBox.Show("Personel bilgi düzenleme işleminde hata oluştu.");
+            {
+                MessageBox.Show("KartID'e ait personel vardır. Bu KartID ile personel düzeltme yapılamaz.");
+            }
             PersonelListe();
         }
 

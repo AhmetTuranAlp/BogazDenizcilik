@@ -180,11 +180,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(289, 19);
+            this.label6.Location = new System.Drawing.Point(342, 19);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 14);
+            this.label6.Size = new System.Drawing.Size(29, 14);
             this.label6.TabIndex = 7;
-            this.label6.Text = "Personel Adı:";
+            this.label6.Text = "Ara:";
             // 
             // txtAra
             // 

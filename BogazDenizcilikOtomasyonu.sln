@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BD.Data", "BD.Data\BD.Data.csproj", "{48F9F9CF-4C4F-4688-B9DC-A96D54634566}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BD.DTO", "BD.DTO\BD.DTO.csproj", "{25BF67DD-63BF-47AE-AD10-C62E39C81B15}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BD.WindowsForm", "BD.WindowsForm\BD.WindowsForm.csproj", "{50DD6E59-96DB-46FC-BBB9-B5C5B30F9DF8}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "BogazDenizcilikSetup", "BogazDenizcilikSetup\BogazDenizcilikSetup.vdproj", "{DA47A9FA-2311-44A5-9B51-541D8404C7AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,8 @@ Global
 		{50DD6E59-96DB-46FC-BBB9-B5C5B30F9DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50DD6E59-96DB-46FC-BBB9-B5C5B30F9DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50DD6E59-96DB-46FC-BBB9-B5C5B30F9DF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA47A9FA-2311-44A5-9B51-541D8404C7AB}.Debug|Any CPU.ActiveCfg = Debug
+		{DA47A9FA-2311-44A5-9B51-541D8404C7AB}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

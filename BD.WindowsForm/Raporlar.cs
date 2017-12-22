@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,10 +30,10 @@ namespace BD.WindowsForm
 
         private void Raporlar_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = operasyon.Listeleme();
+            dataGridView1.DataSource = operasyon.TableListe("spOperasyonListe");
             arac.DatagridBoyutlandir(dataGridView1, 16);
             arac.HataliOperasyonKayitlari(dataGridView1);
-            lblToplamKayit.Text = "Operasyon Adet: " + dataGridView1.RowCount;
+            lblToplamKayit.Text = "Operasyon Adet: " + (dataGridView1.RowCount - 1);
         }
 
         public void TwoDtp()
@@ -168,48 +169,37 @@ namespace BD.WindowsForm
                 {
                     if (cmbSecimIcerik.SelectedItem.ToString() == "Genel Rapor")
                     {
-                        lst.Clear();
-                        foreach (var item in liste)
-                        {
-                            if (Convert.ToDateTime(string.Format("{0: dd/MM/yyyy HH:mm:ss}", item.Zaman.Value)) >= baslangic && Convert.ToDateTime(string.Format("{0: dd/MM/yyyy HH:mm:ss}", item.Zaman.Value)) <= bitis)
-                            {
-                                lst.Add(item);
-                            }
-                        }
-                        dataGridView1.DataSource = lst;
+                        DataView dv = operasyon.TableListe("spOperasyonListe").DefaultView;
+                        dv.RowFilter = string.Format("Zaman >= '{0}' AND Zaman <= '{1}'", baslangic, bitis);
+                        dataGridView1.DataSource = dv;
                         arac.DatagridBoyutlandir(dataGridView1, 16);
                         arac.HataliOperasyonKayitlari(dataGridView1);
                     }
                     else
                     {
-                        lst.Clear();
                         if (cmbSecimIcerik.SelectedItem != null)
                         {
-                            var ekipCalisma = 0;
+                            var CalismaBas = Convert.ToDateTime(string.Format("{0: dd/MM/yyyy 00:00:00}", dtpCalismaTarih.Value));
+                            var CalismaBit = Convert.ToDateTime(string.Format("{0: dd/MM/yyyy 23:59:59}", dtpCalismaTarih.Value));
+                            DataView dv = operasyon.TableListe("spOperasyonListe").DefaultView;
+                            dv.RowFilter = string.Format("Zaman >= '{0}' AND Zaman <= '{1}' AND Adi +' '+ Soyad ='{2}'", CalismaBas, CalismaBit, cmbSecimIcerik.SelectedItem.ToString());
 
-                            foreach (var item in liste)
-                            {
-                                if (Convert.ToDateTime(string.Format("{0: dd/MM/yyyy}", item.Zaman.Value)) == Convert.ToDateTime(string.Format("{0: dd/MM/yyyy}", dtpCalismaTarih.Value)))
-                                {
-                                    if (item.Adi + " " + item.Soyad == cmbSecimIcerik.SelectedItem.ToString())
-                                    {
-                                        lst.Add(item);
-                                    }
-                                    if (personel.PersonelEkipAdi(cmbSecimIcerik.SelectedItem.ToString()) == item.EkipAdi)
-                                    {
-                                        ekipCalisma++;
-                                    }
-                                }
-                            }
-                            dataGridView1.DataSource = lst;
+                            int dvListe = dv.Count;
+                            dataGridView1.DataSource = dv;
                             arac.DatagridBoyutlandir(dataGridView1, 16);
                             arac.HataliOperasyonKayitlari(dataGridView1);
 
-                            if (lst.Count() == 0 && ekipCalisma != 0)
+                            PersonelIslemleri personelIslemleri = new PersonelIslemleri();
+                            string perEkip = personelIslemleri.PersonelEkipAdi(cmbSecimIcerik.SelectedItem.ToString());
+                            DataView couuntDV = operasyon.TableListe("spOperasyonListe").DefaultView;
+                            couuntDV.RowFilter = string.Format("Zaman >= '{0}' AND Zaman <= '{1}' AND EkipAdi ='{2}'", CalismaBas, CalismaBit, perEkip);
+                            int ekipCalisma = couuntDV.Count;
+                            
+                            if (dvListe == 0 && ekipCalisma > 0)
                             {
                                 MessageBox.Show("Bu tarihde ekip elemanları çalışmış olup " + cmbSecimIcerik.SelectedItem.ToString() + " adlı personel calışmamıştır.");
                             }
-                            else if (lst.Count() == 0 && ekipCalisma == 0)
+                            else if (dvListe == 0 && ekipCalisma == 0)
                             {
                                 MessageBox.Show("Bu tarihde tüm ekip elemanları çalışmamıştır.");
                             }
@@ -220,23 +210,13 @@ namespace BD.WindowsForm
                             MessageBox.Show("Tüm kriterleri girmeniz gerekiyor.");
                         }
                     }
-
                 }
                 else if (cmbTur.SelectedItem.ToString() == "Operasyon Raporu")
                 {
-                    lst.Clear();
-                    foreach (var item in liste)
-                    {
-                        if (item.Tip == cmbSecimIcerik.SelectedItem.ToString())
-                        {
-                            if (Convert.ToDateTime(string.Format("{0: dd/MM/yyyy HH:mm:ss}", item.Zaman.Value)) >= baslangic && Convert.ToDateTime(string.Format("{0: dd/MM/yyyy HH:mm:ss}", item.Zaman.Value)) <= bitis)
-                            {
-                                lst.Add(item);
-                            }
-                        }
 
-                    }
-                    dataGridView1.DataSource = lst;
+                    DataView dv = operasyon.TableListe("spOperasyonListe").DefaultView;
+                    dv.RowFilter = string.Format("Zaman >= '{0}' AND Zaman <= '{1}' AND Tip = '{2}'", baslangic, bitis, cmbSecimIcerik.SelectedItem.ToString());
+                    dataGridView1.DataSource = dv;
                     arac.DatagridBoyutlandir(dataGridView1, 16);
                     arac.HataliOperasyonKayitlari(dataGridView1);
                 }
@@ -350,7 +330,7 @@ namespace BD.WindowsForm
                 MessageBox.Show("Tüm kriterleri girmeniz gerekiyor.");
             }
 
-            lblToplamKayit.Text = "Operasyon Adet: " + dataGridView1.RowCount;
+            lblToplamKayit.Text = "Operasyon Adet: " + (dataGridView1.RowCount - 1);
         }
 
         //Yazdırma İşlemi Başlangıç------------------------------------------------------------
@@ -602,7 +582,7 @@ namespace BD.WindowsForm
 
         private void btnYenile_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = operasyon.Listeleme();
+            dataGridView1.DataSource = operasyon.TableListe("spOperasyonListe");
             arac.DatagridBoyutlandir(dataGridView1, 16);
             arac.HataliOperasyonKayitlari(dataGridView1);
             lblToplamKayit.Text = "Operasyon Adet: " + dataGridView1.RowCount;
