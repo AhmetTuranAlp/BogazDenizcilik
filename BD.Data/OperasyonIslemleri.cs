@@ -130,10 +130,7 @@ namespace BD.Data
             {
                 try
                 {
-                    Operasyon o = db.Operasyon.FirstOrDefault(x => x.Barkod.ToString() == arama);
-                    if (o != null)
-                    {
-                        var liste = (from op in db.Operasyon
+                        return (from op in db.Operasyon
                                      from p in db.Personel
                                      from ek in db.Ekipler
                                      where op.PersonelID == p.PersonelID && p.EkipID == ek.EkipID
@@ -155,14 +152,7 @@ namespace BD.Data
                                          Diger = (bool)op.Diger,
                                          SorunYok = (bool)op.SorunYok,
                                          SorunDurum = (bool)op.SorunDurum
-                                     }).Where(x => x.Barkod == o.Barkod).ToList();
-                        return liste;
-                    }
-                    else
-                    {
-                        return new List<DTO.OperasyonModelViewDTO>();
-                    }
-
+                                     }).Where(x => x.Barkod.Contains(arama)).ToList();
                 }
                 catch (Exception)
                 {

@@ -101,14 +101,21 @@ namespace BD.Common
                     pdfHucresi.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
                     pdfTablosu.AddCell(pdfHucresi);
                 }
-
-                foreach (DataGridViewRow satir in veriTablosu.Rows)
+                try
                 {
-                    foreach (DataGridViewCell cell in satir.Cells)
+                    foreach (DataGridViewRow satir in veriTablosu.Rows)
                     {
-                        pdfTablosu.AddCell(new Phrase(cell.Value.ToString(), fontNormal));
+
+                        foreach (DataGridViewCell cell in satir.Cells)
+                        {
+                            pdfTablosu.AddCell(new Phrase(cell.Value.ToString(), fontNormal));
+                        }
                     }
                 }
+                catch
+                {
+                }
+
 
                 SaveFileDialog dosyakaydet = new SaveFileDialog();
                 dosyakaydet.FileName = "projePDfDosyaAdı";
@@ -130,10 +137,13 @@ namespace BD.Common
                     }
                 }
             }
-            catch (Exception hata)
+            catch (Exception)
             {
-                MessageBox.Show(hata.Message);
+
+                throw;
             }
+          
+
 
         }
 

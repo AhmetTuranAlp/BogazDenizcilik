@@ -19,6 +19,7 @@ namespace BD.WindowsForm
         {
             InitializeComponent();
         }
+
         OperasyonIslemleri operasyon = new OperasyonIslemleri();
         Tools arac = new Tools();
 
@@ -27,41 +28,26 @@ namespace BD.WindowsForm
             dataGridView1.DataSource = operasyon.TableListe("spOperasyonListe");
             arac.DatagridBoyutlandir(dataGridView1, 16);
             arac.HataliOperasyonKayitlari(dataGridView1);
-            lblToplamKayit.Text = "Toplam Kayıt: " + dataGridView1.RowCount;
+            lblToplamKayit.Text = "Toplam Kayıt: " + (dataGridView1.RowCount - 1);
         }
 
         private void OperasyonTakip_Load(object sender, EventArgs e)
         {
             OperasyonListeleme();
         }
-
-        private void btnArac_Click(object sender, EventArgs e)
-        {
-            string ara = txtAra.Text;
-            if (txtAra.Text == "")
-            {
-                MessageBox.Show("Barkod Giriniz");
-                operasyon.Listeleme();
-            }
-            else
-            {
-                dataGridView1.DataSource = operasyon.OperasyonAramaListe(ara);
-                arac.DatagridBoyutlandir(dataGridView1, 16);
-                lblToplamKayit.Text = "Toplam Kayıt: " + dataGridView1.RowCount;
-                
-            }
-        }
-
-        private void btnTemizle_Click(object sender, EventArgs e)
-        {
-            OperasyonListeleme();
-            txtAra.Clear();
-        }
-
+        
         private void aramaKutusunaBarkodAktarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dataGridView1.CurrentRow;
             txtAra.Text = row.Cells["Barkod"].Value.ToString();
         }
+
+        private void txtAra_TextChanged(object sender, EventArgs e)
+        {
+                dataGridView1.DataSource = operasyon.OperasyonAramaListe(txtAra.Text.ToString());
+                arac.DatagridBoyutlandir(dataGridView1, 16);
+                lblToplamKayit.Text = "Toplam Kayıt: " + dataGridView1.RowCount;
+        }
+
     }
 }

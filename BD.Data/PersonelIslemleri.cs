@@ -236,6 +236,7 @@ namespace BD.Data
                 }
             }
         }
+
         public bool KartIDKontrol(string kartId)
         {
             using (var db = new ProjeBEntities())

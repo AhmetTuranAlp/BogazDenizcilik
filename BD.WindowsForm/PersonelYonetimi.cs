@@ -44,7 +44,6 @@ namespace BD.WindowsForm
                 }
             }
             dataGridView2.DataSource = lst;
-            dataGridView2.Columns["Durum"].Visible = false;
             arac.DatagridBoyutlandir(dataGridView2, 3);
         }
 
@@ -68,64 +67,7 @@ namespace BD.WindowsForm
             cmbEkip.ValueMember = "EkipID";
             cmbEkip.SelectedIndex = 15;
         }
-
-        private void btnEkle_Click(object sender, EventArgs e)
-        {
-            DTO.PersonelDTO perDtoEkle = new PersonelDTO();
-            perDtoEkle.Adi = txtAd.Text;
-            perDtoEkle.Soyad = txtSoyad.Text;
-            perDtoEkle.KartID = txtKartID.Text;
-            perDtoEkle.EkipID = (int)cmbEkip.SelectedValue;
-            perDtoEkle.Durum = true;
-            if (per.KartIDKontrol(perDtoEkle.KartID))
-            {
-                if (per.Ekle(perDtoEkle))
-                {
-                    if (perDtoEkle.EkipID == 16)
-                        MessageBox.Show("Personel Eklendi. Ekip seçmediğiniz için personel 'GENEL' grubuna atandı.");
-                    else
-                        MessageBox.Show("Personel Eklendi.");
-                }
-
-                else
-                    MessageBox.Show("Personel ekleme işleminde hata oluştu.");
-            }
-            else
-            {
-                MessageBox.Show("KartID'e ait personel vardır. Bu KartID ile personel ekleme yapılamaz.");
-            }
-
-            PersonelListe();
-        }
-
-        private void btnGuncelle_Click(object sender, EventArgs e)
-        {
-            DTO.PersonelDTO perDtoDuzenle = new PersonelDTO();
-            perDtoDuzenle.PersonelID = Convert.ToInt32(txtAd.Tag);
-            perDtoDuzenle.Adi = txtAd.Text;
-            perDtoDuzenle.Soyad = txtSoyad.Text;
-            perDtoDuzenle.KartID = txtKartID.Text;
-            perDtoDuzenle.EkipID = (int)cmbEkip.SelectedValue;
-            perDtoDuzenle.Durum = true;
-            if (per.KartIDKontrol(perDtoDuzenle.KartID))
-            {
-                if (per.Duzenle(perDtoDuzenle))
-                {
-                    if (perDtoDuzenle.EkipID==16)
-                        MessageBox.Show("Personel bilgileri düzenlendi. Ekip seçmediğiniz için personel 'GENEL' grubuna atandı.");
-                }
-                else
-                {
-                    MessageBox.Show("Personel bilgi düzenleme işleminde hata oluştu.");
-                }  
-            }
-            else
-            {
-                MessageBox.Show("KartID'e ait personel vardır. Bu KartID ile personel düzeltme yapılamaz.");
-            }
-            PersonelListe();
-        }
-
+        
         public void KayitSil()
         {
             DialogResult sonuc = MessageBox.Show("Secili Kayıt Silinsin mi?", "Kayıt Silme", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -140,32 +82,9 @@ namespace BD.WindowsForm
             }
         }
 
-        private void btnSil_Click(object sender, EventArgs e)
-        {
-            KayitSil();
-        }
-
         private void kayıtSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
             KayitSil();
-        }
-
-        private void bilgileriAktarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DataGridViewRow row = dataGridView1.CurrentRow;
-                txtAd.Text = row.Cells["Adi"].Value.ToString();
-                txtSoyad.Text = row.Cells["Soyad"].Value.ToString();
-                txtKartID.Text = row.Cells["KartID"].Value.ToString();
-                cmbEkip.Text = "";
-                cmbEkip.Text = row.Cells["EkipAdi"].Value.ToString();
-                txtAd.Tag = row.Cells["PersonelID"].Value;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Aktarma İşleminde Hata Oluştu.");
-            }
         }
 
         private void ayrılmışPersonellerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -194,7 +113,82 @@ namespace BD.WindowsForm
             arac.DatagridBoyutlandir(dataGridView1, 5);
         }
 
-        private void btnEkipEkle_Click(object sender, EventArgs e)
+        private void kayıtDüzenleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = dataGridView1.CurrentRow;
+                txtAd.Text = row.Cells["Adi"].Value.ToString();
+                txtSoyad.Text = row.Cells["Soyad"].Value.ToString();
+                txtKartID.Text = row.Cells["KartID"].Value.ToString();
+                cmbEkip.Text = "";
+                cmbEkip.Text = row.Cells["EkipAdi"].Value.ToString();
+                txtAd.Tag = row.Cells["PersonelID"].Value;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Aktarma İşleminde Hata Oluştu.");
+            }
+        }
+
+        private void btnKaydet_Click(object sender, EventArgs e)
+        {
+            DTO.PersonelDTO perDto = new PersonelDTO();
+            perDto.PersonelID = Convert.ToInt32(txtAd.Tag);
+            perDto.Adi = txtAd.Text;
+            perDto.Soyad = txtSoyad.Text;
+            perDto.KartID = txtKartID.Text;
+            perDto.EkipID = (int)cmbEkip.SelectedValue;
+            perDto.Durum = true;
+            if (txtAd.Tag != null)
+            {
+                var gelenPer = per.TekPersonel(perDto.KartID);
+                if (gelenPer.KartID == perDto.KartID && (gelenPer.Adi != perDto.Adi || gelenPer.Soyad != perDto.Soyad || gelenPer.EkipID != perDto.EkipID))
+                {
+                    if (per.Duzenle(perDto))
+                    {
+                        if (perDto.EkipID == 16)
+                            MessageBox.Show("Personel bilgileri düzenlendi. Ekip seçmediğiniz için personel 'GENEL' grubuna atandı.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Personel bilgi düzenleme işleminde hata oluştu.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("KartID'e ait personel vardır. Bu KartID ile personel düzeltme yapılamaz.");
+                }
+            }
+            else if (txtAd.Tag == null)
+            {
+                if (per.KartIDKontrol(perDto.KartID))
+                {
+                    if (per.Ekle(perDto))
+                    {
+                        if (perDto.EkipID == 16)
+                            MessageBox.Show("Personel Eklendi. Ekip seçmediğiniz için personel 'GENEL' grubuna atandı.");
+                        else
+                            MessageBox.Show("Personel Eklendi.");
+                    }
+
+                    else
+                        MessageBox.Show("Personel ekleme işleminde hata oluştu.");
+                }
+                else
+                {
+                    MessageBox.Show("KartID'e ait personel vardır. Bu KartID ile personel ekleme yapılamaz.");
+                }
+
+            }
+
+            txtAd.Clear();
+            txtSoyad.Clear();
+            txtKartID.Clear();
+            cmbEkip.Text = "";
+        }
+        
+        private void ekipEkleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string ekipEkle = Interaction.InputBox("Ekip Adını Giriniz", "Ekip Ekle", "", 300, 100);
             string ekipAd = ekipEkle;
@@ -215,7 +209,7 @@ namespace BD.WindowsForm
             }
         }
 
-        private void btnEkipDuzenle_Click(object sender, EventArgs e)
+        private void ekipDüzenleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string ekipDuzenle = Interaction.InputBox("Yeni Ekip Adını Giriniz", "Ekip Güncelle", dataGridView2.CurrentRow.Cells["EkipAdi"].Value.ToString(), 300, 100);
             string ekipAd = ekipDuzenle;
@@ -237,7 +231,7 @@ namespace BD.WindowsForm
             }
         }
 
-        private void btnEkipSil_Click(object sender, EventArgs e)
+        private void ekipSilToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult sonuc = MessageBox.Show("Secili Kayıt Silinsin mi?", "Kayıt Silme", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (sonuc == DialogResult.Yes)
@@ -250,42 +244,6 @@ namespace BD.WindowsForm
                 EkipListe();
                 PersonelListe();
             }
-        }
-
-        private void txtEkipAra_TextChanged(object sender, EventArgs e)
-        {
-            string ara = txtEkipAra.Text;
-            dataGridView2.DataSource = ekip.EkipListeArama(ara);
-        }
-
-        private void btnEkle_MouseHover(object sender, EventArgs e)
-        {
-            toolTip1.SetToolTip(btnEkle, "Personel Ekle");
-        }
-
-        private void btnGuncelle_MouseHover(object sender, EventArgs e)
-        {
-            toolTip1.SetToolTip(btnGuncelle, "Personel Düzenle");
-        }
-
-        private void btnSil_MouseHover(object sender, EventArgs e)
-        {
-            toolTip1.SetToolTip(btnSil, "Personel Sil");
-        }
-
-        private void btnEkipEkle_MouseHover(object sender, EventArgs e)
-        {
-            toolTip1.SetToolTip(btnEkipEkle, "Ekip Ekleme");
-        }
-
-        private void btnEkipDuzenle_MouseHover(object sender, EventArgs e)
-        {
-            toolTip1.SetToolTip(btnEkipDuzenle, "Ekip Düzenleme");
-        }
-
-        private void btnEkipSil_MouseHover(object sender, EventArgs e)
-        {
-            toolTip1.SetToolTip(btnEkipSil, "Ekip Sil");
         }
     }
 }

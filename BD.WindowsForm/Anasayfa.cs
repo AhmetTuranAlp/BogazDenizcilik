@@ -53,12 +53,6 @@ namespace BD.WindowsForm
             yavruform(sifre);
         }
 
-        private void operasyonTakipToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OperasyonTakip operasyon = new OperasyonTakip();
-            yavruform(operasyon);
-        }
-
         private void yardımToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Yardim yardim = new Yardim();
@@ -103,6 +97,18 @@ namespace BD.WindowsForm
         private void Anasayfa_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void operasyonSayfasıToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OperasyonTakip operasyon = new OperasyonTakip();
+            yavruform(operasyon);
+        }
+
+        private void operasyonEkleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OperasyonEkle operasyonEkle = new OperasyonEkle();
+            yavruform(operasyonEkle);
         }
     }
 }

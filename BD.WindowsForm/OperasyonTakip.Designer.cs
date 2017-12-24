@@ -35,8 +35,6 @@
             this.aramaKutusunaBarkodAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblToplamKayit = new System.Windows.Forms.Label();
-            this.btnTemizle = new System.Windows.Forms.Button();
-            this.btnArac = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAra = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -83,8 +81,6 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.lblToplamKayit);
-            this.panel1.Controls.Add(this.btnTemizle);
-            this.panel1.Controls.Add(this.btnArac);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtAra);
             this.panel1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -103,35 +99,11 @@
             this.lblToplamKayit.TabIndex = 5;
             this.lblToplamKayit.Text = "Toplam Kayıt:";
             // 
-            // btnTemizle
-            // 
-            this.btnTemizle.BackgroundImage = global::BD.WindowsForm.Properties.Resources.Yenile;
-            this.btnTemizle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTemizle.Location = new System.Drawing.Point(979, 3);
-            this.btnTemizle.Name = "btnTemizle";
-            this.btnTemizle.Size = new System.Drawing.Size(53, 43);
-            this.btnTemizle.TabIndex = 4;
-            this.btnTemizle.UseVisualStyleBackColor = true;
-            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
-            // 
-            // btnArac
-            // 
-            this.btnArac.BackgroundImage = global::BD.WindowsForm.Properties.Resources.Operasyon_Ara;
-            this.btnArac.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnArac.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnArac.Location = new System.Drawing.Point(920, 3);
-            this.btnArac.Name = "btnArac";
-            this.btnArac.Size = new System.Drawing.Size(53, 43);
-            this.btnArac.TabIndex = 3;
-            this.btnArac.UseVisualStyleBackColor = true;
-            this.btnArac.Click += new System.EventHandler(this.btnArac_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(599, 17);
+            this.label1.Location = new System.Drawing.Point(720, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 1;
@@ -139,10 +111,11 @@
             // 
             // txtAra
             // 
-            this.txtAra.Location = new System.Drawing.Point(656, 14);
+            this.txtAra.Location = new System.Drawing.Point(777, 17);
             this.txtAra.Name = "txtAra";
             this.txtAra.Size = new System.Drawing.Size(248, 20);
             this.txtAra.TabIndex = 0;
+            this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
             // 
             // OperasyonTakip
             // 
@@ -171,8 +144,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblToplamKayit;
-        private System.Windows.Forms.Button btnTemizle;
-        private System.Windows.Forms.Button btnArac;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAra;
         private System.Windows.Forms.ToolTip toolTip1;

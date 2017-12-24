@@ -659,10 +659,28 @@ namespace BD.WindowsForm
 
         private void SorunluKayitlariListeleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = operasyon.SorunluKayitlariListeleme();
+            try
+            {
+                dataGridView1.DataSource = operasyon.SorunluKayitlariListeleme();
             arac.DatagridBoyutlandir(dataGridView1, 16);
             arac.HataliOperasyonKayitlari(dataGridView1);
             lblToplamKayit.Text = "Operasyon Adet: " + dataGridView1.RowCount;
+           
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    Application.DoEvents();
+                    DataGridViewCellStyle renk = new DataGridViewCellStyle();
+                    if (dataGridView1.Rows[i].Cells["SorunYok"].Value.ToString() == "False")
+                    {
+                        renk.BackColor = Color.Red;
+                    }
+                    dataGridView1.Rows[i].DefaultCellStyle = renk;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 
