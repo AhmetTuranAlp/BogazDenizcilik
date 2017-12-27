@@ -35,6 +35,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtAra = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnKaydet = new System.Windows.Forms.Button();
             this.cmbEkip = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtKartID = new System.Windows.Forms.TextBox();
@@ -46,6 +47,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.kayıtDüzenleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kayıtSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayrılmışPersonellerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aktifPersonellerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,13 +55,11 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.kayıtDüzenleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnKaydet = new System.Windows.Forms.Button();
             this.cmsEkip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ekipEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ekipDüzenleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ekipSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -147,6 +147,16 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(303, 465);
             this.panel4.TabIndex = 21;
+            // 
+            // btnKaydet
+            // 
+            this.btnKaydet.Location = new System.Drawing.Point(72, 250);
+            this.btnKaydet.Name = "btnKaydet";
+            this.btnKaydet.Size = new System.Drawing.Size(135, 48);
+            this.btnKaydet.TabIndex = 8;
+            this.btnKaydet.Text = "Kaydet";
+            this.btnKaydet.UseVisualStyleBackColor = true;
+            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
             // cmbEkip
             // 
@@ -252,6 +262,13 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(179, 114);
             // 
+            // kayıtDüzenleToolStripMenuItem
+            // 
+            this.kayıtDüzenleToolStripMenuItem.Name = "kayıtDüzenleToolStripMenuItem";
+            this.kayıtDüzenleToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.kayıtDüzenleToolStripMenuItem.Text = "Kayıt Düzenle";
+            this.kayıtDüzenleToolStripMenuItem.Click += new System.EventHandler(this.kayıtDüzenleToolStripMenuItem_Click);
+            // 
             // kayıtSilToolStripMenuItem
             // 
             this.kayıtSilToolStripMenuItem.Name = "kayıtSilToolStripMenuItem";
@@ -310,23 +327,6 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(921, 453);
             this.dataGridView2.TabIndex = 1;
-            // 
-            // kayıtDüzenleToolStripMenuItem
-            // 
-            this.kayıtDüzenleToolStripMenuItem.Name = "kayıtDüzenleToolStripMenuItem";
-            this.kayıtDüzenleToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.kayıtDüzenleToolStripMenuItem.Text = "Kayıt Düzenle";
-            this.kayıtDüzenleToolStripMenuItem.Click += new System.EventHandler(this.kayıtDüzenleToolStripMenuItem_Click);
-            // 
-            // btnKaydet
-            // 
-            this.btnKaydet.Location = new System.Drawing.Point(150, 236);
-            this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(135, 48);
-            this.btnKaydet.TabIndex = 8;
-            this.btnKaydet.Text = "Kaydet";
-            this.btnKaydet.UseVisualStyleBackColor = true;
-            this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
             // cmsEkip
             // 

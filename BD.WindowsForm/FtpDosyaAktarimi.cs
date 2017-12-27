@@ -52,8 +52,8 @@ namespace BD.WindowsForm
 
         private void btnDosyaKaydet_Click(object sender, EventArgs e)
         {
-            ftp.Listeleme();
-            ftp.XmlKaydet(progressBar1);
+            ftp.DosyaSil(@"\XmlBackup\");
+            ftp.XmlKaydet(progressBar1, @"\XmlData\");
             label1.Text = "Dosya Kaydetme İşlemi Tamamlandı.";
 
         }

@@ -682,6 +682,13 @@ namespace BD.WindowsForm
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void txtBarkod_TextChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = operasyon.OperasyonAramaListe(txtBarkod.Text.ToString());
+            arac.DatagridBoyutlandir(dataGridView1, 16);
+            lblToplamKayit.Text = "Toplam Kayıt: " + dataGridView1.RowCount;
+        }
     }
 
 

@@ -32,14 +32,15 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.elTerminaldenAktarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operasyonTakipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operasyonSayfasıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operasyonEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rapolarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personelYönetimiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sorunlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yardımToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.çıkışToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.operasyonSayfasıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.operasyonEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hatalıKayıtlarıKontrolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,12 +75,27 @@
             // 
             this.operasyonTakipToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.operasyonSayfasıToolStripMenuItem,
-            this.operasyonEkleToolStripMenuItem});
+            this.operasyonEkleToolStripMenuItem,
+            this.hatalıKayıtlarıKontrolToolStripMenuItem});
             this.operasyonTakipToolStripMenuItem.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.operasyonTakipToolStripMenuItem.Name = "operasyonTakipToolStripMenuItem";
             this.operasyonTakipToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.operasyonTakipToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
             this.operasyonTakipToolStripMenuItem.Text = "Operasyon Takip";
+            // 
+            // operasyonSayfasıToolStripMenuItem
+            // 
+            this.operasyonSayfasıToolStripMenuItem.Name = "operasyonSayfasıToolStripMenuItem";
+            this.operasyonSayfasıToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.operasyonSayfasıToolStripMenuItem.Text = "Operasyon Sayfası";
+            this.operasyonSayfasıToolStripMenuItem.Click += new System.EventHandler(this.operasyonSayfasıToolStripMenuItem_Click);
+            // 
+            // operasyonEkleToolStripMenuItem
+            // 
+            this.operasyonEkleToolStripMenuItem.Name = "operasyonEkleToolStripMenuItem";
+            this.operasyonEkleToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.operasyonEkleToolStripMenuItem.Text = "Operasyon Ekle";
+            this.operasyonEkleToolStripMenuItem.Click += new System.EventHandler(this.operasyonEkleToolStripMenuItem_Click);
             // 
             // rapolarToolStripMenuItem
             // 
@@ -134,19 +150,12 @@
             this.çıkışToolStripMenuItem.Text = "Çıkış";
             this.çıkışToolStripMenuItem.Click += new System.EventHandler(this.çıkışToolStripMenuItem_Click);
             // 
-            // operasyonSayfasıToolStripMenuItem
+            // hatalıKayıtlarıKontrolToolStripMenuItem
             // 
-            this.operasyonSayfasıToolStripMenuItem.Name = "operasyonSayfasıToolStripMenuItem";
-            this.operasyonSayfasıToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.operasyonSayfasıToolStripMenuItem.Text = "Operasyon Sayfası";
-            this.operasyonSayfasıToolStripMenuItem.Click += new System.EventHandler(this.operasyonSayfasıToolStripMenuItem_Click);
-            // 
-            // operasyonEkleToolStripMenuItem
-            // 
-            this.operasyonEkleToolStripMenuItem.Name = "operasyonEkleToolStripMenuItem";
-            this.operasyonEkleToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
-            this.operasyonEkleToolStripMenuItem.Text = "Operasyon Ekle";
-            this.operasyonEkleToolStripMenuItem.Click += new System.EventHandler(this.operasyonEkleToolStripMenuItem_Click);
+            this.hatalıKayıtlarıKontrolToolStripMenuItem.Name = "hatalıKayıtlarıKontrolToolStripMenuItem";
+            this.hatalıKayıtlarıKontrolToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.hatalıKayıtlarıKontrolToolStripMenuItem.Text = "Hatalı Kayıtlar Kontrol";
+            this.hatalıKayıtlarıKontrolToolStripMenuItem.Click += new System.EventHandler(this.hatalıKayıtlarıKontrolToolStripMenuItem_Click);
             // 
             // Anasayfa
             // 
@@ -182,5 +191,6 @@
         private System.Windows.Forms.ToolStripMenuItem çıkışToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operasyonSayfasıToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operasyonEkleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hatalıKayıtlarıKontrolToolStripMenuItem;
     }
 }

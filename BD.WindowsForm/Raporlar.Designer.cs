@@ -231,6 +231,7 @@
             this.txtBarkod.Name = "txtBarkod";
             this.txtBarkod.Size = new System.Drawing.Size(206, 20);
             this.txtBarkod.TabIndex = 10;
+            this.txtBarkod.TextChanged += new System.EventHandler(this.txtBarkod_TextChanged);
             this.txtBarkod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBarkod_KeyPress);
             // 
             // groupBox1
@@ -409,7 +410,7 @@
             this.sorunFiltrelemeToolStripMenuItem,
             this.SorunluKayitlariListeleToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(197, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(197, 48);
             // 
             // sorunFiltrelemeToolStripMenuItem
             // 
@@ -429,7 +430,7 @@
             // 
             this.anahtarKaybiToolStripMenuItem.CheckOnClick = true;
             this.anahtarKaybiToolStripMenuItem.Name = "anahtarKaybiToolStripMenuItem";
-            this.anahtarKaybiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.anahtarKaybiToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.anahtarKaybiToolStripMenuItem.Text = "Anahtar Kaybi";
             this.anahtarKaybiToolStripMenuItem.Click += new System.EventHandler(this.anahtarKaybiToolStripMenuItem_Click);
             // 
@@ -437,7 +438,7 @@
             // 
             this.aracHasarToolStripMenuItem.CheckOnClick = true;
             this.aracHasarToolStripMenuItem.Name = "aracHasarToolStripMenuItem";
-            this.aracHasarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aracHasarToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.aracHasarToolStripMenuItem.Text = "Arac Hasar";
             this.aracHasarToolStripMenuItem.Click += new System.EventHandler(this.aracHasarToolStripMenuItem_Click);
             // 
@@ -445,7 +446,7 @@
             // 
             this.camAcikToolStripMenuItem.CheckOnClick = true;
             this.camAcikToolStripMenuItem.Name = "camAcikToolStripMenuItem";
-            this.camAcikToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.camAcikToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.camAcikToolStripMenuItem.Text = "Cam Acik";
             this.camAcikToolStripMenuItem.Click += new System.EventHandler(this.camAcikToolStripMenuItem_Click);
             // 
@@ -453,7 +454,7 @@
             // 
             this.vitesKonumToolStripMenuItem.CheckOnClick = true;
             this.vitesKonumToolStripMenuItem.Name = "vitesKonumToolStripMenuItem";
-            this.vitesKonumToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.vitesKonumToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.vitesKonumToolStripMenuItem.Text = "Vites Konum";
             this.vitesKonumToolStripMenuItem.Click += new System.EventHandler(this.vitesKonumToolStripMenuItem_Click);
             // 
@@ -461,7 +462,7 @@
             // 
             this.elfrenKonumToolStripMenuItem.CheckOnClick = true;
             this.elfrenKonumToolStripMenuItem.Name = "elfrenKonumToolStripMenuItem";
-            this.elfrenKonumToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.elfrenKonumToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.elfrenKonumToolStripMenuItem.Text = "Elfren Konum";
             this.elfrenKonumToolStripMenuItem.Click += new System.EventHandler(this.elfrenKonumToolStripMenuItem_Click);
             // 
@@ -469,7 +470,7 @@
             // 
             this.digerToolStripMenuItem.CheckOnClick = true;
             this.digerToolStripMenuItem.Name = "digerToolStripMenuItem";
-            this.digerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.digerToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.digerToolStripMenuItem.Text = "Diger";
             this.digerToolStripMenuItem.Click += new System.EventHandler(this.digerToolStripMenuItem_Click);
             // 
@@ -477,7 +478,7 @@
             // 
             this.soruncYokToolStripMenuItem.CheckOnClick = true;
             this.soruncYokToolStripMenuItem.Name = "soruncYokToolStripMenuItem";
-            this.soruncYokToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.soruncYokToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.soruncYokToolStripMenuItem.Text = "SorunYok";
             this.soruncYokToolStripMenuItem.Click += new System.EventHandler(this.soruncYokToolStripMenuItem_Click);
             // 

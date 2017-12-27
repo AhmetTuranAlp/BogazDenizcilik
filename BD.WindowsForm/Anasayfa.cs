@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -109,6 +110,12 @@ namespace BD.WindowsForm
         {
             OperasyonEkle operasyonEkle = new OperasyonEkle();
             yavruform(operasyonEkle);
+        }
+
+        private void hatalıKayıtlarıKontrolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HataliKayitAktarimi hata = new HataliKayitAktarimi();
+            yavruform(hata);
         }
     }
 }

@@ -67,7 +67,7 @@ namespace BD.WindowsForm
             cmbEkip.ValueMember = "EkipID";
             cmbEkip.SelectedIndex = 15;
         }
-        
+
         public void KayitSil()
         {
             DialogResult sonuc = MessageBox.Show("Secili Kayıt Silinsin mi?", "Kayıt Silme", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -133,61 +133,69 @@ namespace BD.WindowsForm
 
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            DTO.PersonelDTO perDto = new PersonelDTO();
-            perDto.PersonelID = Convert.ToInt32(txtAd.Tag);
-            perDto.Adi = txtAd.Text;
-            perDto.Soyad = txtSoyad.Text;
-            perDto.KartID = txtKartID.Text;
-            perDto.EkipID = (int)cmbEkip.SelectedValue;
-            perDto.Durum = true;
-            if (txtAd.Tag != null)
+            if (txtAd.Text != "" && txtSoyad.Text != "" && txtKartID.Text != "" && cmbEkip.SelectedItem != null)
             {
-                var gelenPer = per.TekPersonel(perDto.KartID);
-                if (gelenPer.KartID == perDto.KartID && (gelenPer.Adi != perDto.Adi || gelenPer.Soyad != perDto.Soyad || gelenPer.EkipID != perDto.EkipID))
+                DTO.PersonelDTO perDto = new PersonelDTO();
+                perDto.PersonelID = Convert.ToInt32(txtAd.Tag);
+                perDto.Adi = txtAd.Text;
+                perDto.Soyad = txtSoyad.Text;
+                perDto.KartID = txtKartID.Text;
+                perDto.EkipID = (int)cmbEkip.SelectedValue;
+                perDto.Durum = true;
+                if (txtAd.Tag != null)
                 {
-                    if (per.Duzenle(perDto))
+                    var gelenPer = per.TekPersonel(perDto.KartID);
+                    if (gelenPer.KartID == perDto.KartID && (gelenPer.Adi != perDto.Adi || gelenPer.Soyad != perDto.Soyad || gelenPer.EkipID != perDto.EkipID))
                     {
-                        if (perDto.EkipID == 16)
-                            MessageBox.Show("Personel bilgileri düzenlendi. Ekip seçmediğiniz için personel 'GENEL' grubuna atandı.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Personel bilgi düzenleme işleminde hata oluştu.");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("KartID'e ait personel vardır. Bu KartID ile personel düzeltme yapılamaz.");
-                }
-            }
-            else if (txtAd.Tag == null)
-            {
-                if (per.KartIDKontrol(perDto.KartID))
-                {
-                    if (per.Ekle(perDto))
-                    {
-                        if (perDto.EkipID == 16)
-                            MessageBox.Show("Personel Eklendi. Ekip seçmediğiniz için personel 'GENEL' grubuna atandı.");
+                        if (per.Duzenle(perDto))
+                        {
+                            if (perDto.EkipID == 16)
+                                MessageBox.Show("Personel bilgileri düzenlendi. Ekip seçmediğiniz için personel 'GENEL' grubuna atandı.");
+                        }
                         else
-                            MessageBox.Show("Personel Eklendi.");
+                        {
+                            MessageBox.Show("Personel bilgi düzenleme işleminde hata oluştu.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("KartID'e ait personel vardır. Bu KartID ile personel düzeltme yapılamaz.");
+                    }
+                }
+                else if (txtAd.Tag == null)
+                {
+                    if (per.KartIDKontrol(perDto.KartID))
+                    {
+                        if (per.Ekle(perDto))
+                        {
+                            if (perDto.EkipID == 16)
+                                MessageBox.Show("Personel Eklendi. Ekip seçmediğiniz için personel 'GENEL' grubuna atandı.");
+                            else
+                                MessageBox.Show("Personel Eklendi.");
+                        }
+
+                        else
+                            MessageBox.Show("Personel ekleme işleminde hata oluştu.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("KartID'e ait personel vardır. Bu KartID ile personel ekleme yapılamaz.");
                     }
 
-                    else
-                        MessageBox.Show("Personel ekleme işleminde hata oluştu.");
-                }
-                else
-                {
-                    MessageBox.Show("KartID'e ait personel vardır. Bu KartID ile personel ekleme yapılamaz.");
                 }
 
+                txtAd.Clear();
+                txtSoyad.Clear();
+                txtKartID.Clear();
+                cmbEkip.Text = "";
             }
-
-            txtAd.Clear();
-            txtSoyad.Clear();
-            txtKartID.Clear();
-            cmbEkip.Text = "";
+            else
+            {
+                MessageBox.Show("Bos Deger Girmeyin.");
+            }
+           
         }
-        
+
         private void ekipEkleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string ekipEkle = Interaction.InputBox("Ekip Adını Giriniz", "Ekip Ekle", "", 300, 100);
