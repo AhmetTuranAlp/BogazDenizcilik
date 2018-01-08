@@ -91,7 +91,6 @@ namespace BD.WindowsForm
             VeritabaniListeleme();
         }
 
-
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
 
@@ -171,12 +170,9 @@ namespace BD.WindowsForm
         {
             if (dbIslem.Backup(txtBackup.Text.ToString()))
             {
-                if (chkBackupDrive.Checked == true)
-                {
-                    GoogleDriveYukle();
-                    MessageBox.Show("Yedek alma işlemi başarılı bir şekilde alınmıştır.");
-                    VeritabaniListeleme();
-                }
+                GoogleDriveYukle();
+                VeritabaniListeleme();
+                MessageBox.Show("Yedek alma işlemi başarılı bir şekilde alınmıştır.");
             }
             else
             {
