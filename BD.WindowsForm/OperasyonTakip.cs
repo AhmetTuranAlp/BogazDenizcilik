@@ -44,10 +44,9 @@ namespace BD.WindowsForm
 
         private void txtAra_TextChanged(object sender, EventArgs e)
         {
-                dataGridView1.DataSource = operasyon.OperasyonAramaListe(txtAra.Text.ToString());
-                arac.DatagridBoyutlandir(dataGridView1, 16);
-                lblToplamKayit.Text = "Toplam Kayıt: " + dataGridView1.RowCount;
+            dataGridView1.DataSource = operasyon.OperasyonAramaListe(txtAra.Text.ToString());
+            arac.DatagridBoyutlandir(dataGridView1, 16);
+            lblToplamKayit.Text = "Toplam Kayıt: " + dataGridView1.RowCount;
         }
-
     }
 }

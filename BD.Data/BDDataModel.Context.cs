@@ -43,6 +43,11 @@ namespace BD.Data
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spEkipGenelPerformans_Result>("spEkipGenelPerformans");
         }
     
+        public virtual ObjectResult<spOperasyonArsivListe_Result> spOperasyonArsivListe()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spOperasyonArsivListe_Result>("spOperasyonArsivListe");
+        }
+    
         public virtual ObjectResult<spOperasyonListe_Result> spOperasyonListe()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spOperasyonListe_Result>("spOperasyonListe");

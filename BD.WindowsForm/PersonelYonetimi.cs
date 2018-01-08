@@ -29,6 +29,7 @@ namespace BD.WindowsForm
             dataGridView1.DataSource = per.PersonelEkipListe(true);
             dataGridView1.Columns["Durum"].Visible = false;
             arac.DatagridBoyutlandir(dataGridView1, 5);
+            lblToplamKayit.Text = "Toplam Personel: " + dataGridView1.RowCount;
         }
 
         public void EkipListe()
@@ -102,13 +103,6 @@ namespace BD.WindowsForm
         private void ekipsizPersonellerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = per.EkipsizPersonelListesi();
-            dataGridView1.Columns["Durum"].Visible = false;
-            arac.DatagridBoyutlandir(dataGridView1, 5);
-        }
-
-        private void txtAra_TextChanged(object sender, EventArgs e)
-        {
-            dataGridView1.DataSource = per.PersonelEkipAramaListe(txtAra.Text.ToString());
             dataGridView1.Columns["Durum"].Visible = false;
             arac.DatagridBoyutlandir(dataGridView1, 5);
         }
@@ -252,6 +246,14 @@ namespace BD.WindowsForm
                 EkipListe();
                 PersonelListe();
             }
+        }
+
+        private void txtAra_TextChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = per.PersonelEkipAramaListe(txtAra.Text.ToString());
+            dataGridView1.Columns["Durum"].Visible = false;
+            arac.DatagridBoyutlandir(dataGridView1, 5);
+            lblToplamKayit.Text = "Toplam Personel: " + dataGridView1.RowCount;
         }
     }
 }

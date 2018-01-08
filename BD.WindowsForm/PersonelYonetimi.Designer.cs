@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtAra = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnKaydet = new System.Windows.Forms.Button();
             this.cmbEkip = new System.Windows.Forms.ComboBox();
@@ -60,9 +57,12 @@
             this.ekipDüzenleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ekipSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtAra = new System.Windows.Forms.TextBox();
+            this.lblToplamKayit = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -71,6 +71,7 @@
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.cmsEkip.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -81,7 +82,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(947, 495);
+            this.tabControl1.Size = new System.Drawing.Size(947, 468);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
@@ -93,41 +94,10 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(939, 468);
+            this.tabPage1.Size = new System.Drawing.Size(939, 441);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Personel İşlemleri";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.Control;
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Controls.Add(this.txtAra);
-            this.panel5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.panel5.Location = new System.Drawing.Point(308, 3);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(628, 54);
-            this.panel5.TabIndex = 20;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(342, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 14);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Ara:";
-            // 
-            // txtAra
-            // 
-            this.txtAra.Location = new System.Drawing.Point(377, 16);
-            this.txtAra.Multiline = true;
-            this.txtAra.Name = "txtAra";
-            this.txtAra.Size = new System.Drawing.Size(234, 20);
-            this.txtAra.TabIndex = 6;
-            this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
             // 
             // panel4
             // 
@@ -143,18 +113,21 @@
             this.panel4.Controls.Add(this.txtAd);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Location = new System.Drawing.Point(3, 108);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(303, 465);
+            this.panel4.Size = new System.Drawing.Size(303, 331);
             this.panel4.TabIndex = 21;
             // 
             // btnKaydet
             // 
-            this.btnKaydet.Location = new System.Drawing.Point(72, 250);
+            this.btnKaydet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKaydet.Image = global::BD.WindowsForm.Properties.Resources.Update;
+            this.btnKaydet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnKaydet.Location = new System.Drawing.Point(13, 262);
             this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(135, 48);
+            this.btnKaydet.Size = new System.Drawing.Size(273, 49);
             this.btnKaydet.TabIndex = 8;
-            this.btnKaydet.Text = "Kaydet";
+            this.btnKaydet.Text = "Personel Kaydet";
             this.btnKaydet.UseVisualStyleBackColor = true;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 
@@ -163,7 +136,7 @@
             this.cmbEkip.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbEkip.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cmbEkip.FormattingEnabled = true;
-            this.cmbEkip.Location = new System.Drawing.Point(12, 193);
+            this.cmbEkip.Location = new System.Drawing.Point(13, 209);
             this.cmbEkip.Name = "cmbEkip";
             this.cmbEkip.Size = new System.Drawing.Size(273, 22);
             this.cmbEkip.TabIndex = 7;
@@ -172,7 +145,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(9, 176);
+            this.label1.Location = new System.Drawing.Point(10, 192);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 14);
             this.label1.TabIndex = 6;
@@ -181,7 +154,7 @@
             // txtKartID
             // 
             this.txtKartID.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtKartID.Location = new System.Drawing.Point(12, 140);
+            this.txtKartID.Location = new System.Drawing.Point(13, 159);
             this.txtKartID.Name = "txtKartID";
             this.txtKartID.Size = new System.Drawing.Size(273, 20);
             this.txtKartID.TabIndex = 5;
@@ -190,7 +163,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(9, 123);
+            this.label4.Location = new System.Drawing.Point(10, 142);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 14);
             this.label4.TabIndex = 4;
@@ -199,7 +172,7 @@
             // txtSoyad
             // 
             this.txtSoyad.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtSoyad.Location = new System.Drawing.Point(12, 86);
+            this.txtSoyad.Location = new System.Drawing.Point(13, 113);
             this.txtSoyad.Name = "txtSoyad";
             this.txtSoyad.Size = new System.Drawing.Size(273, 20);
             this.txtSoyad.TabIndex = 3;
@@ -208,7 +181,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(9, 69);
+            this.label3.Location = new System.Drawing.Point(10, 96);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 14);
             this.label3.TabIndex = 2;
@@ -217,7 +190,7 @@
             // txtAd
             // 
             this.txtAd.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtAd.Location = new System.Drawing.Point(12, 32);
+            this.txtAd.Location = new System.Drawing.Point(13, 68);
             this.txtAd.Name = "txtAd";
             this.txtAd.Size = new System.Drawing.Size(273, 20);
             this.txtAd.TabIndex = 1;
@@ -226,7 +199,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(9, 15);
+            this.label5.Location = new System.Drawing.Point(10, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 14);
             this.label5.TabIndex = 0;
@@ -237,9 +210,9 @@
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(308, 59);
+            this.panel1.Location = new System.Drawing.Point(308, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(628, 409);
+            this.panel1.Size = new System.Drawing.Size(628, 436);
             this.panel1.TabIndex = 22;
             // 
             // dataGridView1
@@ -248,7 +221,7 @@
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             this.dataGridView1.Location = new System.Drawing.Point(2, 2);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(622, 402);
+            this.dataGridView1.Size = new System.Drawing.Size(622, 427);
             this.dataGridView1.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -304,7 +277,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(939, 468);
+            this.tabPage2.Size = new System.Drawing.Size(939, 441);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ekip İşlemleri";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -316,16 +289,16 @@
             this.panel8.Controls.Add(this.dataGridView2);
             this.panel8.Location = new System.Drawing.Point(3, 3);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(933, 465);
+            this.panel8.Size = new System.Drawing.Size(933, 435);
             this.panel8.TabIndex = 26;
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.ContextMenuStrip = this.cmsEkip;
-            this.dataGridView2.Location = new System.Drawing.Point(4, 5);
+            this.dataGridView2.Location = new System.Drawing.Point(2, 2);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(921, 453);
+            this.dataGridView2.Size = new System.Drawing.Size(924, 428);
             this.dataGridView2.TabIndex = 1;
             // 
             // cmsEkip
@@ -358,21 +331,63 @@
             this.ekipSilToolStripMenuItem.Text = "Ekip Sil";
             this.ekipSilToolStripMenuItem.Click += new System.EventHandler(this.ekipSilToolStripMenuItem_Click);
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.Control;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.Controls.Add(this.lblToplamKayit);
+            this.panel5.Controls.Add(this.label6);
+            this.panel5.Controls.Add(this.txtAra);
+            this.panel5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.panel5.Location = new System.Drawing.Point(4, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(302, 103);
+            this.panel5.TabIndex = 23;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label6.Location = new System.Drawing.Point(9, 14);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 14);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Ara:";
+            // 
+            // txtAra
+            // 
+            this.txtAra.Location = new System.Drawing.Point(12, 31);
+            this.txtAra.Multiline = true;
+            this.txtAra.Name = "txtAra";
+            this.txtAra.Size = new System.Drawing.Size(273, 20);
+            this.txtAra.TabIndex = 6;
+            this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
+            // 
+            // lblToplamKayit
+            // 
+            this.lblToplamKayit.AutoSize = true;
+            this.lblToplamKayit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblToplamKayit.Location = new System.Drawing.Point(9, 74);
+            this.lblToplamKayit.Name = "lblToplamKayit";
+            this.lblToplamKayit.Size = new System.Drawing.Size(105, 13);
+            this.lblToplamKayit.TabIndex = 9;
+            this.lblToplamKayit.Text = "Toplam Personel:";
+            // 
             // PersonelYonetimi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(946, 498);
+            this.ClientSize = new System.Drawing.Size(946, 469);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "PersonelYonetimi";
-            this.Text = "PersonelYonetimi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Personel Yonetimi";
             this.Load += new System.EventHandler(this.PersonelYonetimi_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -382,6 +397,8 @@
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.cmsEkip.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -390,9 +407,6 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtAra;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox cmbEkip;
         private System.Windows.Forms.Label label1;
@@ -419,5 +433,9 @@
         private System.Windows.Forms.ToolStripMenuItem ekipEkleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ekipDüzenleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ekipSilToolStripMenuItem;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtAra;
+        private System.Windows.Forms.Label lblToplamKayit;
     }
 }

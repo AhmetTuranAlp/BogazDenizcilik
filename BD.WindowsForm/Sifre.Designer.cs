@@ -74,6 +74,7 @@
             this.Controls.Add(this.btnTamam);
             this.Controls.Add(this.txtSifre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "Sifre";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sifre";

@@ -34,13 +34,16 @@
             this.operasyonTakipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operasyonSayfasıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operasyonEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hatalıKayıtlarıKontrolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operasyonArşivToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.arşivlenmişKayıtlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kayıtlarıAvşivleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rapolarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personelYönetimiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sorunlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayarlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yardımToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.çıkışToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hatalıKayıtlarıKontrolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +79,8 @@
             this.operasyonTakipToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.operasyonSayfasıToolStripMenuItem,
             this.operasyonEkleToolStripMenuItem,
-            this.hatalıKayıtlarıKontrolToolStripMenuItem});
+            this.hatalıKayıtlarıKontrolToolStripMenuItem,
+            this.operasyonArşivToolStripMenuItem});
             this.operasyonTakipToolStripMenuItem.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.operasyonTakipToolStripMenuItem.Name = "operasyonTakipToolStripMenuItem";
             this.operasyonTakipToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
@@ -96,6 +100,36 @@
             this.operasyonEkleToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.operasyonEkleToolStripMenuItem.Text = "Operasyon Ekle";
             this.operasyonEkleToolStripMenuItem.Click += new System.EventHandler(this.operasyonEkleToolStripMenuItem_Click);
+            // 
+            // hatalıKayıtlarıKontrolToolStripMenuItem
+            // 
+            this.hatalıKayıtlarıKontrolToolStripMenuItem.Name = "hatalıKayıtlarıKontrolToolStripMenuItem";
+            this.hatalıKayıtlarıKontrolToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.hatalıKayıtlarıKontrolToolStripMenuItem.Text = "Hatalı Kayıtlar Kontrol";
+            this.hatalıKayıtlarıKontrolToolStripMenuItem.Click += new System.EventHandler(this.hatalıKayıtlarıKontrolToolStripMenuItem_Click);
+            // 
+            // operasyonArşivToolStripMenuItem
+            // 
+            this.operasyonArşivToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.arşivlenmişKayıtlarToolStripMenuItem,
+            this.kayıtlarıAvşivleToolStripMenuItem});
+            this.operasyonArşivToolStripMenuItem.Name = "operasyonArşivToolStripMenuItem";
+            this.operasyonArşivToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.operasyonArşivToolStripMenuItem.Text = "Operasyon Arşiv";
+            // 
+            // arşivlenmişKayıtlarToolStripMenuItem
+            // 
+            this.arşivlenmişKayıtlarToolStripMenuItem.Name = "arşivlenmişKayıtlarToolStripMenuItem";
+            this.arşivlenmişKayıtlarToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.arşivlenmişKayıtlarToolStripMenuItem.Text = "Arşivlenmiş Kayıtlar";
+            this.arşivlenmişKayıtlarToolStripMenuItem.Click += new System.EventHandler(this.arşivlenmişKayıtlarToolStripMenuItem_Click);
+            // 
+            // kayıtlarıAvşivleToolStripMenuItem
+            // 
+            this.kayıtlarıAvşivleToolStripMenuItem.Name = "kayıtlarıAvşivleToolStripMenuItem";
+            this.kayıtlarıAvşivleToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.kayıtlarıAvşivleToolStripMenuItem.Text = "Kayıtları Avşivle";
+            this.kayıtlarıAvşivleToolStripMenuItem.Click += new System.EventHandler(this.kayıtlarıAvşivleToolStripMenuItem_Click);
             // 
             // rapolarToolStripMenuItem
             // 
@@ -150,13 +184,6 @@
             this.çıkışToolStripMenuItem.Text = "Çıkış";
             this.çıkışToolStripMenuItem.Click += new System.EventHandler(this.çıkışToolStripMenuItem_Click);
             // 
-            // hatalıKayıtlarıKontrolToolStripMenuItem
-            // 
-            this.hatalıKayıtlarıKontrolToolStripMenuItem.Name = "hatalıKayıtlarıKontrolToolStripMenuItem";
-            this.hatalıKayıtlarıKontrolToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.hatalıKayıtlarıKontrolToolStripMenuItem.Text = "Hatalı Kayıtlar Kontrol";
-            this.hatalıKayıtlarıKontrolToolStripMenuItem.Click += new System.EventHandler(this.hatalıKayıtlarıKontrolToolStripMenuItem_Click);
-            // 
             // Anasayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,5 +219,8 @@
         private System.Windows.Forms.ToolStripMenuItem operasyonSayfasıToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operasyonEkleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hatalıKayıtlarıKontrolToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem operasyonArşivToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem arşivlenmişKayıtlarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kayıtlarıAvşivleToolStripMenuItem;
     }
 }

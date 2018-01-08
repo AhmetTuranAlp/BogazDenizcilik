@@ -54,6 +54,7 @@
     <Compile Include="Arsiv.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ArsivIslemleri.cs" />
     <Compile Include="Ayarlar.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
@@ -102,6 +103,9 @@
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="spEkipGenelPerformans_Result.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="spOperasyonArsivListe_Result.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="spOperasyonListe_Result.cs">

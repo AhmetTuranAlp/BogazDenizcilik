@@ -261,13 +261,21 @@ namespace BD.Data
 
         public DataTable TableListe(string sp)
         {
-            VeritabaniYedekIslemleri dbIslem = new VeritabaniYedekIslemleri();
-            string connec = dbIslem.ConnectionString();
-            SqlConnection con = new SqlConnection(connec);
-            SqlDataAdapter adp = new SqlDataAdapter(sp, con);
-            DataTable tablo = new DataTable();
-            adp.Fill(tablo);
-            return tablo;
+            try
+            {
+                VeritabaniYedekIslemleri dbIslem = new VeritabaniYedekIslemleri();
+                string connec = dbIslem.ConnectionString();
+                SqlConnection con = new SqlConnection(connec);
+                SqlDataAdapter adp = new SqlDataAdapter(sp, con);
+                DataTable tablo = new DataTable();
+                adp.Fill(tablo);
+                return tablo;
+            }
+            catch (Exception )
+            {
+                return new DataTable();
+            }
+        
         }
 
 

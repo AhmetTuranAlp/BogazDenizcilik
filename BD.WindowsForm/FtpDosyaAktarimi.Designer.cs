@@ -100,15 +100,17 @@
             // 
             // btnDosyaKaydet
             // 
-            this.btnDosyaKaydet.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.btnDosyaKaydet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDosyaKaydet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDosyaKaydet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnDosyaKaydet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDosyaKaydet.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnDosyaKaydet.Image = global::BD.WindowsForm.Properties.Resources.datatransfer;
+            this.btnDosyaKaydet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDosyaKaydet.Location = new System.Drawing.Point(4, 3);
             this.btnDosyaKaydet.Name = "btnDosyaKaydet";
             this.btnDosyaKaydet.Size = new System.Drawing.Size(309, 73);
             this.btnDosyaKaydet.TabIndex = 8;
-            this.btnDosyaKaydet.Text = "Operasyon Kayıtları Kaydet";
+            this.btnDosyaKaydet.Text = "               Operasyon Kayıtları Kaydet";
             this.btnDosyaKaydet.UseVisualStyleBackColor = false;
             this.btnDosyaKaydet.Click += new System.EventHandler(this.btnDosyaKaydet_Click);
             // 
@@ -122,6 +124,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "FtpDosyaAktarimi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dosya Aktarımı";

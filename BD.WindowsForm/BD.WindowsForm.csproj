@@ -84,6 +84,18 @@
     <Compile Include="HataliKayitAktarimi.Designer.cs">
       <DependentUpon>HataliKayitAktarimi.cs</DependentUpon>
     </Compile>
+    <Compile Include="KayıtlariArsivle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KayıtlariArsivle.Designer.cs">
+      <DependentUpon>KayıtlariArsivle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OperasyonArsiv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OperasyonArsiv.Designer.cs">
+      <DependentUpon>OperasyonArsiv.cs</DependentUpon>
+    </Compile>
     <Compile Include="OperasyonEkle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +151,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HataliKayitAktarimi.resx">
       <DependentUpon>HataliKayitAktarimi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KayıtlariArsivle.resx">
+      <DependentUpon>KayıtlariArsivle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OperasyonArsiv.resx">
+      <DependentUpon>OperasyonArsiv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OperasyonEkle.resx">
       <DependentUpon>OperasyonEkle.cs</DependentUpon>
@@ -269,6 +287,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo-proje54.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\datatransfer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OperasyonEkle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

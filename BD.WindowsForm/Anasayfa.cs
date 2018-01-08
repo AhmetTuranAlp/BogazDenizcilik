@@ -117,5 +117,17 @@ namespace BD.WindowsForm
             HataliKayitAktarimi hata = new HataliKayitAktarimi();
             yavruform(hata);
         }
+
+        private void kayıtlarıAvşivleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           KayıtlariArsivle arsiv = new KayıtlariArsivle();
+            yavruform(arsiv);
+        }
+
+        private void arşivlenmişKayıtlarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OperasyonArsiv opeArsiv = new OperasyonArsiv();
+            yavruform(opeArsiv);
+        }
     }
 }

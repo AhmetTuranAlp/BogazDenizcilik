@@ -117,6 +117,7 @@
           <Property Name="BackupKonum" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <Function Name="spEkipGenelPerformans" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="spOperasyonArsivListe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spOperasyonListe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spPersonelGenelPerformans" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ProjeBModelStoreContainer">
@@ -259,6 +260,7 @@
           <EntitySet Name="Sorunlar" EntityType="Self.Sorunlar" />
           <EntitySet Name="VeritabaniYedek" EntityType="Self.VeritabaniYedek" />
           <FunctionImport Name="spEkipGenelPerformans" ReturnType="Collection(ProjeBModel.spEkipGenelPerformans_Result)" />
+          <FunctionImport Name="spOperasyonArsivListe" ReturnType="Collection(ProjeBModel.spOperasyonArsivListe_Result)" />
           <FunctionImport Name="spOperasyonListe" ReturnType="Collection(ProjeBModel.spOperasyonListe_Result)" />
           <FunctionImport Name="spPersonelGenelPerformans" ReturnType="Collection(ProjeBModel.spPersonelGenelPerformans_Result)" />
         </EntityContainer>
@@ -266,6 +268,24 @@
           <Property Type="Int32" Name="EkipID" Nullable="false" />
           <Property Type="String" Name="EkipAdi" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Toplam" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="spOperasyonArsivListe_Result">
+          <Property Type="Int32" Name="OperasyonID" Nullable="false" />
+          <Property Type="String" Name="Barkod" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Adi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Soyad" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Tip" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KartID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EkipAdi" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Zaman" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="AnahtarKaybi" Nullable="true" />
+          <Property Type="Boolean" Name="AracHasar" Nullable="true" />
+          <Property Type="Boolean" Name="CamAcik" Nullable="true" />
+          <Property Type="Boolean" Name="VitesKonum" Nullable="true" />
+          <Property Type="Boolean" Name="ElfrenKonum" Nullable="true" />
+          <Property Type="Boolean" Name="Diger" Nullable="true" />
+          <Property Type="Boolean" Name="SorunYok" Nullable="true" />
+          <Property Type="Boolean" Name="SorunDurum" Nullable="true" />
         </ComplexType>
         <ComplexType Name="spOperasyonListe_Result">
           <Property Type="Int32" Name="OperasyonID" Nullable="false" />
@@ -423,6 +443,28 @@
                 <ScalarProperty Name="EkipID" ColumnName="EkipID" />
                 <ScalarProperty Name="EkipAdi" ColumnName="EkipAdi" />
                 <ScalarProperty Name="Toplam" ColumnName="Toplam" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spOperasyonArsivListe" FunctionName="ProjeBModel.Store.spOperasyonArsivListe">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProjeBModel.spOperasyonArsivListe_Result">
+                <ScalarProperty Name="OperasyonID" ColumnName="OperasyonID" />
+                <ScalarProperty Name="Barkod" ColumnName="Barkod" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="KartID" ColumnName="KartID" />
+                <ScalarProperty Name="EkipAdi" ColumnName="EkipAdi" />
+                <ScalarProperty Name="Zaman" ColumnName="Zaman" />
+                <ScalarProperty Name="AnahtarKaybi" ColumnName="AnahtarKaybi" />
+                <ScalarProperty Name="AracHasar" ColumnName="AracHasar" />
+                <ScalarProperty Name="CamAcik" ColumnName="CamAcik" />
+                <ScalarProperty Name="VitesKonum" ColumnName="VitesKonum" />
+                <ScalarProperty Name="ElfrenKonum" ColumnName="ElfrenKonum" />
+                <ScalarProperty Name="Diger" ColumnName="Diger" />
+                <ScalarProperty Name="SorunYok" ColumnName="SorunYok" />
+                <ScalarProperty Name="SorunDurum" ColumnName="SorunDurum" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

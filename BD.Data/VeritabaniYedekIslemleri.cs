@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BD.Data
 {
@@ -138,48 +139,6 @@ namespace BD.Data
             }
 
         }
-
-        public bool Arsiv()
-        {
-            try
-            {
-                ArsivDTO arsiv = new ArsivDTO();
-                OperasyonIslemleri opeIslem = new OperasyonIslemleri();
-                var operasyonListe = opeIslem.Listeleme();
-                PersonelIslemleri personel = new PersonelIslemleri();
-                EkipIslemleri ekip = new EkipIslemleri();
-                using (var db = new ProjeBEntities())
-                {
-                    foreach (var ope in operasyonListe)
-                    {
-                        db.Arsiv.Add(new Arsiv()
-                        {
-                            OperasyonID = ope.OperasyonID,
-                            Barkod = ope.Barkod,
-                            PersonelID = personel.PersonelId(ope.Adi + " " + ope.Soyad),
-                            EkipID = ekip.EkipId(ope.EkipAdi),
-                            Tip = ope.Tip,
-                            Zaman = ope.Zaman,
-                            AnahtarKaybi = ope.AnahtarKaybi,
-                            AracHasar = ope.AracHasar,
-                            CamAcik = ope.CamAcik,
-                            VitesKonum = ope.VitesKonum,
-                            ElfrenKonum = ope.ElfrenKonum,
-                            Diger = ope.Diger,
-                            SorunYok = ope.SorunYok,
-                            SorunDurum = ope.SorunDurum,
-                        });
-                        db.SaveChanges();
-                        opeIslem.Sil(ope.OperasyonID);
-                    }
-                }
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-            
+ 
     }
 }

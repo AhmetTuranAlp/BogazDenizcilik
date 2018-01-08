@@ -44,10 +44,10 @@
             this.DTPZaman = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTip = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbKartID = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -63,7 +63,7 @@
             this.panel1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(632, 280);
+            this.panel1.Size = new System.Drawing.Size(314, 362);
             this.panel1.TabIndex = 0;
             // 
             // panel3
@@ -71,19 +71,21 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.btnEkle);
             this.panel3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.panel3.Location = new System.Drawing.Point(3, 215);
+            this.panel3.Location = new System.Drawing.Point(3, 279);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(622, 58);
+            this.panel3.Size = new System.Drawing.Size(304, 76);
             this.panel3.TabIndex = 9;
             // 
             // btnEkle
             // 
             this.btnEkle.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnEkle.Image = global::BD.WindowsForm.Properties.Resources.OperasyonEkle;
+            this.btnEkle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEkle.Location = new System.Drawing.Point(3, 3);
             this.btnEkle.Name = "btnEkle";
-            this.btnEkle.Size = new System.Drawing.Size(612, 47);
+            this.btnEkle.Size = new System.Drawing.Size(294, 66);
             this.btnEkle.TabIndex = 0;
-            this.btnEkle.Text = "Operasyon Ekle";
+            this.btnEkle.Text = "     Operasyon Ekle";
             this.btnEkle.UseVisualStyleBackColor = true;
             this.btnEkle.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -98,16 +100,16 @@
             this.panel2.Controls.Add(this.chkAracHasar);
             this.panel2.Controls.Add(this.chkAnahtarKaybi);
             this.panel2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.panel2.Location = new System.Drawing.Point(3, 118);
+            this.panel2.Location = new System.Drawing.Point(3, 145);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(622, 94);
+            this.panel2.Size = new System.Drawing.Size(304, 132);
             this.panel2.TabIndex = 8;
             // 
             // chkSorunYok
             // 
             this.chkSorunYok.AutoSize = true;
             this.chkSorunYok.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.chkSorunYok.Location = new System.Drawing.Point(506, 19);
+            this.chkSorunYok.Location = new System.Drawing.Point(183, 67);
             this.chkSorunYok.Name = "chkSorunYok";
             this.chkSorunYok.Size = new System.Drawing.Size(79, 18);
             this.chkSorunYok.TabIndex = 0;
@@ -119,7 +121,7 @@
             // 
             this.chkDiger.AutoSize = true;
             this.chkDiger.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.chkDiger.Location = new System.Drawing.Point(353, 55);
+            this.chkDiger.Location = new System.Drawing.Point(183, 43);
             this.chkDiger.Name = "chkDiger";
             this.chkDiger.Size = new System.Drawing.Size(55, 18);
             this.chkDiger.TabIndex = 0;
@@ -130,7 +132,7 @@
             // 
             this.chkElfrenKonum.AutoSize = true;
             this.chkElfrenKonum.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.chkElfrenKonum.Location = new System.Drawing.Point(353, 19);
+            this.chkElfrenKonum.Location = new System.Drawing.Point(183, 19);
             this.chkElfrenKonum.Name = "chkElfrenKonum";
             this.chkElfrenKonum.Size = new System.Drawing.Size(97, 18);
             this.chkElfrenKonum.TabIndex = 0;
@@ -141,7 +143,7 @@
             // 
             this.chkVitesKonum.AutoSize = true;
             this.chkVitesKonum.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.chkVitesKonum.Location = new System.Drawing.Point(199, 55);
+            this.chkVitesKonum.Location = new System.Drawing.Point(35, 91);
             this.chkVitesKonum.Name = "chkVitesKonum";
             this.chkVitesKonum.Size = new System.Drawing.Size(94, 18);
             this.chkVitesKonum.TabIndex = 0;
@@ -152,7 +154,7 @@
             // 
             this.chkCamAcik.AutoSize = true;
             this.chkCamAcik.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.chkCamAcik.Location = new System.Drawing.Point(199, 19);
+            this.chkCamAcik.Location = new System.Drawing.Point(35, 67);
             this.chkCamAcik.Name = "chkCamAcik";
             this.chkCamAcik.Size = new System.Drawing.Size(75, 18);
             this.chkCamAcik.TabIndex = 0;
@@ -163,7 +165,7 @@
             // 
             this.chkAracHasar.AutoSize = true;
             this.chkAracHasar.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.chkAracHasar.Location = new System.Drawing.Point(35, 55);
+            this.chkAracHasar.Location = new System.Drawing.Point(35, 43);
             this.chkAracHasar.Name = "chkAracHasar";
             this.chkAracHasar.Size = new System.Drawing.Size(82, 18);
             this.chkAracHasar.TabIndex = 0;
@@ -195,7 +197,7 @@
             this.panel4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(622, 112);
+            this.panel4.Size = new System.Drawing.Size(304, 140);
             this.panel4.TabIndex = 7;
             // 
             // txtBarkod
@@ -209,7 +211,7 @@
             // DTPZaman
             // 
             this.DTPZaman.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.DTPZaman.Location = new System.Drawing.Point(385, 61);
+            this.DTPZaman.Location = new System.Drawing.Point(80, 99);
             this.DTPZaman.Name = "DTPZaman";
             this.DTPZaman.Size = new System.Drawing.Size(200, 20);
             this.DTPZaman.TabIndex = 3;
@@ -232,16 +234,26 @@
             "Yükleme",
             "Tahliye",
             "Terminal"});
-            this.cmbTip.Location = new System.Drawing.Point(80, 62);
+            this.cmbTip.Location = new System.Drawing.Point(80, 43);
             this.cmbTip.Name = "cmbTip";
             this.cmbTip.Size = new System.Drawing.Size(200, 22);
             this.cmbTip.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.Location = new System.Drawing.Point(29, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 14);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Kart ID:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label6.Location = new System.Drawing.Point(332, 64);
+            this.label6.Location = new System.Drawing.Point(27, 102);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(47, 14);
             this.label6.TabIndex = 0;
@@ -251,7 +263,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(50, 66);
+            this.label5.Location = new System.Drawing.Point(50, 47);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(27, 14);
             this.label5.TabIndex = 0;
@@ -263,28 +275,19 @@
             this.cmbKartID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cmbKartID.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.cmbKartID.FormattingEnabled = true;
-            this.cmbKartID.Location = new System.Drawing.Point(385, 17);
+            this.cmbKartID.Location = new System.Drawing.Point(80, 71);
             this.cmbKartID.Name = "cmbKartID";
             this.cmbKartID.Size = new System.Drawing.Size(200, 22);
             this.cmbKartID.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(334, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 14);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Kart ID:";
             // 
             // OperasyonEkle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(635, 283);
+            this.ClientSize = new System.Drawing.Size(317, 366);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "OperasyonEkle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Operasyon Ekle";
