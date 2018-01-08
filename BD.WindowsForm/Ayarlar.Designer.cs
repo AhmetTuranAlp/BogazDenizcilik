@@ -62,6 +62,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.chkBackupDrive = new System.Windows.Forms.CheckBox();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSifreView)).BeginInit();
             this.panel7.SuspendLayout();
@@ -154,6 +155,7 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage4.Controls.Add(this.chkBackupDrive);
             this.tabPage4.Controls.Add(this.pictureBox2);
             this.tabPage4.Controls.Add(this.btnBackup);
             this.tabPage4.Controls.Add(this.txtBackup);
@@ -409,6 +411,16 @@
             this.tabControl1.Size = new System.Drawing.Size(947, 497);
             this.tabControl1.TabIndex = 2;
             // 
+            // chkBackupDrive
+            // 
+            this.chkBackupDrive.AutoSize = true;
+            this.chkBackupDrive.Location = new System.Drawing.Point(95, 207);
+            this.chkBackupDrive.Name = "chkBackupDrive";
+            this.chkBackupDrive.Size = new System.Drawing.Size(101, 18);
+            this.chkBackupDrive.TabIndex = 44;
+            this.chkBackupDrive.Text = "Drive Yedekle";
+            this.chkBackupDrive.UseVisualStyleBackColor = true;
+            // 
             // Ayarlar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,5 +490,6 @@
         private System.Windows.Forms.Button btnResoreKonum;
         private System.Windows.Forms.ContextMenuStrip cmsBackup;
         private System.Windows.Forms.ToolStripMenuItem konumAktarToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chkBackupDrive;
     }
 }

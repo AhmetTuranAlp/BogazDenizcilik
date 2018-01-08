@@ -137,5 +137,15 @@ namespace BD.Data
                 return new List<DTO.EkiplerDTO>();
             }
         }
+
+        public int EkipId(string ekipAdi)
+        {
+            using (var db = new ProjeBEntities())
+            {
+                Ekipler ekip = db.Ekipler.FirstOrDefault(x => x.EkipAdi== ekipAdi);
+
+                return ekip.EkipID;
+            }
+        }
     }
 }

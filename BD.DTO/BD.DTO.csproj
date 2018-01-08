@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArsivDTO.cs" />
     <Compile Include="AyarlarDTO.cs" />
     <Compile Include="CihazDTO.cs" />
     <Compile Include="EkiplerDTO.cs" />
@@ -59,6 +60,9 @@
       <Project>{7314400a-84a8-4371-a3f5-432a40d52226}</Project>
       <Name>BD.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

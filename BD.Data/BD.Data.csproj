@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arsiv.cs">
+      <DependentUpon>BDDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Ayarlar.cs">
       <DependentUpon>BDDataModel.tt</DependentUpon>
     </Compile>

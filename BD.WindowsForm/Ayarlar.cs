@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static BD.Common.GoogleDriveYukle;
 
 namespace BD.WindowsForm
 {
@@ -21,15 +22,67 @@ namespace BD.WindowsForm
         {
             InitializeComponent();
         }
-        
+
         Tools arac = new Tools();
         SifreIslemleri sifre = new SifreIslemleri();
         VeritabaniYedekIslemleri dbIslem = new VeritabaniYedekIslemleri();
-        
+
         public void SifreTabloListeleme()
         {
             dtgSifreView.DataSource = sifre.Listeleme();
             arac.DatagridBoyutlandir(dtgSifreView, 3);
+        }
+
+        private String GetFileType(string file)
+        {
+            string extension = Path.GetExtension(file);
+            System.Diagnostics.Debug.WriteLine("extension: " + extension);
+            string mime;
+            switch (extension.ToLower())
+            {
+                case ".jpg":
+                    mime = "image/jpeg";
+                    break;
+                case ".jpeg":
+                    mime = "image/jpeg";
+                    break;
+                case ".png":
+                    mime = "image/png";
+                    break;
+                case ".doc":
+                    mime = "application/msword";
+                    break;
+                case ".pdf":
+                    mime = "application/pdf";
+                    break;
+                default:
+                    mime = "text/plain";
+                    break;
+            }
+            return mime;
+        }
+
+        private static string json_secret_file = @".\client_secret.json";
+        private static string application_name = @".NET Google Drive Uploader";
+        public void GoogleDriveYukle()
+        {
+            string tarih = DateTime.Now.ToString("dd-MM-yyyy--HH-mm-sss");
+            string yol = txtBackup.Text + "\\" + tarih + "_BoğazDenizcilik.bak";
+            DriveUploader driveUploader = new DriveUploader(json_secret_file, application_name);
+            System.Diagnostics.Debug.WriteLine(yol);
+            try
+            {
+                byte[] byteArray = System.IO.File.ReadAllBytes(yol);
+                string filePath = yol;
+                string fileName = tarih + "_BoğazDenizcilik.bak";
+                string description = tarih + "_BoğazDenizcilik.bak";
+                string fileType = GetFileType(filePath);
+                driveUploader.UploadFile(ref byteArray, fileName, description, fileType);
+            }
+            catch (Exception exc)
+            {
+                System.Diagnostics.Debug.WriteLine(exc.Message);
+            }
         }
 
         private void Ayarlar_Load(object sender, EventArgs e)
@@ -38,12 +91,12 @@ namespace BD.WindowsForm
             VeritabaniListeleme();
         }
 
-    
+
         private void btnGuncelle_Click(object sender, EventArgs e)
         {
 
         }
-        
+
         private void btnTemizle_Click(object sender, EventArgs e)
         {
             textBox1.Clear();
@@ -89,11 +142,17 @@ namespace BD.WindowsForm
             }
         }
 
-        //C:\--Özellikler--Güvenlik--Düzenle--Kullanıcı Sec--Yazma=Yetki Ver.
-        //ConnectionString otomatik olarak cek
-
         public void VeritabaniListeleme()
         {
+            List<VeritabaniYedekDTO> dbList = new List<VeritabaniYedekDTO>();
+            dbList = dbIslem.Listeleme();
+            foreach (VeritabaniYedekDTO dbItem in dbList)
+            {
+                if (File.Exists(dbItem.BackupKonum + "\\" + dbItem.BackupAdi) == false)
+                {
+                    dbIslem.Sil(dbItem.BackupAdi);
+                }
+            }
             dataGridView2.DataSource = dbIslem.Listeleme();
             arac.DatagridBoyutlandir(dataGridView2, 3);
         }
@@ -110,33 +169,20 @@ namespace BD.WindowsForm
 
         private void btnBackup_Click(object sender, EventArgs e)
         {
-            try
+            if (dbIslem.Backup(txtBackup.Text.ToString()))
             {
-                string tarih = DateTime.Now.ToString("dd-MM-yyyy--HH-mm-sss");
-                string connectionString1 = ("data source=.;initial catalog=ProjeB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
-                SqlConnection cn = new SqlConnection(connectionString1);
-                cn.Open();
-                SqlCommand cmd = new SqlCommand();
-                SqlDataReader reader;
-                cmd.CommandText = @"BACKUP DATABASE ProjeB TO DISK ='" + txtBackup.Text + "\\" + tarih + "_BoğazDenizcilik.bak'";
-
-                cmd.CommandType = CommandType.Text;
-                cmd.Connection = cn;
-                reader = cmd.ExecuteReader();
-                cn.Close();
-
-                VeritabaniYedekDTO backup = new VeritabaniYedekDTO();
-                backup.BackupAdi = tarih + "_BoğazDenizcilik.bak";
-                backup.BackupKonum = txtBackup.Text;
-                dbIslem.Ekle(backup);
-                VeritabaniListeleme();
-                MessageBox.Show("Database Backup Successfull.");
-
+                if (chkBackupDrive.Checked == true)
+                {
+                    GoogleDriveYukle();
+                    MessageBox.Show("Yedek alma işlemi başarılı bir şekilde alınmıştır.");
+                    VeritabaniListeleme();
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Yedek alma işleminde hata oluştu.");
             }
+
         }
 
         private void btnResoreKonum_Click(object sender, EventArgs e)
@@ -154,35 +200,22 @@ namespace BD.WindowsForm
         string resDosyaAdi;
         private void btnRestore_Click(object sender, EventArgs e)
         {
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source =.; initial catalog = ProjeB; integrated security = True; MultipleActiveResultSets = True; App = EntityFramework";
-
-            if (con.State != ConnectionState.Open)
+            OperasyonIslemleri opeIslem = new OperasyonIslemleri();
+            List<OperasyonModelViewDTO> opeList = new List<OperasyonModelViewDTO>();
+            opeList = opeIslem.Listeleme();
+            if (dbIslem.Restore(txtRestore.Text.ToString()))
             {
-                con.Open();
+                foreach (OperasyonModelViewDTO opeItem in opeList)
+                {
+                    opeIslem.Ekle_OMV(opeItem);
+                }
+                MessageBox.Show("Veritabanı geri yükleme başarılı olmuştur.");
             }
-            try
+            else
             {
-                string sqlStmt2 = string.Format("ALTER DATABASE ProjeB SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
-                SqlCommand bu2 = new SqlCommand(sqlStmt2, con);
-                bu2.ExecuteNonQuery();
-
-                string sqlStmt3 = "USE MASTER RESTORE DATABASE ProjeB FROM DISK='" + txtRestore.Text + "'WITH REPLACE;";
-                SqlCommand bu3 = new SqlCommand(sqlStmt3, con);
-                bu3.ExecuteNonQuery();
-
-                string sqlStmt4 = string.Format("ALTER DATABASE ProjeB SET MULTI_USER");
-                SqlCommand bu4 = new SqlCommand(sqlStmt4, con);
-                bu4.ExecuteNonQuery();
-
-                MessageBox.Show("Veritabanı başarılı bir şekilde yüklenmiştir.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Veritabanı geri yükleme işleminde hata oluştu.");
             }
 
-           
         }
 
         private void konumAktarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -200,6 +233,7 @@ namespace BD.WindowsForm
                 MessageBox.Show(ex.Message);
             }
         }
+
     }
 }
 

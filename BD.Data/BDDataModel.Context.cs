@@ -27,6 +27,7 @@ namespace BD.Data
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Arsiv> Arsiv { get; set; }
         public virtual DbSet<Ayarlar> Ayarlar { get; set; }
         public virtual DbSet<Cihaz> Cihaz { get; set; }
         public virtual DbSet<Ekipler> Ekipler { get; set; }

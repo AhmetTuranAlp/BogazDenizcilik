@@ -46,6 +46,60 @@ namespace BD.Data
             }
         }
 
+        public bool Ekle_OMV(DTO.OperasyonModelViewDTO dosya)
+        {
+            try
+            {
+                var operasyonListe = this.Listeleme();
+                PersonelIslemleri personel = new PersonelIslemleri();
+                EkipIslemleri ekip = new EkipIslemleri();
+                using (var db = new ProjeBEntities())
+                {
+                    db.Operasyon.Add(new Operasyon()
+                    {
+                        OperasyonID = dosya.OperasyonID,
+                        Barkod = dosya.Barkod,
+                        PersonelID = personel.PersonelId(dosya.Adi + " " + dosya.Soyad),
+                        EkipID = ekip.EkipId(dosya.EkipAdi),
+                        Tip = dosya.Tip,
+                        Zaman = dosya.Zaman,
+                        AnahtarKaybi = dosya.AnahtarKaybi,
+                        AracHasar = dosya.AracHasar,
+                        CamAcik = dosya.CamAcik,
+                        VitesKonum = dosya.VitesKonum,
+                        ElfrenKonum = dosya.ElfrenKonum,
+                        Diger = dosya.Diger,
+                        SorunYok = dosya.SorunYok,
+                        SorunDurum = dosya.SorunDurum,
+                    });
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool Sil(int id)
+        {
+            try
+            {
+                using (var db = new ProjeBEntities())
+                {
+                    Operasyon operasyon = db.Operasyon.FirstOrDefault(x => x.OperasyonID == id);
+                    db.Operasyon.Remove(operasyon);
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public List<DTO.OperasyonModelViewDTO> Listeleme()
         {
             using (var db = new ProjeBEntities())
@@ -130,29 +184,29 @@ namespace BD.Data
             {
                 try
                 {
-                        return (from op in db.Operasyon
-                                     from p in db.Personel
-                                     from ek in db.Ekipler
-                                     where op.PersonelID == p.PersonelID && p.EkipID == ek.EkipID
-                                     select new DTO.OperasyonModelViewDTO
-                                     {
-                                         OperasyonID = (int)op.OperasyonID,
-                                         Barkod = op.Barkod,
-                                         Adi = p.Adi,
-                                         Soyad = p.Soyad,
-                                         Tip = op.Tip,
-                                         KartID = p.KartID,
-                                         EkipAdi = ek.EkipAdi,
-                                         Zaman = (DateTime)op.Zaman,
-                                         AnahtarKaybi = (bool)op.AnahtarKaybi,
-                                         AracHasar = (bool)op.AracHasar,
-                                         CamAcik = (bool)op.CamAcik,
-                                         VitesKonum = (bool)op.VitesKonum,
-                                         ElfrenKonum = (bool)op.ElfrenKonum,
-                                         Diger = (bool)op.Diger,
-                                         SorunYok = (bool)op.SorunYok,
-                                         SorunDurum = (bool)op.SorunDurum
-                                     }).Where(x => x.Barkod.Contains(arama)).ToList();
+                    return (from op in db.Operasyon
+                            from p in db.Personel
+                            from ek in db.Ekipler
+                            where op.PersonelID == p.PersonelID && p.EkipID == ek.EkipID
+                            select new DTO.OperasyonModelViewDTO
+                            {
+                                OperasyonID = (int)op.OperasyonID,
+                                Barkod = op.Barkod,
+                                Adi = p.Adi,
+                                Soyad = p.Soyad,
+                                Tip = op.Tip,
+                                KartID = p.KartID,
+                                EkipAdi = ek.EkipAdi,
+                                Zaman = (DateTime)op.Zaman,
+                                AnahtarKaybi = (bool)op.AnahtarKaybi,
+                                AracHasar = (bool)op.AracHasar,
+                                CamAcik = (bool)op.CamAcik,
+                                VitesKonum = (bool)op.VitesKonum,
+                                ElfrenKonum = (bool)op.ElfrenKonum,
+                                Diger = (bool)op.Diger,
+                                SorunYok = (bool)op.SorunYok,
+                                SorunDurum = (bool)op.SorunDurum
+                            }).Where(x => x.Barkod.Contains(arama)).ToList();
                 }
                 catch (Exception)
                 {
@@ -207,7 +261,9 @@ namespace BD.Data
 
         public DataTable TableListe(string sp)
         {
-            SqlConnection con = new SqlConnection("data source =.; initial catalog = ProjeB; integrated security = True; MultipleActiveResultSets = True; App = EntityFramework");
+            VeritabaniYedekIslemleri dbIslem = new VeritabaniYedekIslemleri();
+            string connec = dbIslem.ConnectionString();
+            SqlConnection con = new SqlConnection(connec);
             SqlDataAdapter adp = new SqlDataAdapter(sp, con);
             DataTable tablo = new DataTable();
             adp.Fill(tablo);

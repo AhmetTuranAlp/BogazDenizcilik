@@ -5,6 +5,26 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="ProjeBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Arsiv">
+          <Key>
+            <PropertyRef Name="ArsivID" />
+          </Key>
+          <Property Name="ArsivID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OperasyonID" Type="int" Nullable="false" />
+          <Property Name="Barkod" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonelID" Type="int" />
+          <Property Name="EkipID" Type="int" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zaman" Type="datetime" />
+          <Property Name="AnahtarKaybi" Type="bit" />
+          <Property Name="AracHasar" Type="bit" />
+          <Property Name="CamAcik" Type="bit" />
+          <Property Name="VitesKonum" Type="bit" />
+          <Property Name="ElfrenKonum" Type="bit" />
+          <Property Name="Diger" Type="bit" />
+          <Property Name="SorunYok" Type="bit" />
+          <Property Name="SorunDurum" Type="bit" />
+        </EntityType>
         <EntityType Name="Ayarlar">
           <Key>
             <PropertyRef Name="ID" />
@@ -100,6 +120,7 @@
         <Function Name="spOperasyonListe" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spPersonelGenelPerformans" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ProjeBModelStoreContainer">
+          <EntitySet Name="Arsiv" EntityType="Self.Arsiv" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ayarlar" EntityType="Self.Ayarlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cihaz" EntityType="Self.Cihaz" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ekipler" EntityType="Self.Ekipler" Schema="dbo" store:Type="Tables" />
@@ -115,6 +136,26 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProjeBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Arsiv">
+          <Key>
+            <PropertyRef Name="ArsivID" />
+          </Key>
+          <Property Name="ArsivID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OperasyonID" Type="Int32" Nullable="false" />
+          <Property Name="Barkod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelID" Type="Int32" />
+          <Property Name="EkipID" Type="Int32" />
+          <Property Name="Tip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zaman" Type="DateTime" Precision="3" />
+          <Property Name="AnahtarKaybi" Type="Boolean" />
+          <Property Name="AracHasar" Type="Boolean" />
+          <Property Name="CamAcik" Type="Boolean" />
+          <Property Name="VitesKonum" Type="Boolean" />
+          <Property Name="ElfrenKonum" Type="Boolean" />
+          <Property Name="Diger" Type="Boolean" />
+          <Property Name="SorunYok" Type="Boolean" />
+          <Property Name="SorunDurum" Type="Boolean" />
+        </EntityType>
         <EntityType Name="Ayarlar">
           <Key>
             <PropertyRef Name="ID" />
@@ -206,7 +247,8 @@
           <Property Name="BackupAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BackupKonum" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="ProjeBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Arsiv" EntityType="Self.Arsiv" />
           <EntitySet Name="Ayarlar" EntityType="Self.Ayarlar" />
           <EntitySet Name="Cihaz" EntityType="Self.Cihaz" />
           <EntitySet Name="Ekipler" EntityType="Self.Ekipler" />
@@ -253,7 +295,28 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProjeBModelStoreContainer" CdmEntityContainer="ProjeBEntities">
+        <EntityContainerMapping StorageEntityContainer="ProjeBModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Arsiv">
+            <EntityTypeMapping TypeName="ProjeBModel.Arsiv">
+              <MappingFragment StoreEntitySet="Arsiv">
+                <ScalarProperty Name="ArsivID" ColumnName="ArsivID" />
+                <ScalarProperty Name="OperasyonID" ColumnName="OperasyonID" />
+                <ScalarProperty Name="Barkod" ColumnName="Barkod" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="EkipID" ColumnName="EkipID" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="Zaman" ColumnName="Zaman" />
+                <ScalarProperty Name="AnahtarKaybi" ColumnName="AnahtarKaybi" />
+                <ScalarProperty Name="AracHasar" ColumnName="AracHasar" />
+                <ScalarProperty Name="CamAcik" ColumnName="CamAcik" />
+                <ScalarProperty Name="VitesKonum" ColumnName="VitesKonum" />
+                <ScalarProperty Name="ElfrenKonum" ColumnName="ElfrenKonum" />
+                <ScalarProperty Name="Diger" ColumnName="Diger" />
+                <ScalarProperty Name="SorunYok" ColumnName="SorunYok" />
+                <ScalarProperty Name="SorunDurum" ColumnName="SorunDurum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Ayarlar">
             <EntityTypeMapping TypeName="ProjeBModel.Ayarlar">
               <MappingFragment StoreEntitySet="Ayarlar">
