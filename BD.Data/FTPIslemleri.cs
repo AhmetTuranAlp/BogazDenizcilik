@@ -118,7 +118,15 @@ namespace BD.Data
                     {
                         HataPersonelListe.Add(kartID.ToString());
                     }
-                    File.Move(Application.StartupPath + klasor + data, Application.StartupPath + @"\XmlHata\" + data);
+                    try
+                    {
+                        File.Move(Application.StartupPath + klasor + data, Application.StartupPath + @"\XmlHata\" + data);
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
+                    
                 }
             }
             bar.Value = dosyaSayisi;

@@ -171,14 +171,29 @@ namespace BD.WindowsForm
 
         public void BackupAl()
         {
+            Tools arac = new Tools();
             if (dbIslem.Backup(txtBackup.Text.ToString()))
             {
+              
                 if (chkGoogleDriveBackup.Checked == true)
                 {
-                    GoogleDriveYukle();
-                    MessageBox.Show("Yedek alma işlemi başarılı bir şekilde alınmıştır.");
-                    VeritabaniListeleme();
+                    if (arac.InternetKontrol())
+                    {
+                        GoogleDriveYukle();
+                        MessageBox.Show("Yedek alma işlemi başarılı bir şekilde alınmıştır. Dosya bilgisayara ve Google Drive Hesabına Kaydedilmiştir.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Yedek alma işlemi başarılı bir şekilde alınmıştır. Ancak Internet bağlantısı olmadıgı için dosya Google Drive hesabına Kaydedilmedi.");
+                    }
+                  
                 }
+                else
+                {
+                    MessageBox.Show("Yedek alma işlemi başarılı bir şekilde alınmıştır.");
+                }
+               
+                VeritabaniListeleme();
             }
             else
             {
@@ -231,7 +246,11 @@ namespace BD.WindowsForm
                 }
                 foreach (VeritabaniYedekDTO dbItem in dbList)
                 {
-                    dbIslem.Ekle(dbItem);
+                    if (!dbIslem.DosyaKontrol(dbItem.BackupAdi))
+                    {
+                        dbIslem.Ekle(dbItem);
+                    }
+                   
                 }
                 arsivIslem.TabloIcerigiSil();
                 foreach (ArsivDTO arsivItem in arsivList)

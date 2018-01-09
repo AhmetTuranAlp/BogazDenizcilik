@@ -32,6 +32,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblToplamKayit = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtAra = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -58,6 +60,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtAra);
             this.panel1.Controls.Add(this.lblToplamKayit);
             this.panel1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.panel1.Location = new System.Drawing.Point(1, 522);
@@ -74,6 +78,24 @@
             this.lblToplamKayit.Size = new System.Drawing.Size(84, 13);
             this.lblToplamKayit.TabIndex = 5;
             this.lblToplamKayit.Text = "Toplam Kayıt:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(720, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Barkod:";
+            // 
+            // txtAra
+            // 
+            this.txtAra.Location = new System.Drawing.Point(777, 17);
+            this.txtAra.Name = "txtAra";
+            this.txtAra.Size = new System.Drawing.Size(248, 20);
+            this.txtAra.TabIndex = 6;
+            this.txtAra.TextChanged += new System.EventHandler(this.txtAra_TextChanged);
             // 
             // OperasyonArsiv
             // 
@@ -102,5 +124,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblToplamKayit;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtAra;
     }
 }

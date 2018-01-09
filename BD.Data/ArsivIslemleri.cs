@@ -101,6 +101,7 @@ namespace BD.Data
                 return false;
             }
         }
+
         public DataTable TableListe(string sp)
         {
             try
@@ -166,6 +167,44 @@ namespace BD.Data
             }
             catch (Exception)
             {
+
+            }
+        }
+
+        public List<DTO.ArsivViewModelDTO> ArsivAramaListe(string arama)
+        {
+            using (var db = new ProjeBEntities())
+            {
+                try
+                {
+                    return (from op in db.Arsiv
+                            from p in db.Personel
+                            from ek in db.Ekipler
+                            where op.PersonelID == p.PersonelID && p.EkipID == ek.EkipID
+                            select new DTO.ArsivViewModelDTO
+                            {
+                                OperasyonID = (int)op.OperasyonID,
+                                Barkod = op.Barkod,
+                                Adi = p.Adi,
+                                Soyad = p.Soyad,
+                                Tip = op.Tip,
+                                KartID = p.KartID,
+                                EkipAdi = ek.EkipAdi,
+                                Zaman = (DateTime)op.Zaman,
+                                AnahtarKaybi = (bool)op.AnahtarKaybi,
+                                AracHasar = (bool)op.AracHasar,
+                                CamAcik = (bool)op.CamAcik,
+                                VitesKonum = (bool)op.VitesKonum,
+                                ElfrenKonum = (bool)op.ElfrenKonum,
+                                Diger = (bool)op.Diger,
+                                SorunYok = (bool)op.SorunYok,
+                                SorunDurum = (bool)op.SorunDurum
+                            }).Where(x => x.Barkod.Contains(arama)).ToList();
+                }
+                catch (Exception)
+                {
+                    return new List<DTO.ArsivViewModelDTO>();
+                }
 
             }
         }

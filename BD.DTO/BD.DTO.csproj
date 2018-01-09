@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArsivDTO.cs" />
+    <Compile Include="ArsivViewModelDTO.cs" />
     <Compile Include="AyarlarDTO.cs" />
     <Compile Include="CihazDTO.cs" />
     <Compile Include="EkiplerDTO.cs" />

@@ -19,9 +19,9 @@ namespace BD.WindowsForm
             InitializeComponent();
         }
         Tools arac = new Tools();
+        ArsivIslemleri arsiv = new ArsivIslemleri();
         public void OperasyonArsivListe()
         {
-            ArsivIslemleri arsiv = new ArsivIslemleri();
             dataGridView1.DataSource = arsiv.TableListe("spOperasyonArsivListe");
             arac.DatagridBoyutlandir(dataGridView1, 16);
             arac.HataliOperasyonKayitlari(dataGridView1);
@@ -31,6 +31,13 @@ namespace BD.WindowsForm
         private void OperasyonArsiv_Load(object sender, EventArgs e)
         {
             OperasyonArsivListe();
+        }
+
+        private void txtAra_TextChanged(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = arsiv.ArsivAramaListe(txtAra.Text.ToString());
+            arac.DatagridBoyutlandir(dataGridView1, 17);
+            lblToplamKayit.Text = "Toplam Kayıt: " + dataGridView1.RowCount;
         }
     }
 }

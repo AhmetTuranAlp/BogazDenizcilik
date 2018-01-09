@@ -32,25 +32,25 @@ namespace BD.Data
             }
 
         }
-        
-        //public bool DosyaKontrol(string backupFile)
-        //{
-        //    try
-        //    {
-        //        using (var db = new ProjeBEntities())
-        //        {
-        //            VeritabaniYedek dbKontrol = db.VeritabaniYedek.FirstOrDefault(x => x.BackupAdi == backupFile);
-        //            if (dbKontrol != null)
-        //                return true;
-        //            else
-        //                return false;
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return false;
-        //    }
-        //}
+
+        public bool DosyaKontrol(string backupFile)
+        {
+            try
+            {
+                using (var db = new ProjeBEntities())
+                {
+                    VeritabaniYedek dbKontrol = db.VeritabaniYedek.FirstOrDefault(x => x.BackupAdi == backupFile);
+                    if (dbKontrol != null)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
         public bool Ekle(DTO.VeritabaniYedekDTO backup)
         {
