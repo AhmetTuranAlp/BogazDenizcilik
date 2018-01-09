@@ -38,15 +38,20 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.pcbBackupLoading = new System.Windows.Forms.PictureBox();
+            this.lblBackupLoading = new System.Windows.Forms.Label();
+            this.chkGoogleDriveBackup = new System.Windows.Forms.CheckBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnBackup = new System.Windows.Forms.Button();
             this.txtBackup = new System.Windows.Forms.TextBox();
             this.btnBackupKonum = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.pcbRestoreLoading = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnRestore = new System.Windows.Forms.Button();
             this.txtRestore = new System.Windows.Forms.TextBox();
+            this.lblRestoreLoading = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.btnResoreKonum = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -62,6 +67,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgSifreView)).BeginInit();
             this.panel7.SuspendLayout();
@@ -70,8 +77,10 @@
             this.panel8.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbBackupLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbRestoreLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -154,6 +163,9 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage4.Controls.Add(this.pcbBackupLoading);
+            this.tabPage4.Controls.Add(this.lblBackupLoading);
+            this.tabPage4.Controls.Add(this.chkGoogleDriveBackup);
             this.tabPage4.Controls.Add(this.pictureBox2);
             this.tabPage4.Controls.Add(this.btnBackup);
             this.tabPage4.Controls.Add(this.txtBackup);
@@ -165,6 +177,39 @@
             this.tabPage4.Size = new System.Drawing.Size(405, 431);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Veritabanı Yedek Alma";
+            // 
+            // pcbBackupLoading
+            // 
+            this.pcbBackupLoading.Image = global::BD.WindowsForm.Properties.Resources.source;
+            this.pcbBackupLoading.Location = new System.Drawing.Point(143, 276);
+            this.pcbBackupLoading.Name = "pcbBackupLoading";
+            this.pcbBackupLoading.Size = new System.Drawing.Size(130, 126);
+            this.pcbBackupLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbBackupLoading.TabIndex = 47;
+            this.pcbBackupLoading.TabStop = false;
+            this.pcbBackupLoading.Visible = false;
+            // 
+            // lblBackupLoading
+            // 
+            this.lblBackupLoading.AutoSize = true;
+            this.lblBackupLoading.Location = new System.Drawing.Point(140, 405);
+            this.lblBackupLoading.Name = "lblBackupLoading";
+            this.lblBackupLoading.Size = new System.Drawing.Size(155, 14);
+            this.lblBackupLoading.TabIndex = 46;
+            this.lblBackupLoading.Text = "Veritabanı Yedeği Alınıyor...";
+            this.lblBackupLoading.Visible = false;
+            // 
+            // chkGoogleDriveBackup
+            // 
+            this.chkGoogleDriveBackup.AutoSize = true;
+            this.chkGoogleDriveBackup.Checked = true;
+            this.chkGoogleDriveBackup.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkGoogleDriveBackup.Location = new System.Drawing.Point(95, 205);
+            this.chkGoogleDriveBackup.Name = "chkGoogleDriveBackup";
+            this.chkGoogleDriveBackup.Size = new System.Drawing.Size(130, 18);
+            this.chkGoogleDriveBackup.TabIndex = 45;
+            this.chkGoogleDriveBackup.Text = "Google Drive Yükle";
+            this.chkGoogleDriveBackup.UseVisualStyleBackColor = true;
             // 
             // pictureBox2
             // 
@@ -215,9 +260,11 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage5.Controls.Add(this.pcbRestoreLoading);
             this.tabPage5.Controls.Add(this.pictureBox3);
             this.tabPage5.Controls.Add(this.btnRestore);
             this.tabPage5.Controls.Add(this.txtRestore);
+            this.tabPage5.Controls.Add(this.lblRestoreLoading);
             this.tabPage5.Controls.Add(this.label10);
             this.tabPage5.Controls.Add(this.btnResoreKonum);
             this.tabPage5.Location = new System.Drawing.Point(4, 23);
@@ -226,6 +273,17 @@
             this.tabPage5.Size = new System.Drawing.Size(405, 431);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Veritabanı Geri Yükleme";
+            // 
+            // pcbRestoreLoading
+            // 
+            this.pcbRestoreLoading.Image = global::BD.WindowsForm.Properties.Resources.source;
+            this.pcbRestoreLoading.Location = new System.Drawing.Point(151, 263);
+            this.pcbRestoreLoading.Name = "pcbRestoreLoading";
+            this.pcbRestoreLoading.Size = new System.Drawing.Size(130, 126);
+            this.pcbRestoreLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbRestoreLoading.TabIndex = 44;
+            this.pcbRestoreLoading.TabStop = false;
+            this.pcbRestoreLoading.Visible = false;
             // 
             // pictureBox3
             // 
@@ -253,6 +311,16 @@
             this.txtRestore.Name = "txtRestore";
             this.txtRestore.Size = new System.Drawing.Size(287, 20);
             this.txtRestore.TabIndex = 7;
+            // 
+            // lblRestoreLoading
+            // 
+            this.lblRestoreLoading.AutoSize = true;
+            this.lblRestoreLoading.Location = new System.Drawing.Point(131, 392);
+            this.lblRestoreLoading.Name = "lblRestoreLoading";
+            this.lblRestoreLoading.Size = new System.Drawing.Size(172, 14);
+            this.lblRestoreLoading.TabIndex = 6;
+            this.lblRestoreLoading.Text = "Veritabanı Yedeği Yükleniyor...";
+            this.lblRestoreLoading.Visible = false;
             // 
             // label10
             // 
@@ -409,6 +477,16 @@
             this.tabControl1.Size = new System.Drawing.Size(947, 497);
             this.tabControl1.TabIndex = 2;
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // backgroundWorker2
+            // 
+            this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
+            this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
+            // 
             // Ayarlar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,9 +508,11 @@
             this.tabControl2.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbBackupLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbRestoreLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -479,5 +559,12 @@
         private System.Windows.Forms.Button btnResoreKonum;
         private System.Windows.Forms.ContextMenuStrip cmsBackup;
         private System.Windows.Forms.ToolStripMenuItem konumAktarToolStripMenuItem;
+        private System.Windows.Forms.CheckBox chkGoogleDriveBackup;
+        private System.Windows.Forms.PictureBox pcbRestoreLoading;
+        private System.Windows.Forms.Label lblBackupLoading;
+        private System.Windows.Forms.Label lblRestoreLoading;
+        private System.Windows.Forms.PictureBox pcbBackupLoading;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
     }
 }

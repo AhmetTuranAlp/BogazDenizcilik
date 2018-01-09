@@ -12,6 +12,7 @@ namespace BD.Data
 {
     public class ArsivIslemleri
     {
+        VeritabaniYedekIslemleri dbIslem = new VeritabaniYedekIslemleri();
         public bool Arsiv(ProgressBar bar)
         {
             try
@@ -67,11 +68,43 @@ namespace BD.Data
                 return false;
             }
         }
+
+        public bool Ekle(DTO.ArsivDTO dosya)
+        {
+            try
+            {
+                using (var db = new ProjeBEntities())
+                {
+                    db.Arsiv.Add(new Arsiv()
+                    {
+                        OperasyonID = dosya.OperasyonID,
+                        PersonelID = dosya.PersonelID,
+                        EkipID = dosya.EkipID,
+                        Barkod = dosya.Barkod,
+                        Tip = dosya.Tip,
+                        Zaman = dosya.Zaman,
+                        AnahtarKaybi = dosya.AnahtarKaybi,
+                        AracHasar = dosya.AracHasar,
+                        CamAcik = dosya.CamAcik,
+                        VitesKonum = dosya.VitesKonum,
+                        ElfrenKonum = dosya.ElfrenKonum,
+                        Diger = dosya.Diger,
+                        SorunYok = dosya.SorunYok,
+                        SorunDurum = dosya.SorunDurum
+                    });
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         public DataTable TableListe(string sp)
         {
             try
             {
-                VeritabaniYedekIslemleri dbIslem = new VeritabaniYedekIslemleri();
                 string connec = dbIslem.ConnectionString();
                 SqlConnection con = new SqlConnection(connec);
                 SqlDataAdapter adp = new SqlDataAdapter(sp, con);
@@ -84,6 +117,57 @@ namespace BD.Data
                 return new DataTable();
             }
 
+        }
+
+        public List<DTO.ArsivDTO> ArsivListe()
+        {
+            using (var db = new ProjeBEntities())
+            {
+                try
+                {
+                    return db.Arsiv.Select(x => new DTO.ArsivDTO()
+                    {
+                        ArsivID = x.ArsivID,
+                        OperasyonID = x.OperasyonID,
+                        Barkod = x.Barkod,
+                        PersonelID = x.PersonelID,
+                        Tip = x.Tip,
+                        EkipID = x.EkipID,
+                        Zaman = (DateTime)x.Zaman,
+                        AnahtarKaybi = (bool)x.AnahtarKaybi,
+                        AracHasar = (bool)x.AracHasar,
+                        CamAcik = (bool)x.CamAcik,
+                        VitesKonum = (bool)x.VitesKonum,
+                        ElfrenKonum = (bool)x.ElfrenKonum,
+                        Diger = (bool)x.Diger,
+                        SorunYok = (bool)x.SorunYok,
+                        SorunDurum = (bool)x.SorunDurum
+                    }).ToList();
+                }
+                catch (Exception)
+                {
+                    return new List<DTO.ArsivDTO>();
+                }
+
+            }
+        }
+
+        public void TabloIcerigiSil()
+        {
+            try
+            {
+                string connec = dbIslem.ConnectionString();
+                SqlConnection con = new SqlConnection(connec);
+                string sorgu = "DELETE FROM Arsiv";
+                SqlCommand komut = new SqlCommand(sorgu, con);
+                con.Open();
+                komut.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
     }

@@ -125,11 +125,13 @@ namespace BD.Data
             if (HataPersonelListe.Count != 0)
             {
                 string hata = "";
+                int syc = 1;
                 foreach (string item in HataPersonelListe)
                 {
-                    hata = hata + ("'" + item + "'" + ",");
+
+                    hata = hata + (syc++ + "-)" + item + "\n");
                 }
-                MessageBox.Show("Kaydetme işlemi sırasında hata oluşan KartID : " + hata);
+                MessageBox.Show("Kaydetme işlemi sırasında hata oluşan KartID : " + "\n" + hata);
             }
         }
 
@@ -139,7 +141,7 @@ namespace BD.Data
             zaman = dt1 - dt2;
             return Math.Abs(zaman.Days);
         }
-        
+
         public void DosyaSil(string klasor)
         {
             List<string> backupKlasor = new List<string>();

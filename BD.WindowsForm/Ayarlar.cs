@@ -20,8 +20,11 @@ namespace BD.WindowsForm
     {
         public Ayarlar()
         {
+            CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
         }
+
+        public int sayi = 0;
 
         Tools arac = new Tools();
         SifreIslemleri sifre = new SifreIslemleri();
@@ -166,21 +169,37 @@ namespace BD.WindowsForm
             }
         }
 
-        private void btnBackup_Click(object sender, EventArgs e)
+        public void BackupAl()
         {
             if (dbIslem.Backup(txtBackup.Text.ToString()))
             {
-                GoogleDriveYukle();
-                VeritabaniListeleme();
-                MessageBox.Show("Yedek alma işlemi başarılı bir şekilde alınmıştır.");
+                if (chkGoogleDriveBackup.Checked == true)
+                {
+                    GoogleDriveYukle();
+                    MessageBox.Show("Yedek alma işlemi başarılı bir şekilde alınmıştır.");
+                    VeritabaniListeleme();
+                }
             }
             else
             {
                 MessageBox.Show("Yedek alma işleminde hata oluştu.");
             }
-
         }
-
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            backgroundWorker1.RunWorkerAsync();
+            pcbBackupLoading.Visible = true;
+            lblBackupLoading.Visible = true;
+        }
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackupAl();
+        }
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            pcbBackupLoading.Visible = false;
+            lblBackupLoading.Visible = false;
+        }
         private void btnResoreKonum_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -193,17 +212,31 @@ namespace BD.WindowsForm
             }
         }
 
-        string resDosyaAdi;
-        private void btnRestore_Click(object sender, EventArgs e)
+        public void RestoreYap()
         {
+            ArsivIslemleri arsivIslem = new ArsivIslemleri();
             OperasyonIslemleri opeIslem = new OperasyonIslemleri();
+            VeritabaniYedekIslemleri dbIslem = new VeritabaniYedekIslemleri();
+            List<VeritabaniYedekDTO> dbList = new List<VeritabaniYedekDTO>();
             List<OperasyonModelViewDTO> opeList = new List<OperasyonModelViewDTO>();
+            List<ArsivDTO> arsivList = new List<ArsivDTO>();
+            arsivList = arsivIslem.ArsivListe();
             opeList = opeIslem.Listeleme();
+            dbList = dbIslem.Listeleme();
             if (dbIslem.Restore(txtRestore.Text.ToString()))
             {
                 foreach (OperasyonModelViewDTO opeItem in opeList)
                 {
                     opeIslem.Ekle_OMV(opeItem);
+                }
+                foreach (VeritabaniYedekDTO dbItem in dbList)
+                {
+                    dbIslem.Ekle(dbItem);
+                }
+                arsivIslem.TabloIcerigiSil();
+                foreach (ArsivDTO arsivItem in arsivList)
+                {
+                    arsivIslem.Ekle(arsivItem);
                 }
                 MessageBox.Show("Veritabanı geri yükleme başarılı olmuştur.");
             }
@@ -211,9 +244,25 @@ namespace BD.WindowsForm
             {
                 MessageBox.Show("Veritabanı geri yükleme işleminde hata oluştu.");
             }
-
         }
 
+        private void btnRestore_Click(object sender, EventArgs e)
+        {
+            backgroundWorker2.RunWorkerAsync();
+            pcbRestoreLoading.Visible = true;
+            lblRestoreLoading.Visible = true;
+        }
+        private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            pcbRestoreLoading.Visible = false;
+            lblRestoreLoading.Visible = false;
+        }
+
+        private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            RestoreYap();
+        }
+        string resDosyaAdi;
         private void konumAktarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -230,6 +279,7 @@ namespace BD.WindowsForm
             }
         }
 
+      
     }
 }
 
