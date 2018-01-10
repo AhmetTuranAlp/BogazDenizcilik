@@ -163,6 +163,7 @@ namespace BD.Data
             {
                 if (item.StartsWith("Terminal"))
                 {
+
                     string tarih = item.Substring(9, 19);
                     int yil = Convert.ToInt32(tarih.Substring(0, 4));
                     int ay = Convert.ToInt32(tarih.Substring(5, 2));
