@@ -69,8 +69,8 @@ namespace BD.WindowsForm
         private static string application_name = @".NET Google Drive Uploader";
         public void GoogleDriveYukle()
         {
-            string tarih = DateTime.Now.ToString("dd-MM-yyyy--HH-mm-sss");
-            string yol = txtBackup.Text + "\\" + tarih + "_BoğazDenizcilik.bak";
+            string tarih = dbIslem.tarih;
+            string yol = txtBackup.Text + @"\" + tarih + "_BoğazDenizcilik.bak";
             DriveUploader driveUploader = new DriveUploader(json_secret_file, application_name);
             System.Diagnostics.Debug.WriteLine(yol);
             try
@@ -174,26 +174,28 @@ namespace BD.WindowsForm
             Tools arac = new Tools();
             if (dbIslem.Backup(txtBackup.Text.ToString()))
             {
-              
+
                 if (chkGoogleDriveBackup.Checked == true)
                 {
                     if (arac.InternetKontrol())
                     {
                         GoogleDriveYukle();
                         MessageBox.Show("Yedek alma işlemi başarılı bir şekilde alınmıştır. Dosya bilgisayara ve Google Drive Hesabına Kaydedilmiştir.");
+                       
                     }
                     else
                     {
                         MessageBox.Show("Yedek alma işlemi başarılı bir şekilde alınmıştır. Ancak Internet bağlantısı olmadıgı için dosya Google Drive hesabına Kaydedilmedi.");
                     }
-                  
+
                 }
                 else
                 {
                     MessageBox.Show("Yedek alma işlemi başarılı bir şekilde alınmıştır.");
                 }
-               
+
                 VeritabaniListeleme();
+                return;
             }
             else
             {
@@ -250,7 +252,7 @@ namespace BD.WindowsForm
                     {
                         dbIslem.Ekle(dbItem);
                     }
-                   
+
                 }
                 arsivIslem.TabloIcerigiSil();
                 foreach (ArsivDTO arsivItem in arsivList)
@@ -298,7 +300,7 @@ namespace BD.WindowsForm
             }
         }
 
-      
+
     }
 }
 

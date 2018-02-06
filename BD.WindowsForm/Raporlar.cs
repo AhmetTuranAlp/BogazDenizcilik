@@ -33,7 +33,7 @@ namespace BD.WindowsForm
             dataGridView1.DataSource = operasyon.TableListe("spOperasyonListe");
             arac.DatagridBoyutlandir(dataGridView1, 16);
             arac.HataliOperasyonKayitlari(dataGridView1);
-            lblToplamKayit.Text = "Operasyon Adet: " + (dataGridView1.RowCount - 1);
+            lblToplamKayit.Text = "Operasyon Adet: " + operasyon.TableCount();
         }
 
         public void TwoDtp()
@@ -585,7 +585,7 @@ namespace BD.WindowsForm
             dataGridView1.DataSource = operasyon.TableListe("spOperasyonListe");
             arac.DatagridBoyutlandir(dataGridView1, 16);
             arac.HataliOperasyonKayitlari(dataGridView1);
-            lblToplamKayit.Text = "Operasyon Adet: " + dataGridView1.RowCount;
+            lblToplamKayit.Text = "Operasyon Adet: " + operasyon.TableCount();
         }
 
 

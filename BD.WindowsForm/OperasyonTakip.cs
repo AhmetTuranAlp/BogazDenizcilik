@@ -28,7 +28,7 @@ namespace BD.WindowsForm
             dataGridView1.DataSource = operasyon.TableListe("spOperasyonListe");
             arac.DatagridBoyutlandir(dataGridView1, 16);
             arac.HataliOperasyonKayitlari(dataGridView1);
-            lblToplamKayit.Text = "Toplam Kayıt: " + (dataGridView1.RowCount - 1);
+            lblToplamKayit.Text = "Toplam Kayıt: " + operasyon.TableCount();
         }
 
         private void OperasyonTakip_Load(object sender, EventArgs e)

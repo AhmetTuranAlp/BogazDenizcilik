@@ -93,15 +93,16 @@ namespace BD.Data
 
         public string ConnectionString()
         {
-            string connec = ("data source=.;initial catalog=ProjeB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+            string connec = (@"data source=.;initial catalog=ProjeB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
             return connec;
         }
 
+       public string tarih;
         public bool Backup(string txtbackup)
         {
             try
             {
-                string tarih = DateTime.Now.ToString("dd-MM-yyyy--HH-mm-sss");
+                tarih = DateTime.Now.ToString("dd-MM-yyyy--HH-mm-sss");
                 string connectionString1 = this.ConnectionString();
                 SqlConnection cn = new SqlConnection(connectionString1);
                 cn.Open();

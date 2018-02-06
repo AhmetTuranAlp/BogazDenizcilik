@@ -41,7 +41,7 @@ namespace BD.WindowsForm
             string ipAdresi = Dns.GetHostByName(bilgisayarAdi).AddressList[0].ToString();
 
             var server = ftp.FtpServer();
-            string qrcode = "Ftp," + ipAdresi + "," + server.FtpPort + "," + server.FtpUser + "," + server.FtpPass;
+            string qrcode = "Ftp," + ipAdresi.Trim() + "," + server.FtpPort + "," + server.FtpUser.Trim() + "," + server.FtpPass.Trim();
             pictureBox1.Image = qrCreate(qrcode, 6);
             if (!Directory.Exists(Application.StartupPath + @"\XmlData"))
             {

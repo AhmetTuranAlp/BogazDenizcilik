@@ -271,11 +271,31 @@ namespace BD.Data
                 adp.Fill(tablo);
                 return tablo;
             }
-            catch (Exception )
+            catch (Exception)
             {
                 return new DataTable();
             }
-        
+
+        }
+
+        public int TableCount()
+        {
+            try
+            {
+                VeritabaniYedekIslemleri dbIslem = new VeritabaniYedekIslemleri();
+                string connec = dbIslem.ConnectionString();
+                SqlConnection con = new SqlConnection(connec);
+                SqlCommand cmd = new SqlCommand("Select Count(*) from Operasyon", con);
+                con.Open();
+                int deger = (int)cmd.ExecuteScalar();
+                con.Close();
+                return deger;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+
         }
 
 

@@ -204,7 +204,7 @@
             this.chkGoogleDriveBackup.AutoSize = true;
             this.chkGoogleDriveBackup.Checked = true;
             this.chkGoogleDriveBackup.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkGoogleDriveBackup.Location = new System.Drawing.Point(95, 205);
+            this.chkGoogleDriveBackup.Location = new System.Drawing.Point(101, 205);
             this.chkGoogleDriveBackup.Name = "chkGoogleDriveBackup";
             this.chkGoogleDriveBackup.Size = new System.Drawing.Size(130, 18);
             this.chkGoogleDriveBackup.TabIndex = 45;
@@ -233,10 +233,9 @@
             // 
             // txtBackup
             // 
-            this.txtBackup.Enabled = false;
-            this.txtBackup.Location = new System.Drawing.Point(95, 176);
+            this.txtBackup.Location = new System.Drawing.Point(101, 176);
             this.txtBackup.Name = "txtBackup";
-            this.txtBackup.Size = new System.Drawing.Size(287, 20);
+            this.txtBackup.Size = new System.Drawing.Size(281, 20);
             this.txtBackup.TabIndex = 3;
             // 
             // btnBackupKonum
@@ -245,18 +244,18 @@
             this.btnBackupKonum.Name = "btnBackupKonum";
             this.btnBackupKonum.Size = new System.Drawing.Size(75, 23);
             this.btnBackupKonum.TabIndex = 4;
-            this.btnBackupKonum.Text = "Browse";
+            this.btnBackupKonum.Text = "Gözat";
             this.btnBackupKonum.UseVisualStyleBackColor = true;
             this.btnBackupKonum.Click += new System.EventHandler(this.btnBackupKonum_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(32, 179);
+            this.label9.Location = new System.Drawing.Point(6, 179);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 14);
+            this.label9.Size = new System.Drawing.Size(92, 14);
             this.label9.TabIndex = 2;
-            this.label9.Text = "Location:";
+            this.label9.Text = "Dosya Konumu:";
             // 
             // tabPage5
             // 
@@ -309,9 +308,9 @@
             // txtRestore
             // 
             this.txtRestore.Enabled = false;
-            this.txtRestore.Location = new System.Drawing.Point(95, 176);
+            this.txtRestore.Location = new System.Drawing.Point(104, 176);
             this.txtRestore.Name = "txtRestore";
-            this.txtRestore.Size = new System.Drawing.Size(287, 20);
+            this.txtRestore.Size = new System.Drawing.Size(278, 20);
             this.txtRestore.TabIndex = 7;
             // 
             // lblRestoreLoading
@@ -327,11 +326,11 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(32, 179);
+            this.label10.Location = new System.Drawing.Point(6, 179);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(57, 14);
+            this.label10.Size = new System.Drawing.Size(92, 14);
             this.label10.TabIndex = 6;
-            this.label10.Text = "Location:";
+            this.label10.Text = "Dosya Konumu:";
             // 
             // btnResoreKonum
             // 
@@ -339,7 +338,7 @@
             this.btnResoreKonum.Name = "btnResoreKonum";
             this.btnResoreKonum.Size = new System.Drawing.Size(75, 23);
             this.btnResoreKonum.TabIndex = 8;
-            this.btnResoreKonum.Text = "Browse";
+            this.btnResoreKonum.Text = "Gözat";
             this.btnResoreKonum.UseVisualStyleBackColor = true;
             this.btnResoreKonum.Click += new System.EventHandler(this.btnResoreKonum_Click);
             // 
@@ -393,46 +392,50 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(62, 223);
+            this.label1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(63, 223);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.Size = new System.Drawing.Size(36, 14);
             this.label1.TabIndex = 35;
             this.label1.Text = "Şifre:";
             // 
             // btnTemizle
             // 
-            this.btnTemizle.BackgroundImage = global::BD.WindowsForm.Properties.Resources.Yenile;
             this.btnTemizle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnTemizle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTemizle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnTemizle.Location = new System.Drawing.Point(105, 291);
+            this.btnTemizle.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnTemizle.Image = global::BD.WindowsForm.Properties.Resources.Yenile;
+            this.btnTemizle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTemizle.Location = new System.Drawing.Point(105, 331);
             this.btnTemizle.Name = "btnTemizle";
-            this.btnTemizle.Size = new System.Drawing.Size(83, 44);
+            this.btnTemizle.Size = new System.Drawing.Size(227, 44);
             this.btnTemizle.TabIndex = 41;
+            this.btnTemizle.Text = "Formu Temizle";
             this.btnTemizle.UseVisualStyleBackColor = true;
             this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(18, 258);
+            this.label2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Location = new System.Drawing.Point(21, 258);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.Size = new System.Drawing.Size(78, 14);
             this.label2.TabIndex = 36;
             this.label2.Text = "Şifre Tekrarı:";
             // 
             // btnKaydet
             // 
-            this.btnKaydet.BackgroundImage = global::BD.WindowsForm.Properties.Resources.SifreUpdate;
             this.btnKaydet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnKaydet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnKaydet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnKaydet.Location = new System.Drawing.Point(249, 291);
+            this.btnKaydet.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnKaydet.Image = global::BD.WindowsForm.Properties.Resources.SifreUpdate;
+            this.btnKaydet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnKaydet.Location = new System.Drawing.Point(105, 281);
             this.btnKaydet.Name = "btnKaydet";
-            this.btnKaydet.Size = new System.Drawing.Size(83, 44);
+            this.btnKaydet.Size = new System.Drawing.Size(227, 44);
             this.btnKaydet.TabIndex = 40;
+            this.btnKaydet.Text = "Şifre Değiştir";
             this.btnKaydet.UseVisualStyleBackColor = true;
             this.btnKaydet.Click += new System.EventHandler(this.btnKaydet_Click);
             // 

@@ -14,20 +14,17 @@ namespace BD.WindowsForm
         [STAThread]
         static void Main()
         {
-
             try
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Anasayfa());
             }
-            catch (Exception ex)//just as an example 
+            catch
             {
-                var e = ex.Message;
-                //log or handle the error here. 
+                
             }
-
-      
+          
         }
     }
 }
