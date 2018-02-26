@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BD.DTO", "BD.DTO\BD.DTO.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BD.WindowsForm", "BD.WindowsForm\BD.WindowsForm.csproj", "{50DD6E59-96DB-46FC-BBB9-B5C5B30F9DF8}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "BogazDenizcilik", "BogazDenizcilik\BogazDenizcilik.vdproj", "{144E967C-ED33-4E82-BFDE-216E9546BC2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,8 @@ Global
 		{50DD6E59-96DB-46FC-BBB9-B5C5B30F9DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50DD6E59-96DB-46FC-BBB9-B5C5B30F9DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50DD6E59-96DB-46FC-BBB9-B5C5B30F9DF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{144E967C-ED33-4E82-BFDE-216E9546BC2D}.Debug|Any CPU.ActiveCfg = Debug
+		{144E967C-ED33-4E82-BFDE-216E9546BC2D}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

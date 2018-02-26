@@ -83,7 +83,7 @@ namespace BD.Data
                 XmlDocument doc = new XmlDocument();
                 doc.Load((Application.StartupPath + klasor + data));
                 XmlNode operasyon = doc.SelectSingleNode("operasyon");
-                string kartID = operasyon.SelectSingleNode("Personel").InnerText;
+                string kartID = operasyon.SelectSingleNode("Personel").InnerText.Trim();
                 try
                 {
                     GelenPersonel = Personel.TekPersonel(kartID);

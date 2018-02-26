@@ -234,7 +234,7 @@ namespace BD.WindowsForm
                             }
                         }
 
-                        dataGridView1.DataSource = lst.GroupBy(x => new { x.Adi, x.Soyad }).Select(x => new { Toplam = x.Count(), x.Key.Adi, x.Key.Soyad }).OrderByDescending(x => x.Toplam).ToList();
+                        dataGridView1.DataSource = lst.GroupBy(x => new { x.Adi, x.Soyad ,x.EkipAdi}).Select(x => new { Toplam = x.Count(), x.Key.Adi, x.Key.Soyad,x.Key.EkipAdi }).OrderByDescending(x => x.Toplam).ToList();
                         for (int i = 0; i < 3; i++)
                         {
                             dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -262,7 +262,7 @@ namespace BD.WindowsForm
                                 }
                             }
                         }
-                        dataGridView1.DataSource = lst.GroupBy(x => new { x.Adi, x.Soyad }).Select(y => new { y.Key.Adi, y.Key.Soyad, Yükleme = yuk, Tahliye = tah, Terminal = ter }).ToList();
+                        dataGridView1.DataSource = lst.GroupBy(x => new { x.Adi, x.Soyad,x.EkipAdi }).Select(y => new { y.Key.Adi, y.Key.Soyad,y.Key.EkipAdi, Yükleme = yuk, Tahliye = tah, Terminal = ter }).ToList();
                     }
 
                 }
